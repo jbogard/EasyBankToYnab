@@ -1,0 +1,172 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{8BD9D6C8-E676-4754-9B79-6CF9EB76E347}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>QuestMaster.EasyBankRepository.DomainTests</RootNamespace>
+    <AssemblyName>QuestMaster.EasyBankRepository.DomainTests</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\..\EasyBankToYnab\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="System" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="TechTalk.SpecFlow, Version=1.8.1.0, Culture=neutral, PublicKeyToken=0778194805d6db41, processorArchitecture=MSIL">
+      <HintPath>..\packages\SpecFlow.1.8.1\lib\net35\TechTalk.SpecFlow.dll</HintPath>
+    </Reference>
+    <Reference Include="TechTalk.SpecRun, Version=0.13.0.72, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\SpecRun.0.13.0.72\lib\net40\TechTalk.SpecRun.dll</HintPath>
+    </Reference>
+    <Reference Include="TechTalk.SpecRun.SpecFlowPlugin, Version=0.13.0.72, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\SpecRun.0.13.0.72\lib\net40\TechTalk.SpecRun.SpecFlowPlugin.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <CodeAnalysisDependentAssemblyPaths Condition=" '$(VS100COMNTOOLS)' != '' " Include="$(VS100COMNTOOLS)..\IDE\PrivateAssemblies">
+      <Visible>False</Visible>
+    </CodeAnalysisDependentAssemblyPaths>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Bindings\AccountBindings.cs" />
+    <Compile Include="Bindings\CurrentScenarioContext.cs" />
+    <Compile Include="Bindings\EntryBindings.cs" />
+    <Compile Include="Bindings\ScenarioSetup.cs" />
+    <Compile Include="Bindings\StatementBindings.cs" />
+    <Compile Include="Bindings\StatementImporter.cs" />
+    <Compile Include="CheckingAccountExport.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CheckingAccountExport.feature</DependentUpon>
+    </Compile>
+    <Compile Include="ExportNewItems.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ExportNewItems.feature</DependentUpon>
+    </Compile>
+    <Compile Include="CheckingAccountImport.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CheckingAccountImport.feature</DependentUpon>
+    </Compile>
+    <Compile Include="CreditCardAccountExport.feature.cs">
+      <DependentUpon>CreditCardAccountExport.feature</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="SavingsAccountExport.feature.cs">
+      <DependentUpon>SavingsAccountExport.feature</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="CreditCardAccountImport.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CreditCardAccountImport.feature</DependentUpon>
+    </Compile>
+    <Compile Include="ImportAssociatesStatementWithAccount.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ImportAssociatesStatementWithAccount.feature</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SavingsAccountImport.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SavingsAccountImport.feature</DependentUpon>
+    </Compile>
+    <Compile Include="Tables\LineTable.cs" />
+    <Compile Include="Tables\EntryRow.cs" />
+    <Compile Include="Tables\EntryTable.cs" />
+    <Compile Include="Tables\LineRow.cs" />
+    <Compile Include="Tables\StatementRow.cs" />
+    <Compile Include="Tables\StatementTable.cs" />
+    <Compile Include="Tables\TableExtensions.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="CheckingAccountExport.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>CheckingAccountExport.feature.cs</LastGenOutput>
+    </None>
+    <None Include="Default.srprofile">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="ExportNewItems.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>ExportNewItems.feature.cs</LastGenOutput>
+    </None>
+    <None Include="CheckingAccountImport.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>CheckingAccountImport.feature.cs</LastGenOutput>
+    </None>
+    <None Include="CreditCardAccountExport.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>CreditCardAccountExport.feature.cs</LastGenOutput>
+    </None>
+    <None Include="packages.config" />
+    <None Include="runtests.cmd" />
+    <None Include="SavingsAccountExport.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>SavingsAccountExport.feature.cs</LastGenOutput>
+    </None>
+    <None Include="CreditCardAccountImport.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>CreditCardAccountImport.feature.cs</LastGenOutput>
+    </None>
+    <None Include="ImportAssociatesStatementWithAccount.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>ImportAssociatesStatementWithAccount.feature.cs</LastGenOutput>
+    </None>
+    <None Include="SavingsAccountImport.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>SavingsAccountImport.feature.cs</LastGenOutput>
+    </None>
+    <None Include="SpecRunTestProfile.xsd">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DomainModel\DomainModel.csproj">
+      <Project>{99D026CB-CE0E-4A21-BB57-7909B6230B45}</Project>
+      <Name>DomainModel</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(SolutionDir)\.nuget\nuget.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,53 @@
+﻿<Window x:Class="QuestMaster.EasyBankRepository.UI.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="MainWindow" Height="350" Width="525"
+        Loaded="Window_Loaded">
+    <DockPanel>
+
+    <Menu DockPanel.Dock="Top">
+      <MenuItem Header="_File">
+        <MenuItem.Items>
+          <MenuItem Header="_Open ..." Command="{Binding Path=Open}" />
+                    <MenuItem Header="_Import ..." Command="{Binding Path=Import}" />
+                    <MenuItem Header="Import _Now" Command="{Binding Path=ImportNow}" />
+                    <MenuItem Header="Ex_port ..." Command="{Binding Path=Export}" />
+                    <MenuItem Header="Export No_w" Command="{Binding Path=ExportNow}" />
+                    <MenuItem Header="E_xit" Command="{Binding Path=ExitCommand}" />
+        </MenuItem.Items>
+      </MenuItem>
+    </Menu>
+
+    <DockPanel DockPanel.Dock="Top">
+      <Label DockPanel.Dock="Left">Account: </Label>
+      <ComboBox ItemsSource="{Binding Path=Accounts}"></ComboBox>
+    </DockPanel>
+        
+      <StackPanel Orientation="Horizontal" DockPanel.Dock="Bottom">
+            <Button Command="{Binding Path=MarkAllAsOld}">Mark all as old</Button>
+            <Button Command="{Binding Path=ExportNow}">Export all new now</Button>
+    </StackPanel>
+        <ListView ItemsSource="{Binding Path=Accounts/Entries}">
+      <ListView.View>
+        <GridView>
+          <GridView.Columns>
+            <GridViewColumn Header="Is New">
+              <GridViewColumn.CellTemplate>
+                <DataTemplate>
+                  <CheckBox IsChecked="{Binding Path=IsNew}" />
+                </DataTemplate>
+              </GridViewColumn.CellTemplate>
+            </GridViewColumn>
+            <GridViewColumn Header="Booking Date" DisplayMemberBinding="{Binding Path=BookingDate}" />
+            <GridViewColumn Header="Value Date" DisplayMemberBinding="{Binding Path=ValueDate}" />
+            <GridViewColumn Header="Description" DisplayMemberBinding="{Binding Path=Description}" />
+            <GridViewColumn Header="Payee" DisplayMemberBinding="{Binding Path=Payee}" />
+            <GridViewColumn Header="Amount In" DisplayMemberBinding="{Binding Path=AmountIn}" />
+            <GridViewColumn Header="Amount Out" DisplayMemberBinding="{Binding Path=AmountOut}" />
+            <GridViewColumn Header="Currency" DisplayMemberBinding="{Binding Path=Currency}" />
+          </GridView.Columns>
+        </GridView>
+      </ListView.View>
+    </ListView>
+  </DockPanel>
+</Window>

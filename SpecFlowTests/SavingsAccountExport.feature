@@ -1,0 +1,27 @@
+﻿Feature: Export of savings account entries
+  In order to update my list of transactions
+  As a user
+  I want to export my entries to YNAB
+
+Background:
+  Given I have an account with number '20027024468'
+  And the following entries in that account
+  | Id | Booking Date | Account     | Description                          | Payee                               | Value Date | Amount In | Amount Out | Currency | Is New |
+  | 1  | 2011-07-02   | 20027024468 | Abbuchung Onlinebanking BG/000000107 | 14200 20010203008 Dirk Rombauts     | 2011-07-01 | 0.00      | 5.28       | EUR      | True   |
+  | 2  | 2011-06-29   | 20027024468 | Abbuchung Onlinebanking BG/000000106 | 14200 20010203008 Dirk Rombauts     | 2011-06-28 | 0.00      | 1250       | EUR      | True   |
+  | 3  | 2011-06-15   | 20027024468 | Abbuchung Onlinebanking BG/000000105 | 14200 20010203008 Dirk Rombauts     | 2011-06-14 | 0.00      | 500        | EUR      | True   |
+  | 4  | 2011-06-02   | 20027024468 | Gutschrift Dauerauftrag BG/000000104 | 14200 20010203008 Mag Dirk Rombauts | 2011-06-01 | 250       | 0          | EUR      | True   |
+  | 5  | 2011-05-03   | 20027024468 | Gutschrift Dauerauftrag BG/000000103 | 14200 20010203008 Mag Dirk Rombauts | 2011-05-02 | 250.00    | 0          | EUR      | True   |
+  | 6  | 2011-04-02   | 20027024468 | Gutschrift Dauerauftrag BG/000000102 | 14200 20010203008 Mag Dirk Rombauts | 2011-04-01 | 250.00    | 0          | EUR      | True   |
+
+Scenario: Export savings account entries
+  When I export all new entries
+  Then the resulting string should be
+  | Number | Line                                                                                                              |
+  | 1      | Date,Category,Payee,Memo,Outflow,Inflow                                                                           |
+  | 2      | 01.07.2011,Import Statements,14200 20010203008 Dirk Rombauts,Abbuchung Onlinebanking BG/000000107,5.28,0.00       |
+  | 3      | 28.06.2011,Import Statements,14200 20010203008 Dirk Rombauts,Abbuchung Onlinebanking BG/000000106,1250.00,0.00    |
+  | 4      | 14.06.2011,Import Statements,14200 20010203008 Dirk Rombauts,Abbuchung Onlinebanking BG/000000105,500.00,0.00     |
+  | 5      | 01.06.2011,Import Statements,14200 20010203008 Mag Dirk Rombauts,Gutschrift Dauerauftrag BG/000000104,0.00,250.00 |
+  | 6      | 02.05.2011,Import Statements,14200 20010203008 Mag Dirk Rombauts,Gutschrift Dauerauftrag BG/000000103,0.00,250.00 |
+  | 7      | 01.04.2011,Import Statements,14200 20010203008 Mag Dirk Rombauts,Gutschrift Dauerauftrag BG/000000102,0.00,250.00 |

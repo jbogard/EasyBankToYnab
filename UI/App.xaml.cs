@@ -1,6 +1,5 @@
 ﻿using System.Windows;
 using System;
-using QuestMaster.EasyBankRepository.Domain.EasyBankRepository;
 using QuestMaster.EasyBankRepository.DomainModel;
 
 namespace QuestMaster.EasyBankRepository.UI

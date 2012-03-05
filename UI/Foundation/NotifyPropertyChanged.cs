@@ -3,7 +3,7 @@ using System.ComponentModel;
 using System.Linq.Expressions;
 using System.Reflection;
 
-namespace EasyBankRepository.Foundation
+namespace QuestMaster.EasyBankRepository.UI.Foundation
 {
     public abstract class NotifyPropertyChanged : INotifyPropertyChanged
     {

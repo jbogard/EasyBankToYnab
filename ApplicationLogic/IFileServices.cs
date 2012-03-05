@@ -1,7 +1,6 @@
 using System;
-using Microsoft.Win32;
 
-namespace EasyBankRepository
+namespace QuestMaster.EasyBankRepository.ApplicationLogic
 {
   public enum Mode
   {

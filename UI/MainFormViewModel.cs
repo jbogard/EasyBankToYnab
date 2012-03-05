@@ -1,12 +1,12 @@
-﻿using EasyBankRepository;
+﻿using QuestMaster.EasyBankRepository.ApplicationLogic;
 using QuestMaster.EasyBankRepository.DomainModel;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Windows.Input;
-using EasyBankRepository.Foundation;
+using QuestMaster.EasyBankRepository.UI.Foundation;
 
-namespace QuestMaster.EasyBankRepository.Domain.EasyBankRepository
+namespace QuestMaster.EasyBankRepository.UI
 {
 
     public class MainFormViewModel : NotifyPropertyChanged

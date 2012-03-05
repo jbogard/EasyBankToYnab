@@ -1,6 +1,7 @@
-﻿using QuestMaster.EasyBankRepository.DomainModel;
+﻿using System;
+using QuestMaster.EasyBankRepository.DomainModel;
 
-namespace EasyBankRepository
+namespace QuestMaster.EasyBankRepository.ApplicationLogic
 {
   public interface IDataContextProvider
   {

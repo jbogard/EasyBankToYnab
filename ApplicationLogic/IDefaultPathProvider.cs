@@ -1,4 +1,6 @@
-namespace EasyBankRepository
+using System;
+
+namespace QuestMaster.EasyBankRepository.ApplicationLogic
 {
     public interface IDefaultPathProvider
     {

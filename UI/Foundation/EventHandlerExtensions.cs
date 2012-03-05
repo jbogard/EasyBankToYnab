@@ -1,8 +1,8 @@
-namespace EasyBankRepository.Foundation
-{
-    using System;
+using System;
 
-    public static class EventHandlerExtensions
+namespace QuestMaster.EasyBankRepository.UI.Foundation
+{
+  public static class EventHandlerExtensions
     {
         public static void Raise(this EventHandler handler, object sender, EventArgs e)
         {

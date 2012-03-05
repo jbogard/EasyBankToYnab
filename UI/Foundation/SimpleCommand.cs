@@ -1,10 +1,9 @@
-﻿namespace EasyBankRepository.Foundation
-{
-    using System;
-    using System.Threading;
-    using System.Windows.Input;
+﻿using System;
+using System.Windows.Input;
 
-    public class SimpleCommand : ICommand
+namespace QuestMaster.EasyBankRepository.UI.Foundation
+{
+  public class SimpleCommand : ICommand
     {
       public event EventHandler CanExecuteChanged;
         private readonly Func<object, bool> canExecuteMethod;

@@ -2,8 +2,9 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using Microsoft.Win32;
+using QuestMaster.EasyBankRepository.ApplicationLogic;
 
-namespace EasyBankRepository
+namespace QuestMaster.EasyBankRepository.UI
 {
   class FileServices : IFileServices
   {

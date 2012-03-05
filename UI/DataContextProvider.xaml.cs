@@ -1,6 +1,6 @@
 ﻿using System;
 using System.IO;
-using EasyBankRepository;
+using QuestMaster.EasyBankRepository.ApplicationLogic;
 using QuestMaster.EasyBankRepository.DomainModel;
 
 namespace QuestMaster.EasyBankRepository.UI
@@ -24,8 +24,9 @@ namespace QuestMaster.EasyBankRepository.UI
 
         if (easyBank != null)
         {
-            //easyBank.SubmitChanges();
-            //easyBank.Dispose();
+          // TODO: implement
+            // easyBank.SubmitChanges();
+            // easyBank.Dispose();
         }
     }
 
@@ -33,11 +34,10 @@ namespace QuestMaster.EasyBankRepository.UI
     {
       if (File.Exists(pathToDataFile))
       {
-        //return new EasyBank(pathToDataFile);
+        // TODO: implement
+        // return new EasyBank(pathToDataFile);
       }
       return null;
     }
-
-
   }
 }

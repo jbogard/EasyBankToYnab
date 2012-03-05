@@ -1,6 +1,6 @@
 ﻿using System;
+using QuestMaster.EasyBankRepository.ApplicationLogic;
 using QuestMaster.EasyBankRepository.UI.Properties;
-using EasyBankRepository;
 
 namespace QuestMaster.EasyBankRepository.UI
 {

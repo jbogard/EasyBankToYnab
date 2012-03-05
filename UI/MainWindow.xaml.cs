@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows;
 
-namespace QuestMaster.EasyBankRepository.UI
+namespace QuestMaster.EasyBankToYnab.UI
 {
   /// <summary>
   /// Interaction logic for MainWindow.xaml

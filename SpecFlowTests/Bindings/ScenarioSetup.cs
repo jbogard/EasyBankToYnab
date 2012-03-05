@@ -1,7 +1,8 @@
-﻿using QuestMaster.EasyBankRepository.DomainModel;
+﻿using System;
+using QuestMaster.EasyBankToYnab.DomainModel;
 using TechTalk.SpecFlow;
 
-namespace QuestMaster.EasyBankRepository.DomainTests.Bindings
+namespace QuestMaster.EasyBankToYnab.DomainTests.Bindings
 {
   [Binding]
   public class ScenarioSetup

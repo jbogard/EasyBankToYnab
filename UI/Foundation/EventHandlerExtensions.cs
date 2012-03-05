@@ -1,6 +1,6 @@
 using System;
 
-namespace QuestMaster.EasyBankRepository.UI.Foundation
+namespace QuestMaster.EasyBankToYnab.UI.Foundation
 {
   public static class EventHandlerExtensions
     {

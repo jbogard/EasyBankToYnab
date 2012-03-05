@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace QuestMaster.EasyBankRepository.DomainModel
+namespace QuestMaster.EasyBankToYnab.DomainModel
 {
   public class Account
   {

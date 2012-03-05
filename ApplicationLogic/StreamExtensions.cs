@@ -3,7 +3,7 @@ using System.IO;
 using System.Runtime.Serialization;
 using System.Xml;
 
-namespace QuestMaster.EasyBankRepository.ApplicationLogic
+namespace QuestMaster.EasyBankToYnab.ApplicationLogic
 {
   public static class StreamExtensions
   {

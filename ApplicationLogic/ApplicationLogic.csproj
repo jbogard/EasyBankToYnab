@@ -8,8 +8,8 @@
     <ProjectGuid>{806366BB-30AA-4C70-B1DA-9BE3EAFA8153}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>QuestMaster.EasyBankRepository.ApplicationLogic</RootNamespace>
-    <AssemblyName>QuestMaster.EasyBankRepository.ApplicationLogic</AssemblyName>
+    <RootNamespace>QuestMaster.EasyBankToYnab.ApplicationLogic</RootNamespace>
+    <AssemblyName>QuestMaster.EasyBankToYnab.ApplicationLogic</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\..\EasyBankToYnab\</SolutionDir>

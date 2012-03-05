@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace QuestMaster.EasyBankRepository.DomainModel
+namespace QuestMaster.EasyBankToYnab.DomainModel
 {
   public class Entry
   {

@@ -1,8 +1,8 @@
 ﻿using System;
-using QuestMaster.EasyBankRepository.ApplicationLogic;
-using QuestMaster.EasyBankRepository.UI.Properties;
+using QuestMaster.EasyBankToYnab.ApplicationLogic;
+using QuestMaster.EasyBankToYnab.UI.Properties;
 
-namespace QuestMaster.EasyBankRepository.UI
+namespace QuestMaster.EasyBankToYnab.UI
 {
     internal class DefaultPathProvider : IDefaultPathProvider
     {

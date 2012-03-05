@@ -8,8 +8,8 @@
     <ProjectGuid>{4A3A2149-84CC-44D0-96AE-743BEBFC95E0}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>QuestMaster.EasyBankRepository.UI</RootNamespace>
-    <AssemblyName>EasyBankRepository</AssemblyName>
+    <RootNamespace>QuestMaster.EasyBankToYnab.UI</RootNamespace>
+    <AssemblyName>EasyBankToYnab</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <TargetFrameworkProfile>
     </TargetFrameworkProfile>

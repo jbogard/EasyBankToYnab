@@ -9,8 +9,8 @@
     <ProjectGuid>{8BD9D6C8-E676-4754-9B79-6CF9EB76E347}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>QuestMaster.EasyBankRepository.DomainTests</RootNamespace>
-    <AssemblyName>QuestMaster.EasyBankRepository.DomainTests</AssemblyName>
+    <RootNamespace>QuestMaster.EasyBankToYnab.DomainTests</RootNamespace>
+    <AssemblyName>QuestMaster.EasyBankToYnab.DomainTests</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>

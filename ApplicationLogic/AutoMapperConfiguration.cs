@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace QuestMaster.EasyBankRepository.ApplicationLogic
+namespace QuestMaster.EasyBankToYnab.ApplicationLogic
 {
   public class AutoMapperConfiguration
   {

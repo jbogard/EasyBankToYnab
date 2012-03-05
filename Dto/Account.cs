@@ -1,6 +1,7 @@
-﻿using System.Runtime.Serialization;
+﻿using System;
+using System.Runtime.Serialization;
 
-namespace QuestMaster.EasyBankRepository.Dto
+namespace QuestMaster.EasyBankToYnab.Dto
 {
   [DataContract(Name = "account", Namespace = "")]
   public class Account

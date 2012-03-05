@@ -1,7 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Runtime.Serialization;
 
-namespace QuestMaster.EasyBankRepository.Dto
+namespace QuestMaster.EasyBankToYnab.Dto
 {
   [CollectionDataContract(Name = "accounts", Namespace = "", ItemName = "account")]
   public class AccountCollection : List<Account>

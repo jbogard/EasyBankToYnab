@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Runtime.Serialization;
 
-namespace QuestMaster.EasyBankRepository.Dto
+namespace QuestMaster.EasyBankToYnab.Dto
 {
   [DataContract(Name = "entry", Namespace = "")]
   public class Entry

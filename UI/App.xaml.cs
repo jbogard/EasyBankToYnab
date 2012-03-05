@@ -1,25 +1,24 @@
-﻿using System.Windows;
-using System;
-using QuestMaster.EasyBankRepository.DomainModel;
+﻿using System;
+using System.Windows;
+using QuestMaster.EasyBankToYnab.DomainModel;
 
-namespace QuestMaster.EasyBankRepository.UI
+namespace QuestMaster.EasyBankToYnab.UI
 {
     /// <summary>
     /// Interaction logic for App.xaml
     /// </summary>
-    public partial class App : System.Windows.Application
+    public partial class App
     {
+        // TODO: move this into an application data class.
         private static readonly CultureSettings cultureSettings = CultureSettings.American();
         private static readonly DataContextProvider dataContextProvider = new DataContextProvider();
         private static readonly DefaultPathProvider defaultPathProvider = new DefaultPathProvider();
 
         public App()
         {
-            base.Exit += new ExitEventHandler(App.ApplicationExit);
         }
 
-
-        private static void ApplicationExit(object sender, ExitEventArgs e)
+        private void ApplicationExit(object sender, ExitEventArgs e)
         {
             dataContextProvider.SaveAndClose();
         }
@@ -32,8 +31,7 @@ namespace QuestMaster.EasyBankRepository.UI
             }
         }
 
-
-        private void Application_Startup(object sender, StartupEventArgs e)
+        private void ApplicationStartup(object sender, StartupEventArgs e)
         {
             var window = new MainWindow()
             {
@@ -41,7 +39,6 @@ namespace QuestMaster.EasyBankRepository.UI
             };
 
             window.Show();
-
         }
     }
 }

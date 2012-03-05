@@ -1,11 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using QuestMaster.EasyBankRepository.DomainModel;
-using QuestMaster.EasyBankRepository.DomainTests.Tables;
+using QuestMaster.EasyBankToYnab.DomainModel;
+using QuestMaster.EasyBankToYnab.DomainTests.Tables;
 using TechTalk.SpecFlow;
 
-namespace QuestMaster.EasyBankRepository.DomainTests.Bindings
+namespace QuestMaster.EasyBankToYnab.DomainTests.Bindings
 {
   [Binding]
   public class StatementBindings

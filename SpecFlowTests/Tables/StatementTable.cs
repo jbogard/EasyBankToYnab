@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using TechTalk.SpecFlow;
 
-namespace QuestMaster.EasyBankRepository.DomainTests.Tables
+namespace QuestMaster.EasyBankToYnab.DomainTests.Tables
 {
   public class StatementTable
   {

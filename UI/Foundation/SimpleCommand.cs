@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Input;
 
-namespace QuestMaster.EasyBankRepository.UI.Foundation
+namespace QuestMaster.EasyBankToYnab.UI.Foundation
 {
   public class SimpleCommand : ICommand
     {

@@ -2,9 +2,9 @@
 using System.Globalization;
 using System.Linq;
 using System.Text.RegularExpressions;
-using QuestMaster.EasyBankRepository.DomainModel;
+using QuestMaster.EasyBankToYnab.DomainModel;
 
-namespace QuestMaster.EasyBankRepository.DomainTests.Bindings
+namespace QuestMaster.EasyBankToYnab.DomainTests.Bindings
 {
   public class StatementImporter : IStatementImporter
   {

@@ -1,6 +1,6 @@
-﻿<Application x:Class="QuestMaster.EasyBankRepository.UI.App"
+﻿<Application x:Class="QuestMaster.EasyBankToYnab.UI.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Startup="Application_Startup">
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Startup="ApplicationStartup" Exit="ApplicationExit">
     <Application.Resources>
          
     </Application.Resources>

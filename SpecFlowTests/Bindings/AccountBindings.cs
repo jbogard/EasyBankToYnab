@@ -1,10 +1,8 @@
 ﻿using System;
-using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using QuestMaster.EasyBankRepository.DomainModel;
 using TechTalk.SpecFlow;
 
-namespace QuestMaster.EasyBankRepository.DomainTests.Bindings
+namespace QuestMaster.EasyBankToYnab.DomainTests.Bindings
 {
   [Binding]
   public class AccountBindings

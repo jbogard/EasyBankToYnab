@@ -11,7 +11,7 @@
 // ------------------------------------------------------------------------------
 #region Designer generated code
 #pragma warning disable
-namespace QuestMaster.EasyBankRepository.DomainTests
+namespace QuestMaster.EasyBankToYnab.DomainTests
 {
     using TechTalk.SpecFlow;
     

@@ -5,17 +5,6 @@ using Microsoft.Win32;
 
 namespace EasyBankRepository
 {
-  public enum Mode
-  {
-    Open,
-    Save
-  }
-
-  public interface IFileServices
-  {
-    Tuple<string, bool> LookForFile(string fileName, string filter, Mode mode);
-  }
-
   class FileServices : IFileServices
   {
     public Tuple<string, bool> LookForFile(string fileName, string filter, Mode mode)

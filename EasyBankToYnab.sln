@@ -3,8 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UI", "UI\UI.csproj", "{4A3A2149-84CC-44D0-96AE-743BEBFC95E0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EasyBankRepository", "EasyBankRepository\EasyBankRepository.csproj", "{9D6A70B3-C1C7-47A5-8469-7704271E8C5C}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpecFlowTests", "SpecFlowTests\SpecFlowTests.csproj", "{8BD9D6C8-E676-4754-9B79-6CF9EB76E347}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{8F490E61-3FB5-496F-B4FA-93C778C768D2}"
@@ -33,10 +31,6 @@ Global
 		{4A3A2149-84CC-44D0-96AE-743BEBFC95E0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4A3A2149-84CC-44D0-96AE-743BEBFC95E0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4A3A2149-84CC-44D0-96AE-743BEBFC95E0}.Release|Any CPU.Build.0 = Release|Any CPU
-		{9D6A70B3-C1C7-47A5-8469-7704271E8C5C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{9D6A70B3-C1C7-47A5-8469-7704271E8C5C}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{9D6A70B3-C1C7-47A5-8469-7704271E8C5C}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{9D6A70B3-C1C7-47A5-8469-7704271E8C5C}.Release|Any CPU.Build.0 = Release|Any CPU
 		{8BD9D6C8-E676-4754-9B79-6CF9EB76E347}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{8BD9D6C8-E676-4754-9B79-6CF9EB76E347}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8BD9D6C8-E676-4754-9B79-6CF9EB76E347}.Release|Any CPU.ActiveCfg = Release|Any CPU

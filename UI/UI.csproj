@@ -63,6 +63,11 @@
     </Compile>
     <Compile Include="DataContextProvider.xaml.cs" />
     <Compile Include="DefaultPathProvider.xaml.cs" />
+    <Compile Include="FileServices.cs" />
+    <Compile Include="Foundation\EventHandlerExtensions.cs" />
+    <Compile Include="Foundation\NotifyPropertyChanged.cs" />
+    <Compile Include="Foundation\SimpleCommand.cs" />
+    <Compile Include="MainFormViewModel.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -94,13 +99,13 @@
     <AppDesigner Include="Properties\" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\ApplicationLogic\ApplicationLogic.csproj">
+      <Project>{806366BB-30AA-4C70-B1DA-9BE3EAFA8153}</Project>
+      <Name>ApplicationLogic</Name>
+    </ProjectReference>
     <ProjectReference Include="..\DomainModel\DomainModel.csproj">
       <Project>{99D026CB-CE0E-4A21-BB57-7909B6230B45}</Project>
       <Name>DomainModel</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\EasyBankRepository\EasyBankRepository.csproj">
-      <Project>{9D6A70B3-C1C7-47A5-8469-7704271E8C5C}</Project>
-      <Name>EasyBankRepository</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

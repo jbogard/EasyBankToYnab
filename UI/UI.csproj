@@ -61,8 +61,8 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="DataContextProvider.xaml.cs" />
-    <Compile Include="DefaultPathProvider.xaml.cs" />
+    <Compile Include="DataContextProvider.cs" />
+    <Compile Include="DefaultPathProvider.cs" />
     <Compile Include="FileServices.cs" />
     <Compile Include="Foundation\EventHandlerExtensions.cs" />
     <Compile Include="Foundation\NotifyPropertyChanged.cs" />

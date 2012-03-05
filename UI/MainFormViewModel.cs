@@ -101,8 +101,8 @@ namespace QuestMaster.EasyBankRepository.UI
                 {
                     entry.IsNew = false;
                 }
-            this.easyBank.SubmitChanges();
-            OnPropertyChanged(() => this.Accounts);
+
+                OnPropertyChanged(() => this.Accounts);
             }
         }
 

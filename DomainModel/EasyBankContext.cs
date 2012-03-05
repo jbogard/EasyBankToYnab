@@ -50,11 +50,5 @@ namespace QuestMaster.EasyBankRepository.DomainModel
     {
       this.AddEntry(this.statementImporter.Import(statement));
     }
-
-      public void SubmitChanges()
-      {
-        // TODO: implement
-        throw new NotImplementedException();
-      }
   }
 }

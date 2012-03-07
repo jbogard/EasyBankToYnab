@@ -43,23 +43,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Account.cs" />
     <Compile Include="AutoMapperConfiguration.cs" />
-    <Compile Include="FileGateway.cs" />
+    <Compile Include="DataContextProvider.cs" />
+    <Compile Include="EasyBankContext.cs" />
+    <Compile Include="Entry.cs" />
+    <Compile Include="IMapper.cs" />
+    <Compile Include="XmlGateway.cs" />
     <Compile Include="IDataContextProvider.cs" />
     <Compile Include="IDefaultPathProvider.cs" />
-    <Compile Include="IFileGateway.cs" />
-    <Compile Include="IFileServices.cs" />
+    <Compile Include="IFileLookupService.cs" />
+    <Compile Include="IStatementImporter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="StreamExtensions.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\DomainModel\DomainModel.csproj">
-      <Project>{99D026CB-CE0E-4A21-BB57-7909B6230B45}</Project>
-      <Name>DomainModel</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Dto\Dto.csproj">
+    <ProjectReference Include="..\Dto\Gateways.csproj">
       <Project>{02521171-187B-4E2F-B058-776CB4885782}</Project>
-      <Name>Dto</Name>
+      <Name>Gateways</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

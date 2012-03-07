@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using QuestMaster.EasyBankToYnab.DomainModel;
+using QuestMaster.EasyBankToYnab.ApplicationLogic;
 using QuestMaster.EasyBankToYnab.DomainTests.Tables;
 using TechTalk.SpecFlow;
 

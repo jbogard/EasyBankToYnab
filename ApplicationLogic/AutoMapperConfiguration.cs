@@ -6,7 +6,8 @@ namespace QuestMaster.EasyBankToYnab.ApplicationLogic
   {
     public AutoMapperConfiguration()
     {
-      AutoMapper.Mapper.CreateMap<DomainModel.Entry, Dto.Entry>();
+      AutoMapper.Mapper.CreateMap<Entry, Gateways.Xml.Entry>();
+      AutoMapper.Mapper.CreateMap<Entry, Gateways.Ynab.Entry>();
     }
   }
 }

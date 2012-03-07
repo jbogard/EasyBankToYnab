@@ -155,9 +155,9 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\DomainModel\DomainModel.csproj">
-      <Project>{99D026CB-CE0E-4A21-BB57-7909B6230B45}</Project>
-      <Name>DomainModel</Name>
+    <ProjectReference Include="..\ApplicationLogic\ApplicationLogic.csproj">
+      <Project>{806366BB-30AA-4C70-B1DA-9BE3EAFA8153}</Project>
+      <Name>ApplicationLogic</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />

@@ -3,12 +3,10 @@ using System.Collections.Generic;
 using System.IO;
 using System.Windows.Input;
 using QuestMaster.EasyBankToYnab.ApplicationLogic;
-using QuestMaster.EasyBankToYnab.DomainModel;
 using QuestMaster.EasyBankToYnab.UI.Foundation;
 
 namespace QuestMaster.EasyBankToYnab.UI
 {
-
     public class MainFormViewModel : NotifyPropertyChanged
     {
         private readonly IDataContextProvider dataContextProvider;
@@ -16,7 +14,6 @@ namespace QuestMaster.EasyBankToYnab.UI
         private readonly IDefaultPathProvider defaultPathProvider;
 
         private EasyBankContext easyBank;
-        public event EventHandler Exit;
         private readonly SimpleCommand exitCommand;
         private readonly SimpleCommand exportCommand;
         private readonly SimpleCommand exportNowCommand;
@@ -25,7 +22,7 @@ namespace QuestMaster.EasyBankToYnab.UI
         private readonly SimpleCommand markAllAsOldCommand;
         private readonly SimpleCommand openCommand;
 
-        private readonly IFileServices fileServices = new FileServices();
+        private readonly IFileLookupService fileLookupService = new FileLookupService();
 
         public MainFormViewModel(IDataContextProvider dataContextProvider, IDefaultPathProvider defaultPathProvider)
         {
@@ -41,102 +38,7 @@ namespace QuestMaster.EasyBankToYnab.UI
             this.markAllAsOldCommand = new SimpleCommand(this.DoMarkAllAsAold);
         }
 
-        private Tuple<string, bool> ViewModelPathToDatabaseRequested(string fileName)
-        {
-            return this.fileServices.LookForFile(fileName, "SDF Files (*.sdf)|*.sdf", Mode.Open);
-        }
-
-        private void AskFileAndExport(object obj)
-        {
-            Tuple<string, bool> couple = this.ViewModelPathToExportFileRequested(this.defaultPathProvider.PathToExportFile);
-            if (couple.Item2)
-            {
-                this.defaultPathProvider.PathToExportFile = couple.Item1;
-                this.DoExport(obj);
-            }
-        }
-
-        private void AskFileAndImport(object obj)
-        {
-            Tuple<string, bool> couple = this.ViewModelPathToImportFileRequested(this.defaultPathProvider.PathToImportFile);
-            if (couple.Item2)
-            {
-                this.defaultPathProvider.PathToImportFile = couple.Item1;
-                this.DoImport(obj);
-            }
-        }
-
-        private void DoExport(object obj)
-        {
-            if (obj is Account)
-            {
-                var account = (Account) obj;
-
-                using (StreamWriter writer = new StreamWriter(this.defaultPathProvider.PathToExportFile))
-            {
-                writer.Write(account.ExportNewEntries());
-            }
-            }
-        }
-
-        private void DoImport(object obj)
-        {
-            IEnumerable<string> readLines = FileServices.ReadLines(this.defaultPathProvider.PathToImportFile);
-
-            foreach (var line in readLines)
-            {
-            this.easyBank.ImportStatement(line);
-                
-            }
-            OnPropertyChanged(() => this.Accounts);
-        }
-
-        private void DoMarkAllAsAold(object obj)
-        {
-            if (obj is Account)
-            {
-                var account = (Account) obj;
-
-                foreach (var entry in account.Entries)
-                {
-                    entry.IsNew = false;
-                }
-
-                OnPropertyChanged(() => this.Accounts);
-            }
-        }
-
-        private void DoOpen(object obj)
-        {
-            Tuple<string, bool> couple = this.ViewModelPathToDatabaseRequested(this.defaultPathProvider.PathToDataFile);
-            if (couple.Item2)
-            {
-                this.defaultPathProvider.PathToDataFile = couple.Item1;
-                LoadDataContextFromDefaultPath();
-            }
-        }
-
-        public void LoadDataContextFromDefaultPath()
-        {
-            this.dataContextProvider.LoadDataContext(this.defaultPathProvider.PathToDataFile);
-            this.easyBank = this.dataContextProvider.DataContext;
-            OnPropertyChanged(() => this.Accounts);
-        }
-
-        private Tuple<string, bool> ViewModelPathToExportFileRequested(string fileName)
-        {
-            return this.fileServices.LookForFile(fileName, "CSV Files (*.csv)|*.csv", Mode.Save);
-        }
-
-        private Tuple<string, bool> ViewModelPathToImportFileRequested(string fileName)
-        {
-            return this.fileServices.LookForFile(fileName, "CSV Files (*.csv)|*.csv", Mode.Open);
-        }
-
-        private void RequestExit(object obj)
-        {
-            this.Exit.Raise(this, EventArgs.Empty);
-        }
+        public event EventHandler Exit;
 
         public IEnumerable<Account> Accounts
         {
@@ -200,6 +102,108 @@ namespace QuestMaster.EasyBankToYnab.UI
             {
                 return this.openCommand;
             }
+        }
+
+        public void LoadDataContextFromDefaultPath()
+        {
+            this.dataContextProvider.LoadDataContext(this.defaultPathProvider.PathToDataFile);
+            this.easyBank = this.dataContextProvider.DataContext;
+            OnPropertyChanged(() => this.Accounts);
+        }
+
+        private Tuple<string, bool> ViewModelPathToDatabaseRequested(string fileName)
+        {
+            return this.fileLookupService.LookForFile(fileName, "SDF Files (*.sdf)|*.sdf", Mode.Open);
+        }
+
+        private void AskFileAndExport(object obj)
+        {
+            Tuple<string, bool> couple = this.ViewModelPathToExportFileRequested(this.defaultPathProvider.PathToExportFile);
+            if (couple.Item2)
+            {
+                this.defaultPathProvider.PathToExportFile = couple.Item1;
+                this.DoExport(obj);
+            }
+        }
+
+        private void AskFileAndImport(object obj)
+        {
+            Tuple<string, bool> couple = this.ViewModelPathToImportFileRequested(this.defaultPathProvider.PathToImportFile);
+            if (couple.Item2)
+            {
+                this.defaultPathProvider.PathToImportFile = couple.Item1;
+                this.DoImport(obj);
+            }
+        }
+
+        private void DoExport(object obj)
+        {
+            var account = obj as Account;
+            if (account != null)
+            {
+                ExportStatementsToFile(account);
+            }
+        }
+
+        private void ExportStatementsToFile(Account account)
+        {
+            using (StreamWriter writer = new StreamWriter(this.defaultPathProvider.PathToExportFile))
+            {
+                writer.Write(account.ExportNewEntries());
+            }
+        }
+
+        private void DoImport(object obj)
+        {
+            ImportStatementsFromFile();
+
+            OnPropertyChanged(() => this.Accounts);
+        }
+
+        private void ImportStatementsFromFile()
+        {
+            // todo: pull out
+
+            IEnumerable<string> readLines = FileHelpers.ReadLines(this.defaultPathProvider.PathToImportFile);
+
+            this.easyBank.ImportStatements(readLines);
+        }
+
+        private void DoMarkAllAsAold(object obj)
+        {
+            var account = obj as Account;
+
+            if (account != null)
+            {
+                account.MarkStatementsOfAccountAsOld();
+
+                OnPropertyChanged(() => this.Accounts);
+            }
+        }
+
+        private void DoOpen(object obj)
+        {
+            Tuple<string, bool> couple = this.ViewModelPathToDatabaseRequested(this.defaultPathProvider.PathToDataFile);
+            if (couple.Item2)
+            {
+                this.defaultPathProvider.PathToDataFile = couple.Item1;
+                LoadDataContextFromDefaultPath();
+            }
+        }
+
+        private Tuple<string, bool> ViewModelPathToExportFileRequested(string fileName)
+        {
+            return this.fileLookupService.LookForFile(fileName, "CSV Files (*.csv)|*.csv", Mode.Save);
+        }
+
+        private Tuple<string, bool> ViewModelPathToImportFileRequested(string fileName)
+        {
+            return this.fileLookupService.LookForFile(fileName, "CSV Files (*.csv)|*.csv", Mode.Open);
+        }
+
+        private void RequestExit(object obj)
+        {
+            this.Exit.Raise(this, EventArgs.Empty);
         }
     }
 }

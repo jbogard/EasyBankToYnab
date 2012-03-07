@@ -61,9 +61,8 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="DataContextProvider.cs" />
     <Compile Include="DefaultPathProvider.cs" />
-    <Compile Include="FileServices.cs" />
+    <Compile Include="FileLookupService.cs" />
     <Compile Include="Foundation\EventHandlerExtensions.cs" />
     <Compile Include="Foundation\NotifyPropertyChanged.cs" />
     <Compile Include="Foundation\SimpleCommand.cs" />
@@ -102,10 +101,6 @@
     <ProjectReference Include="..\ApplicationLogic\ApplicationLogic.csproj">
       <Project>{806366BB-30AA-4C70-B1DA-9BE3EAFA8153}</Project>
       <Name>ApplicationLogic</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\DomainModel\DomainModel.csproj">
-      <Project>{99D026CB-CE0E-4A21-BB57-7909B6230B45}</Project>
-      <Name>DomainModel</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

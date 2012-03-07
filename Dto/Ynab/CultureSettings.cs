@@ -1,6 +1,6 @@
 using System;
 
-namespace QuestMaster.EasyBankToYnab.DomainModel
+namespace QuestMaster.EasyBankToYnab.Gateways.Ynab
 {
   public class CultureSettings
   {

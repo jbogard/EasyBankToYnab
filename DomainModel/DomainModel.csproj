@@ -38,13 +38,6 @@
     <Reference Include="System.Runtime.Serialization" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Account.cs" />
-    <Compile Include="CultureSettings.cs" />
-    <Compile Include="EasyBankContext.cs" />
-    <Compile Include="Entry.cs" />
-    <Compile Include="EntryExporter.cs" />
-    <Compile Include="IEntryExporter.cs" />
-    <Compile Include="IStatementImporter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

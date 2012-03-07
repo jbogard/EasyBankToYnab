@@ -1,18 +1,21 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using QuestMaster.EasyBankToYnab.Gateways.Ynab;
 
-namespace QuestMaster.EasyBankToYnab.DomainModel
+namespace QuestMaster.EasyBankToYnab.ApplicationLogic
 {
   public class Account
   {
     private readonly List<Entry> entries;
-    private readonly IEntryExporter entryExporter;
+    private readonly IYnabGateway ynabExporter;
+    private readonly IMapper mapper;
     private readonly string number;
 
-    public Account(IEntryExporter entryExporter, string number)
+    public Account(IYnabGateway ynabExporter, IMapper mapper, string number)
     {
-      this.entryExporter = entryExporter;
+      this.ynabExporter = ynabExporter;
+      this.mapper = mapper;
       this.number = number;
       this.entries = new List<Entry>();
     }
@@ -39,12 +42,20 @@ namespace QuestMaster.EasyBankToYnab.DomainModel
 
     private string ExportTheseEntries(IEnumerable<Entry> selection)
     {
-      return this.entryExporter.ExportEntries(selection);
+      return this.ynabExporter.ExportEntries(selection.Select(mapper.Map<Entry, Gateways.Ynab.Entry>));
     }
 
     public string ExportAllEntries()
     {
       return this.ExportTheseEntries(this.Entries);
     }
+
+      public void MarkStatementsOfAccountAsOld()
+      {
+          foreach (var entry in Entries)
+          {
+              entry.IsNew = false;
+          }
+      }
   }
 }

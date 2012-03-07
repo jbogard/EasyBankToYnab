@@ -1,6 +1,6 @@
 using System;
 
-namespace QuestMaster.EasyBankToYnab.DomainModel
+namespace QuestMaster.EasyBankToYnab.ApplicationLogic
 {
   public interface IStatementImporter
   {

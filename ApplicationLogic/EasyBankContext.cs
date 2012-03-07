@@ -2,17 +2,19 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace QuestMaster.EasyBankToYnab.DomainModel
+namespace QuestMaster.EasyBankToYnab.ApplicationLogic
 {
   public class EasyBankContext : List<Account>
   {
     private readonly IStatementImporter statementImporter;
-    private readonly IEntryExporter entryExporter;
+    private readonly IYnabExporter ynabExporter;
+    private readonly IMapper mapper;
 
-    public EasyBankContext(IStatementImporter statementImporter, IEntryExporter entryExporter)
+    public EasyBankContext(IStatementImporter statementImporter, IYnabExporter ynabExporter, IMapper mapper)
     {
       this.statementImporter = statementImporter;
-      this.entryExporter = entryExporter;
+      this.ynabExporter = ynabExporter;
+      this.mapper = mapper;
     }
 
     public Account this[string accountNumber]
@@ -43,12 +45,20 @@ namespace QuestMaster.EasyBankToYnab.DomainModel
 
     public void AddAcount(string accountNumber)
     {
-      this.Add(new Account(this.entryExporter, accountNumber));
+      this.Add(new Account(this.ynabExporter, this.mapper, accountNumber));
     }
 
     public void ImportStatement(string statement)
     {
       this.AddEntry(this.statementImporter.Import(statement));
+    }
+
+    public void ImportStatements(IEnumerable<string> statements)
+    {
+      foreach (var statement in statements)
+      {
+        this.ImportStatement(statement);
+      }
     }
   }
 }

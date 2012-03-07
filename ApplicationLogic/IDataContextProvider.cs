@@ -1,5 +1,4 @@
 ﻿using System;
-using QuestMaster.EasyBankToYnab.DomainModel;
 
 namespace QuestMaster.EasyBankToYnab.ApplicationLogic
 {

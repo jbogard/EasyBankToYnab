@@ -1,5 +1,5 @@
 ﻿using System;
-using QuestMaster.EasyBankToYnab.DomainModel;
+using QuestMaster.EasyBankToYnab.ApplicationLogic;
 using TechTalk.SpecFlow;
 
 namespace QuestMaster.EasyBankToYnab.DomainTests.Bindings
@@ -10,7 +10,7 @@ namespace QuestMaster.EasyBankToYnab.DomainTests.Bindings
     [BeforeScenario]
     public static void BeforeFeatures()
     {
-      CurrentScenarioContext.InitializeEasyBankContext(new EasyBankContext(new StatementImporter(), new EntryExporter(CultureSettings.American())));
+      CurrentScenarioContext.InitializeEasyBankContext(new EasyBankContext(new StatementImporter(), new YnabExporter(CultureSettings.American()), new Mapper()));
     }
   }
 }

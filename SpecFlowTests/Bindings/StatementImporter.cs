@@ -2,7 +2,7 @@
 using System.Globalization;
 using System.Linq;
 using System.Text.RegularExpressions;
-using QuestMaster.EasyBankToYnab.DomainModel;
+using QuestMaster.EasyBankToYnab.ApplicationLogic;
 
 namespace QuestMaster.EasyBankToYnab.DomainTests.Bindings
 {

@@ -1,12 +1,18 @@
 ﻿using System;
 using System.IO;
-using QuestMaster.EasyBankToYnab.ApplicationLogic;
-using QuestMaster.EasyBankToYnab.DomainModel;
 
-namespace QuestMaster.EasyBankToYnab.UI
+namespace QuestMaster.EasyBankToYnab.ApplicationLogic
 {
   public class DataContextProvider : IDataContextProvider
   {
+    private readonly IFileGateway fileGateway;
+    private string path;
+
+    public DataContextProvider(IFileGateway fileGateway)
+    {
+      this.fileGateway = fileGateway;
+    }
+
     public EasyBankContext DataContext
     {
       get; private set;
@@ -24,18 +30,16 @@ namespace QuestMaster.EasyBankToYnab.UI
 
         if (easyBank != null)
         {
-          // TODO: implement
-            // easyBank.SubmitChanges();
-            // easyBank.Dispose();
+          this.fileGateway.Save(this.DataContext, this.path);
         }
     }
 
-    private static EasyBankContext DoLoadDataContext(string pathToDataFile)
+    private EasyBankContext DoLoadDataContext(string pathToDataFile)
     {
       if (File.Exists(pathToDataFile))
       {
-        // TODO: implement
-        // return new EasyBank(pathToDataFile);
+        this.path = pathToDataFile;
+        return this.fileGateway.Open(this.path);
       }
       return null;
     }

@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using QuestMaster.EasyBankToYnab.DomainModel;
+using QuestMaster.EasyBankToYnab.ApplicationLogic;
 using QuestMaster.EasyBankToYnab.DomainTests.Tables;
 using TechTalk.SpecFlow;
 

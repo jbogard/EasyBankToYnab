@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Runtime.Serialization;
 
-namespace QuestMaster.EasyBankToYnab.Dto
+namespace QuestMaster.EasyBankToYnab.Gateways.Xml
 {
   [DataContract(Name = "account", Namespace = "")]
   public class Account

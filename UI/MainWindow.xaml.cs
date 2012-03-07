@@ -6,31 +6,11 @@ namespace QuestMaster.EasyBankToYnab.UI
   /// <summary>
   /// Interaction logic for MainWindow.xaml
   /// </summary>
-  public partial class MainWindow : Window
+  public partial class MainWindow
   {
     public MainWindow()
     {
       InitializeComponent();
-    }
-
-    private void UpdateDataContext(MainFormViewModel value)
-    {
-      MainFormViewModel viewModel = this.ViewModel;
-      if (!object.ReferenceEquals(viewModel, null))
-      {
-        viewModel.Exit -= this.ViewModelExit;
-      }
-      base.DataContext = value;
-      MainFormViewModel objA = this.ViewModel;
-      if (!object.ReferenceEquals(objA, null))
-      {
-        objA.Exit += this.ViewModelExit;
-      }
-    }
-
-    private void ViewModelExit(object sender, EventArgs e)
-    {
-      base.Close();
     }
 
     public MainFormViewModel ViewModel
@@ -42,17 +22,37 @@ namespace QuestMaster.EasyBankToYnab.UI
 
       set
       {
-        this.UpdateDataContext(value);
+        this.DataContext = value;
       }
     }
 
-    private void Window_Loaded(object sender, RoutedEventArgs e)
+    private void ViewModelExit(object sender, EventArgs e)
+    {
+      this.Close();
+    }
+
+    private void WindowLoaded(object sender, RoutedEventArgs e)
     {
       var viewModel = this.ViewModel;
 
       if (viewModel != null)
       {
         viewModel.LoadDataContextFromDefaultPath();
+      }
+    }
+
+    private void WindowDataContextChanged(object sender, DependencyPropertyChangedEventArgs e)
+    {
+      MainFormViewModel oldViewModel = e.OldValue as MainFormViewModel;
+      if (!object.ReferenceEquals(oldViewModel, null))
+      {
+        oldViewModel.Exit -= this.ViewModelExit;
+      }
+
+      MainFormViewModel newViewModel = e.NewValue as MainFormViewModel;
+      if (!object.ReferenceEquals(newViewModel, null))
+      {
+        newViewModel.Exit += this.ViewModelExit;
       }
     }
   }

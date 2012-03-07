@@ -1,6 +1,6 @@
 using System;
 
-namespace QuestMaster.EasyBankToYnab.ApplicationLogic
+namespace QuestMaster.EasyBankToYnab.UI
 {
   public enum Mode
   {

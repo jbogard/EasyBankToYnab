@@ -1,16 +1,19 @@
 ﻿using System;
 using System.IO;
+using QuestMaster.EasyBankToYnab.Gateways.Xml;
 
 namespace QuestMaster.EasyBankToYnab.ApplicationLogic
 {
   public class DataContextProvider : IDataContextProvider
   {
-    private readonly IFileGateway fileGateway;
+    private readonly IXmlGateway xmlGateway;
     private string path;
+    private readonly IMapper mapper;
 
-    public DataContextProvider(IFileGateway fileGateway)
+    public DataContextProvider(IXmlGateway xmlGateway, IMapper mapper)
     {
-      this.fileGateway = fileGateway;
+      this.xmlGateway = xmlGateway;
+      this.mapper = mapper;
     }
 
     public EasyBankContext DataContext
@@ -30,7 +33,7 @@ namespace QuestMaster.EasyBankToYnab.ApplicationLogic
 
         if (easyBank != null)
         {
-          this.fileGateway.Save(this.DataContext, this.path);
+          this.xmlGateway.Write(this.mapper.Map<EasyBankContext, EasyBank>(this.DataContext));
         }
     }
 
@@ -39,8 +42,9 @@ namespace QuestMaster.EasyBankToYnab.ApplicationLogic
       if (File.Exists(pathToDataFile))
       {
         this.path = pathToDataFile;
-        return this.fileGateway.Open(this.path);
+        return this.mapper.Map<EasyBank, EasyBankContext>(this.xmlGateway.Read());
       }
+
       return null;
     }
   }

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using QuestMaster.EasyBankToYnab.Gateways.Xml;
 
 namespace QuestMaster.EasyBankToYnab.Gateways
 {
@@ -30,26 +31,24 @@ namespace QuestMaster.EasyBankToYnab.Gateways
     public void WriteLines(string path, IEnumerable<string> lines)
     {
       if (string.IsNullOrWhiteSpace(path)) throw new ArgumentNullException("path");
-      if (!File.Exists(path)) throw new ArgumentException("Path must exist", "path");
       if (lines == null) throw new ArgumentNullException("lines");
-      
-      using (Stream stream = File.OpenWrite(path))
+
+      using (StreamWriter writer = File.CreateText(path))
       {
-        using (StreamWriter writer = new StreamWriter(stream))
-        {
-          writer.Write(string.Join(Environment.NewLine, lines));
-        }
+        writer.Write(string.Join(Environment.NewLine, lines));
       }
     }
 
-    public void BackupFile(string path)
+    public void BackupFile(string path, string backupFolder)
     {
       if (string.IsNullOrWhiteSpace(path)) throw new ArgumentNullException("path");
       if (!File.Exists(path)) throw new ArgumentException("Path must exist", "path");
 
-      string backupDirectory = Path.Combine(
-        Path.GetDirectoryName(path),
-        "Backup");
+      string directoryName = Path.GetDirectoryName(path);
+
+      if (directoryName == null) throw new ApplicationException("Directory of file was not found.");
+
+      string backupDirectory = Path.Combine(directoryName, backupFolder);
 
       if (!Directory.Exists(backupDirectory))
       {
@@ -62,6 +61,31 @@ namespace QuestMaster.EasyBankToYnab.Gateways
       string backupPath = Path.Combine(backupDirectory, backupFilename);
 
       File.Copy(path, backupPath);
+    }
+
+    public void Write(string path, object dataContract)
+    {
+      if (string.IsNullOrWhiteSpace(path)) throw new ArgumentNullException("path");
+
+      using (Stream stream = File.Create(path))
+      {
+        stream.Serialize(dataContract);
+      }
+    }
+
+    public T Read<T>(string path)
+    {
+      if (string.IsNullOrWhiteSpace(path)) throw new ArgumentNullException("path");
+      if (!File.Exists(path)) throw new ArgumentException("Path must exist", "path");
+
+      T result;
+
+      using (Stream stream = File.OpenRead(path))
+      {
+        result = stream.Deserialize<T>();
+      }
+
+      return result;
     }
   }
 }

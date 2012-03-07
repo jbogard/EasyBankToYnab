@@ -20,7 +20,6 @@ namespace QuestMaster.EasyBankToYnab.DomainTests.Bindings
       CurrentScenarioContext.Statements = table.Statements.ToDictionary(s => s.Id);
     }
 
-
     [When(@"I import statements")]
     public void WhenIImportStatements(Table table)
     {

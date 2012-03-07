@@ -66,11 +66,21 @@ namespace QuestMaster.EasyBankToYnab.DomainTests
         public virtual void FeatureBackground()
         {
 #line 6
-#line 7
+#line hidden
+        }
+        
+        [TechTalk.SpecRun.ScenarioAttribute("Export savings account entries")]
+        public virtual void ExportSavingsAccountEntries()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Export savings account entries", ((string[])(null)));
+#line 8
+this.ScenarioSetup(scenarioInfo);
+#line 6
+this.FeatureBackground();
+#line 9
   testRunner.Given("I have an account with number \'20027024468\'");
 #line hidden
             TechTalk.SpecFlow.Table table1 = new TechTalk.SpecFlow.Table(new string[] {
-                        "Id",
                         "Booking Date",
                         "Account",
                         "Description",
@@ -81,7 +91,6 @@ namespace QuestMaster.EasyBankToYnab.DomainTests
                         "Currency",
                         "Is New"});
             table1.AddRow(new string[] {
-                        "1",
                         "2011-07-02",
                         "20027024468",
                         "Abbuchung Onlinebanking BG/000000107",
@@ -92,7 +101,6 @@ namespace QuestMaster.EasyBankToYnab.DomainTests
                         "EUR",
                         "True"});
             table1.AddRow(new string[] {
-                        "2",
                         "2011-06-29",
                         "20027024468",
                         "Abbuchung Onlinebanking BG/000000106",
@@ -103,7 +111,6 @@ namespace QuestMaster.EasyBankToYnab.DomainTests
                         "EUR",
                         "True"});
             table1.AddRow(new string[] {
-                        "3",
                         "2011-06-15",
                         "20027024468",
                         "Abbuchung Onlinebanking BG/000000105",
@@ -114,7 +121,6 @@ namespace QuestMaster.EasyBankToYnab.DomainTests
                         "EUR",
                         "True"});
             table1.AddRow(new string[] {
-                        "4",
                         "2011-06-02",
                         "20027024468",
                         "Gutschrift Dauerauftrag BG/000000104",
@@ -125,7 +131,6 @@ namespace QuestMaster.EasyBankToYnab.DomainTests
                         "EUR",
                         "True"});
             table1.AddRow(new string[] {
-                        "5",
                         "2011-05-03",
                         "20027024468",
                         "Gutschrift Dauerauftrag BG/000000103",
@@ -136,7 +141,6 @@ namespace QuestMaster.EasyBankToYnab.DomainTests
                         "EUR",
                         "True"});
             table1.AddRow(new string[] {
-                        "6",
                         "2011-04-02",
                         "20027024468",
                         "Gutschrift Dauerauftrag BG/000000102",
@@ -146,54 +150,19 @@ namespace QuestMaster.EasyBankToYnab.DomainTests
                         "0",
                         "EUR",
                         "True"});
-#line 8
+#line 10
   testRunner.And("the following entries in that account", ((string)(null)), table1);
-#line hidden
-        }
-        
-        [TechTalk.SpecRun.ScenarioAttribute("Export savings account entries")]
-        public virtual void ExportSavingsAccountEntries()
-        {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Export savings account entries", ((string[])(null)));
-#line 17
-this.ScenarioSetup(scenarioInfo);
-#line 6
-this.FeatureBackground();
 #line 18
   testRunner.When("I export all new entries");
 #line hidden
-            TechTalk.SpecFlow.Table table2 = new TechTalk.SpecFlow.Table(new string[] {
-                        "Number",
-                        "Line"});
-            table2.AddRow(new string[] {
-                        "1",
-                        "Date,Category,Payee,Memo,Outflow,Inflow"});
-            table2.AddRow(new string[] {
-                        "2",
-                        "01.07.2011,Import Statements,14200 20010203008 Dirk Rombauts,Abbuchung Onlinebank" +
-                            "ing BG/000000107,5.28,0.00"});
-            table2.AddRow(new string[] {
-                        "3",
-                        "28.06.2011,Import Statements,14200 20010203008 Dirk Rombauts,Abbuchung Onlinebank" +
-                            "ing BG/000000106,1250.00,0.00"});
-            table2.AddRow(new string[] {
-                        "4",
-                        "14.06.2011,Import Statements,14200 20010203008 Dirk Rombauts,Abbuchung Onlinebank" +
-                            "ing BG/000000105,500.00,0.00"});
-            table2.AddRow(new string[] {
-                        "5",
-                        "01.06.2011,Import Statements,14200 20010203008 Mag Dirk Rombauts,Gutschrift Dauer" +
-                            "auftrag BG/000000104,0.00,250.00"});
-            table2.AddRow(new string[] {
-                        "6",
-                        "02.05.2011,Import Statements,14200 20010203008 Mag Dirk Rombauts,Gutschrift Dauer" +
-                            "auftrag BG/000000103,0.00,250.00"});
-            table2.AddRow(new string[] {
-                        "7",
-                        "01.04.2011,Import Statements,14200 20010203008 Mag Dirk Rombauts,Gutschrift Dauer" +
-                            "auftrag BG/000000102,0.00,250.00"});
 #line 19
-  testRunner.Then("the resulting string should be", ((string)(null)), table2);
+  testRunner.Then("the result should be", @"Date,Category,Payee,Memo,Outflow,Inflow                                                                           
+01.07.2011,Import Statements,14200 20010203008 Dirk Rombauts,Abbuchung Onlinebanking BG/000000107,5.28,0.00       
+28.06.2011,Import Statements,14200 20010203008 Dirk Rombauts,Abbuchung Onlinebanking BG/000000106,1250.00,0.00    
+14.06.2011,Import Statements,14200 20010203008 Dirk Rombauts,Abbuchung Onlinebanking BG/000000105,500.00,0.00     
+01.06.2011,Import Statements,14200 20010203008 Mag Dirk Rombauts,Gutschrift Dauerauftrag BG/000000104,0.00,250.00 
+02.05.2011,Import Statements,14200 20010203008 Mag Dirk Rombauts,Gutschrift Dauerauftrag BG/000000103,0.00,250.00 
+01.04.2011,Import Statements,14200 20010203008 Mag Dirk Rombauts,Gutschrift Dauerauftrag BG/000000102,0.00,250.00 ", ((TechTalk.SpecFlow.Table)(null)));
 #line hidden
             this.ScenarioCleanup();
         }

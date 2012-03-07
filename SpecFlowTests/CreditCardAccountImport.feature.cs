@@ -63,62 +63,29 @@ namespace QuestMaster.EasyBankToYnab.DomainTests
             testRunner.CollectScenarioErrors();
         }
         
-        public virtual void FeatureBackground()
+        [TechTalk.SpecRun.ScenarioAttribute("Import credit cart account statements")]
+        public virtual void ImportCreditCartAccountStatements()
         {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Import credit cart account statements", ((string[])(null)));
 #line 6
+this.ScenarioSetup(scenarioInfo);
+#line 7
+  testRunner.Given("I have an account with number \'20000134083\'");
+#line hidden
+#line 8
+  testRunner.When("I import these statements", @"20000134083;Manipulationsentgelt#USD 7,35#55432861179000422081119;29.06.2011;28.06.2011;-0,05;EUR                  
+20000134083;Amazon Services-Kindle 866-321-8851#USD 7,35#55432861179000422081119;29.06.2011;28.06.2011;-5,18;EUR   
+20000134083;SONY ONLINE SERVICES INTERNET#95505511177040364736255;28.06.2011;24.06.2011;-15,00;EUR                 
+20000134083;Manipulationsentgelt#USD 7,20#55432861172000042272210;24.06.2011;21.06.2011;-0,05;EUR                  
+20000134083;Amazon Services-Kindle 866-321-8851#USD 7,20#55432861172000042272210;24.06.2011;21.06.2011;-5,03;EUR   
+20000134083;ORANGE AUSTRIA WIEN#75494041172005182779231;24.06.2011;20.06.2011;-5,00;EUR                            
+20000134083;Manipulationsentgelt#USD 23,31#55432861169000494943859;21.06.2011;18.06.2011;-0,16;EUR                 
+20000134083;Amazon Services-Kindle 866-321-8851#USD 23,31#55432861169000494943859;21.06.2011;18.06.2011;-16,47;EUR 
+20000134083;OESTERR.BUNDESBAHNEN WIEN#05460651169061800530249;20.06.2011;17.06.2011;-16,00;EUR                     
+20000134083;Manipulationsentgelt#GBP 70,96#55504431167083109723160;20.06.2011;16.06.2011;-0,81;EUR                 
+20000134083;FORGE WORLD NOTTINGHAM#GBP 70,96#55504431167083109723160;20.06.2011;16.06.2011;-80,57;EUR              ", ((TechTalk.SpecFlow.Table)(null)));
 #line hidden
             TechTalk.SpecFlow.Table table1 = new TechTalk.SpecFlow.Table(new string[] {
-                        "Id",
-                        "Statement"});
-            table1.AddRow(new string[] {
-                        "1",
-                        "20000134083;Manipulationsentgelt#USD 7,35#55432861179000422081119;29.06.2011;28.0" +
-                            "6.2011;-0,05;EUR"});
-            table1.AddRow(new string[] {
-                        "2",
-                        "20000134083;Amazon Services-Kindle 866-321-8851#USD 7,35#55432861179000422081119;" +
-                            "29.06.2011;28.06.2011;-5,18;EUR"});
-            table1.AddRow(new string[] {
-                        "3",
-                        "20000134083;SONY ONLINE SERVICES INTERNET#95505511177040364736255;28.06.2011;24.0" +
-                            "6.2011;-15,00;EUR"});
-            table1.AddRow(new string[] {
-                        "4",
-                        "20000134083;Manipulationsentgelt#USD 7,20#55432861172000042272210;24.06.2011;21.0" +
-                            "6.2011;-0,05;EUR"});
-            table1.AddRow(new string[] {
-                        "5",
-                        "20000134083;Amazon Services-Kindle 866-321-8851#USD 7,20#55432861172000042272210;" +
-                            "24.06.2011;21.06.2011;-5,03;EUR"});
-            table1.AddRow(new string[] {
-                        "6",
-                        "20000134083;ORANGE AUSTRIA WIEN#75494041172005182779231;24.06.2011;20.06.2011;-5," +
-                            "00;EUR"});
-            table1.AddRow(new string[] {
-                        "7",
-                        "20000134083;Manipulationsentgelt#USD 23,31#55432861169000494943859;21.06.2011;18." +
-                            "06.2011;-0,16;EUR"});
-            table1.AddRow(new string[] {
-                        "8",
-                        "20000134083;Amazon Services-Kindle 866-321-8851#USD 23,31#55432861169000494943859" +
-                            ";21.06.2011;18.06.2011;-16,47;EUR"});
-            table1.AddRow(new string[] {
-                        "9",
-                        "20000134083;OESTERR.BUNDESBAHNEN WIEN#05460651169061800530249;20.06.2011;17.06.20" +
-                            "11;-16,00;EUR"});
-            table1.AddRow(new string[] {
-                        "10",
-                        "20000134083;Manipulationsentgelt#GBP 70,96#55504431167083109723160;20.06.2011;16." +
-                            "06.2011;-0,81;EUR"});
-            table1.AddRow(new string[] {
-                        "11",
-                        "20000134083;FORGE WORLD NOTTINGHAM#GBP 70,96#55504431167083109723160;20.06.2011;1" +
-                            "6.06.2011;-80,57;EUR"});
-#line 7
-  testRunner.Given("the following statements", ((string)(null)), table1);
-#line hidden
-            TechTalk.SpecFlow.Table table2 = new TechTalk.SpecFlow.Table(new string[] {
-                        "Id",
                         "Booking Date",
                         "Account",
                         "Description",
@@ -128,8 +95,7 @@ namespace QuestMaster.EasyBankToYnab.DomainTests
                         "Amount Out",
                         "Currency",
                         "Is New"});
-            table2.AddRow(new string[] {
-                        "1",
+            table1.AddRow(new string[] {
                         "2011-06-29",
                         "20000134083",
                         "USD 7,35 55432861179000422081119",
@@ -139,8 +105,7 @@ namespace QuestMaster.EasyBankToYnab.DomainTests
                         "0.05",
                         "EUR",
                         "True"});
-            table2.AddRow(new string[] {
-                        "2",
+            table1.AddRow(new string[] {
                         "2011-06-29",
                         "20000134083",
                         "USD 7,35 55432861179000422081119",
@@ -150,8 +115,7 @@ namespace QuestMaster.EasyBankToYnab.DomainTests
                         "5.18",
                         "EUR",
                         "True"});
-            table2.AddRow(new string[] {
-                        "3",
+            table1.AddRow(new string[] {
                         "2011-06-28",
                         "20000134083",
                         "95505511177040364736255",
@@ -161,8 +125,7 @@ namespace QuestMaster.EasyBankToYnab.DomainTests
                         "15.00",
                         "EUR",
                         "True"});
-            table2.AddRow(new string[] {
-                        "4",
+            table1.AddRow(new string[] {
                         "2011-06-24",
                         "20000134083",
                         "USD 7,20 55432861172000042272210",
@@ -172,8 +135,7 @@ namespace QuestMaster.EasyBankToYnab.DomainTests
                         "0.05",
                         "EUR",
                         "True"});
-            table2.AddRow(new string[] {
-                        "5",
+            table1.AddRow(new string[] {
                         "2011-06-24",
                         "20000134083",
                         "USD 7,20 55432861172000042272210",
@@ -183,8 +145,7 @@ namespace QuestMaster.EasyBankToYnab.DomainTests
                         "5.03",
                         "EUR",
                         "True"});
-            table2.AddRow(new string[] {
-                        "6",
+            table1.AddRow(new string[] {
                         "2011-06-24",
                         "20000134083",
                         "75494041172005182779231",
@@ -194,8 +155,7 @@ namespace QuestMaster.EasyBankToYnab.DomainTests
                         "5",
                         "EUR",
                         "True"});
-            table2.AddRow(new string[] {
-                        "7",
+            table1.AddRow(new string[] {
                         "2011-06-21",
                         "20000134083",
                         "USD 23,31 55432861169000494943859",
@@ -205,8 +165,7 @@ namespace QuestMaster.EasyBankToYnab.DomainTests
                         "0.16",
                         "EUR",
                         "True"});
-            table2.AddRow(new string[] {
-                        "8",
+            table1.AddRow(new string[] {
                         "2011-06-21",
                         "20000134083",
                         "USD 23,31 55432861169000494943859",
@@ -216,8 +175,7 @@ namespace QuestMaster.EasyBankToYnab.DomainTests
                         "16.47",
                         "EUR",
                         "True"});
-            table2.AddRow(new string[] {
-                        "9",
+            table1.AddRow(new string[] {
                         "2011-06-20",
                         "20000134083",
                         "05460651169061800530249",
@@ -227,8 +185,7 @@ namespace QuestMaster.EasyBankToYnab.DomainTests
                         "16",
                         "EUR",
                         "True"});
-            table2.AddRow(new string[] {
-                        "10",
+            table1.AddRow(new string[] {
                         "2011-06-20",
                         "20000134083",
                         "GBP 70,96 55504431167083109723160",
@@ -238,8 +195,7 @@ namespace QuestMaster.EasyBankToYnab.DomainTests
                         "0.81",
                         "EUR",
                         "True"});
-            table2.AddRow(new string[] {
-                        "11",
+            table1.AddRow(new string[] {
                         "2011-06-20",
                         "20000134083",
                         "GBP 70,96 55504431167083109723160",
@@ -249,92 +205,10 @@ namespace QuestMaster.EasyBankToYnab.DomainTests
                         "80.57",
                         "EUR",
                         "True"});
-#line 21
-  testRunner.And("these expected entries", ((string)(null)), table2);
-#line hidden
-        }
-        
-        public virtual void ImportCreditCartAccountStatements(string statement, string entry, string[] exampleTags)
-        {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Import credit cart account statements", exampleTags);
-#line 37
-this.ScenarioSetup(scenarioInfo);
-#line 6
-this.FeatureBackground();
-#line 38
-  testRunner.Given("I have an account with number \'20000134083\'");
-#line 39
-  testRunner.When(string.Format("I import statement \'{0}\'", statement));
-#line 40
-  testRunner.Then(string.Format("that account should contain entry \'{0}\'", entry));
+#line 22
+  testRunner.Then("the account with number \'20000134083\' should contain these entries", ((string)(null)), table1);
 #line hidden
             this.ScenarioCleanup();
-        }
-        
-        [TechTalk.SpecRun.ScenarioAttribute("Import credit cart account statements, 1")]
-        public virtual void ImportCreditCartAccountStatements_1()
-        {
-            this.ImportCreditCartAccountStatements("1", "1", ((string[])(null)));
-        }
-        
-        [TechTalk.SpecRun.ScenarioAttribute("Import credit cart account statements, 2")]
-        public virtual void ImportCreditCartAccountStatements_2()
-        {
-            this.ImportCreditCartAccountStatements("2", "2", ((string[])(null)));
-        }
-        
-        [TechTalk.SpecRun.ScenarioAttribute("Import credit cart account statements, 3")]
-        public virtual void ImportCreditCartAccountStatements_3()
-        {
-            this.ImportCreditCartAccountStatements("3", "3", ((string[])(null)));
-        }
-        
-        [TechTalk.SpecRun.ScenarioAttribute("Import credit cart account statements, 4")]
-        public virtual void ImportCreditCartAccountStatements_4()
-        {
-            this.ImportCreditCartAccountStatements("4", "4", ((string[])(null)));
-        }
-        
-        [TechTalk.SpecRun.ScenarioAttribute("Import credit cart account statements, 5")]
-        public virtual void ImportCreditCartAccountStatements_5()
-        {
-            this.ImportCreditCartAccountStatements("5", "5", ((string[])(null)));
-        }
-        
-        [TechTalk.SpecRun.ScenarioAttribute("Import credit cart account statements, 6")]
-        public virtual void ImportCreditCartAccountStatements_6()
-        {
-            this.ImportCreditCartAccountStatements("6", "6", ((string[])(null)));
-        }
-        
-        [TechTalk.SpecRun.ScenarioAttribute("Import credit cart account statements, 7")]
-        public virtual void ImportCreditCartAccountStatements_7()
-        {
-            this.ImportCreditCartAccountStatements("7", "7", ((string[])(null)));
-        }
-        
-        [TechTalk.SpecRun.ScenarioAttribute("Import credit cart account statements, 8")]
-        public virtual void ImportCreditCartAccountStatements_8()
-        {
-            this.ImportCreditCartAccountStatements("8", "8", ((string[])(null)));
-        }
-        
-        [TechTalk.SpecRun.ScenarioAttribute("Import credit cart account statements, 9")]
-        public virtual void ImportCreditCartAccountStatements_9()
-        {
-            this.ImportCreditCartAccountStatements("9", "9", ((string[])(null)));
-        }
-        
-        [TechTalk.SpecRun.ScenarioAttribute("Import credit cart account statements, 10")]
-        public virtual void ImportCreditCartAccountStatements_10()
-        {
-            this.ImportCreditCartAccountStatements("10", "10", ((string[])(null)));
-        }
-        
-        [TechTalk.SpecRun.ScenarioAttribute("Import credit cart account statements, 11")]
-        public virtual void ImportCreditCartAccountStatements_11()
-        {
-            this.ImportCreditCartAccountStatements("11", "11", ((string[])(null)));
         }
         
         [TechTalk.SpecRun.TestRunCleanup()]

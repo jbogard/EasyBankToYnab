@@ -63,35 +63,19 @@ namespace QuestMaster.EasyBankToYnab.DomainTests
             testRunner.CollectScenarioErrors();
         }
         
-        public virtual void FeatureBackground()
-        {
-#line 6
-#line hidden
-            TechTalk.SpecFlow.Table table1 = new TechTalk.SpecFlow.Table(new string[] {
-                        "Id",
-                        "Statement"});
-            table1.AddRow(new string[] {
-                        "1",
-                        "20027024468;Abbuchung Onlinebanking                      BG/000000107#14200 20010" +
-                            "203008 Dirk Rombauts;01.07.2011;01.07.2011;-5,28;EUR"});
-#line 7
-  testRunner.Given("the following statements", ((string)(null)), table1);
-#line hidden
-        }
-        
         [TechTalk.SpecRun.ScenarioAttribute("Create New Account")]
         public virtual void CreateNewAccount()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Create New Account", ((string[])(null)));
-#line 12
-this.ScenarioSetup(scenarioInfo);
 #line 6
-this.FeatureBackground();
-#line 13
+this.ScenarioSetup(scenarioInfo);
+#line 7
   testRunner.Given("I have an empty list of accounts");
-#line 14
-  testRunner.When("I import statement \'1\'");
-#line 15
+#line hidden
+#line 8
+  testRunner.When("I import these statements", "20027024468;Abbuchung Onlinebanking                      BG/000000107#14200 20010" +
+                    "203008 Dirk Rombauts;01.07.2011;01.07.2011;-5,28;EUR", ((TechTalk.SpecFlow.Table)(null)));
+#line 12
   testRunner.Then("the list of accounts should contain \'20027024468\'");
 #line hidden
             this.ScenarioCleanup();

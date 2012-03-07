@@ -35,19 +35,19 @@ namespace QuestMaster.EasyBankToYnab.ApplicationLogic
       this.entries.Add(entry);
     }
 
-    public string ExportNewEntries()
+    public void ExportNewEntries()
     {
-      return ExportTheseEntries(this.Entries.Where(e => e.IsNew));
+      ExportTheseEntries(this.Entries.Where(e => e.IsNew));
     }
 
-    private string ExportTheseEntries(IEnumerable<Entry> selection)
+    private void ExportTheseEntries(IEnumerable<Entry> selection)
     {
-      return this.ynabExporter.ExportEntries(selection.Select(mapper.Map<Entry, Gateways.Ynab.Entry>));
+      this.ynabExporter.Write(new EntryCollection(null, selection.Select(mapper.Map<Entry, Gateways.Ynab.Entry>).ToArray()));
     }
 
-    public string ExportAllEntries()
+    public void ExportAllEntries()
     {
-      return this.ExportTheseEntries(this.Entries);
+      this.ExportTheseEntries(this.Entries);
     }
 
       public void MarkStatementsOfAccountAsOld()

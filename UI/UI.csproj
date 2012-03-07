@@ -66,6 +66,7 @@
     <Compile Include="Foundation\EventHandlerExtensions.cs" />
     <Compile Include="Foundation\NotifyPropertyChanged.cs" />
     <Compile Include="Foundation\SimpleCommand.cs" />
+    <Compile Include="IFileLookupService.cs" />
     <Compile Include="MainFormViewModel.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>

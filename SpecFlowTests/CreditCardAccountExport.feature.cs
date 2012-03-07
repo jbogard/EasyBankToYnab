@@ -63,14 +63,16 @@ namespace QuestMaster.EasyBankToYnab.DomainTests
             testRunner.CollectScenarioErrors();
         }
         
-        public virtual void FeatureBackground()
+        [TechTalk.SpecRun.ScenarioAttribute("Export credit card account entries")]
+        public virtual void ExportCreditCardAccountEntries()
         {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Export credit card account entries", ((string[])(null)));
 #line 6
+this.ScenarioSetup(scenarioInfo);
 #line 7
   testRunner.Given("I have an account with number \'20000134083\'");
 #line hidden
             TechTalk.SpecFlow.Table table1 = new TechTalk.SpecFlow.Table(new string[] {
-                        "Id",
                         "Booking Date",
                         "Account",
                         "Description",
@@ -81,7 +83,6 @@ namespace QuestMaster.EasyBankToYnab.DomainTests
                         "Currency",
                         "Is New"});
             table1.AddRow(new string[] {
-                        "1",
                         "2011-06-29",
                         "20000134083",
                         "USD 7,35 55432861179000422081119",
@@ -92,7 +93,6 @@ namespace QuestMaster.EasyBankToYnab.DomainTests
                         "EUR",
                         "True"});
             table1.AddRow(new string[] {
-                        "2",
                         "2011-06-29",
                         "20000134083",
                         "USD 7,35 55432861179000422081119",
@@ -103,7 +103,6 @@ namespace QuestMaster.EasyBankToYnab.DomainTests
                         "EUR",
                         "True"});
             table1.AddRow(new string[] {
-                        "3",
                         "2011-06-28",
                         "20000134083",
                         "95505511177040364736255",
@@ -114,7 +113,6 @@ namespace QuestMaster.EasyBankToYnab.DomainTests
                         "EUR",
                         "True"});
             table1.AddRow(new string[] {
-                        "4",
                         "2011-06-24",
                         "20000134083",
                         "USD 7,20 55432861172000042272210",
@@ -125,7 +123,6 @@ namespace QuestMaster.EasyBankToYnab.DomainTests
                         "EUR",
                         "True"});
             table1.AddRow(new string[] {
-                        "5",
                         "2011-06-24",
                         "20000134083",
                         "USD 7,20 55432861172000042272210",
@@ -136,7 +133,6 @@ namespace QuestMaster.EasyBankToYnab.DomainTests
                         "EUR",
                         "True"});
             table1.AddRow(new string[] {
-                        "6",
                         "2011-06-24",
                         "20000134083",
                         "75494041172005182779231",
@@ -147,7 +143,6 @@ namespace QuestMaster.EasyBankToYnab.DomainTests
                         "EUR",
                         "True"});
             table1.AddRow(new string[] {
-                        "7",
                         "2011-06-21",
                         "20000134083",
                         "USD 23,31 55432861169000494943859",
@@ -158,7 +153,6 @@ namespace QuestMaster.EasyBankToYnab.DomainTests
                         "EUR",
                         "True"});
             table1.AddRow(new string[] {
-                        "8",
                         "2011-06-21",
                         "20000134083",
                         "USD 23,31 55432861169000494943859",
@@ -169,7 +163,6 @@ namespace QuestMaster.EasyBankToYnab.DomainTests
                         "EUR",
                         "True"});
             table1.AddRow(new string[] {
-                        "9",
                         "2011-06-20",
                         "20000134083",
                         "05460651169061800530249",
@@ -180,7 +173,6 @@ namespace QuestMaster.EasyBankToYnab.DomainTests
                         "EUR",
                         "True"});
             table1.AddRow(new string[] {
-                        "10",
                         "2011-06-20",
                         "20000134083",
                         "GBP 70,96 55504431167083109723160",
@@ -191,7 +183,6 @@ namespace QuestMaster.EasyBankToYnab.DomainTests
                         "EUR",
                         "True"});
             table1.AddRow(new string[] {
-                        "11",
                         "2011-06-20",
                         "20000134083",
                         "GBP 70,96 55504431167083109723160",
@@ -203,72 +194,22 @@ namespace QuestMaster.EasyBankToYnab.DomainTests
                         "True"});
 #line 8
   testRunner.And("the following entries in that account", ((string)(null)), table1);
-#line hidden
-        }
-        
-        [TechTalk.SpecRun.ScenarioAttribute("Export credit card account entries")]
-        public virtual void ExportCreditCardAccountEntries()
-        {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Export credit card account entries", ((string[])(null)));
-#line 22
-this.ScenarioSetup(scenarioInfo);
-#line 6
-this.FeatureBackground();
-#line 23
+#line 21
   testRunner.When("I export all new entries");
 #line hidden
-            TechTalk.SpecFlow.Table table2 = new TechTalk.SpecFlow.Table(new string[] {
-                        "Number",
-                        "Line"});
-            table2.AddRow(new string[] {
-                        "1",
-                        "Date,Category,Payee,Memo,Outflow,Inflow"});
-            table2.AddRow(new string[] {
-                        "2",
-                        "28.06.2011,Import Statements,Manipulationsentgelt,USD 7-35 5543286117900042208111" +
-                            "9,0.05,0.00"});
-            table2.AddRow(new string[] {
-                        "3",
-                        "28.06.2011,Import Statements,Amazon Services-Kindle 866-321-8851,USD 7-35 5543286" +
-                            "1179000422081119,5.18,0.00"});
-            table2.AddRow(new string[] {
-                        "4",
-                        "24.06.2011,Import Statements,SONY ONLINE SERVICES INTERNET,9550551117704036473625" +
-                            "5,15.00,0.00"});
-            table2.AddRow(new string[] {
-                        "5",
-                        "21.06.2011,Import Statements,Manipulationsentgelt,USD 7-20 5543286117200004227221" +
-                            "0,0.05,0.00"});
-            table2.AddRow(new string[] {
-                        "6",
-                        "21.06.2011,Import Statements,Amazon Services-Kindle 866-321-8851,USD 7-20 5543286" +
-                            "1172000042272210,5.03,0.00"});
-            table2.AddRow(new string[] {
-                        "7",
-                        "20.06.2011,Import Statements,ORANGE AUSTRIA WIEN,75494041172005182779231,5.00,0.0" +
-                            "0"});
-            table2.AddRow(new string[] {
-                        "8",
-                        "18.06.2011,Import Statements,Manipulationsentgelt,USD 23-31 554328611690004949438" +
-                            "59,0.16,0.00"});
-            table2.AddRow(new string[] {
-                        "9",
-                        "18.06.2011,Import Statements,Amazon Services-Kindle 866-321-8851,USD 23-31 554328" +
-                            "61169000494943859,16.47,0.00"});
-            table2.AddRow(new string[] {
-                        "10",
-                        "17.06.2011,Import Statements,OESTERR.BUNDESBAHNEN WIEN,05460651169061800530249,16" +
-                            ".00,0.00"});
-            table2.AddRow(new string[] {
-                        "11",
-                        "16.06.2011,Import Statements,Manipulationsentgelt,GBP 70-96 555044311670831097231" +
-                            "60,0.81,0.00"});
-            table2.AddRow(new string[] {
-                        "12",
-                        "16.06.2011,Import Statements,FORGE WORLD NOTTINGHAM,GBP 70-96 5550443116708310972" +
-                            "3160,80.57,0.00"});
-#line 24
-  testRunner.Then("the resulting string should be", ((string)(null)), table2);
+#line 22
+  testRunner.Then("the result should be", @"Date,Category,Payee,Memo,Outflow,Inflow                                                                       
+28.06.2011,Import Statements,Manipulationsentgelt,USD 7-35 55432861179000422081119,0.05,0.00                  
+28.06.2011,Import Statements,Amazon Services-Kindle 866-321-8851,USD 7-35 55432861179000422081119,5.18,0.00   
+24.06.2011,Import Statements,SONY ONLINE SERVICES INTERNET,95505511177040364736255,15.00,0.00                 
+21.06.2011,Import Statements,Manipulationsentgelt,USD 7-20 55432861172000042272210,0.05,0.00                  
+21.06.2011,Import Statements,Amazon Services-Kindle 866-321-8851,USD 7-20 55432861172000042272210,5.03,0.00   
+20.06.2011,Import Statements,ORANGE AUSTRIA WIEN,75494041172005182779231,5.00,0.00                            
+18.06.2011,Import Statements,Manipulationsentgelt,USD 23-31 55432861169000494943859,0.16,0.00                 
+18.06.2011,Import Statements,Amazon Services-Kindle 866-321-8851,USD 23-31 55432861169000494943859,16.47,0.00 
+17.06.2011,Import Statements,OESTERR.BUNDESBAHNEN WIEN,05460651169061800530249,16.00,0.00                     
+16.06.2011,Import Statements,Manipulationsentgelt,GBP 70-96 55504431167083109723160,0.81,0.00                 
+16.06.2011,Import Statements,FORGE WORLD NOTTINGHAM,GBP 70-96 55504431167083109723160,80.57,0.00              ", ((TechTalk.SpecFlow.Table)(null)));
 #line hidden
             this.ScenarioCleanup();
         }

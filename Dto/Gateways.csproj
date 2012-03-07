@@ -43,6 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="EasyBank\EasyBankGateway.cs" />
     <Compile Include="EasyBank\Entry.cs" />
     <Compile Include="EasyBank\EntryCollection.cs" />
     <Compile Include="EasyBank\IEasyBankGateway.cs" />
@@ -55,7 +56,8 @@
     <Compile Include="Xml\EntryCollection.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Xml\IXmlGateway.cs" />
-    <Compile Include="Xml\StreamExtensions.cs" />
+    <Compile Include="StreamExtensions.cs" />
+    <Compile Include="Xml\XmlGateway.cs" />
     <Compile Include="Ynab\CultureSettings.cs" />
     <Compile Include="Ynab\Entry.cs" />
     <Compile Include="Ynab\EntryCollection.cs" />

@@ -63,14 +63,16 @@ namespace QuestMaster.EasyBankToYnab.DomainTests
             testRunner.CollectScenarioErrors();
         }
         
-        public virtual void FeatureBackground()
+        [TechTalk.SpecRun.ScenarioAttribute("Export checking account entries")]
+        public virtual void ExportCheckingAccountEntries()
         {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Export checking account entries", ((string[])(null)));
 #line 6
+this.ScenarioSetup(scenarioInfo);
 #line 7
   testRunner.Given("I have an account with number \'20010203008\'");
 #line hidden
             TechTalk.SpecFlow.Table table1 = new TechTalk.SpecFlow.Table(new string[] {
-                        "Id",
                         "Booking Date",
                         "Account",
                         "Description",
@@ -81,7 +83,6 @@ namespace QuestMaster.EasyBankToYnab.DomainTests
                         "Currency",
                         "Is New"});
             table1.AddRow(new string[] {
-                        "1",
                         "2011-07-12",
                         "20010203008",
                         "easykreditkarte MasterCard 000000 MC/000002237",
@@ -92,7 +93,6 @@ namespace QuestMaster.EasyBankToYnab.DomainTests
                         "EUR",
                         "True"});
             table1.AddRow(new string[] {
-                        "2",
                         "2011-07-12",
                         "20010203008",
                         "Abbuchung Onlinebanking BG/000002236",
@@ -103,7 +103,6 @@ namespace QuestMaster.EasyBankToYnab.DomainTests
                         "EUR",
                         "True"});
             table1.AddRow(new string[] {
-                        "3",
                         "2011-07-09",
                         "20010203008",
                         "Apotheke BG/000002235",
@@ -114,7 +113,6 @@ namespace QuestMaster.EasyBankToYnab.DomainTests
                         "EUR",
                         "True"});
             table1.AddRow(new string[] {
-                        "4",
                         "2011-07-08",
                         "20010203008",
                         "Kindle Books BG/000002234",
@@ -125,7 +123,6 @@ namespace QuestMaster.EasyBankToYnab.DomainTests
                         "EUR",
                         "True"});
             table1.AddRow(new string[] {
-                        "5",
                         "2011-07-06",
                         "20010203008",
                         "Hornbach BG/000002233",
@@ -136,7 +133,6 @@ namespace QuestMaster.EasyBankToYnab.DomainTests
                         "EUR",
                         "True"});
             table1.AddRow(new string[] {
-                        "6",
                         "2011-07-06",
                         "20010203008",
                         "Kienbacher BG/000002232",
@@ -147,7 +143,6 @@ namespace QuestMaster.EasyBankToYnab.DomainTests
                         "EUR",
                         "True"});
             table1.AddRow(new string[] {
-                        "7",
                         "2011-07-06",
                         "20010203008",
                         "000006773435 OG/000002231",
@@ -158,7 +153,6 @@ namespace QuestMaster.EasyBankToYnab.DomainTests
                         "EUR",
                         "True"});
             table1.AddRow(new string[] {
-                        "8",
                         "2011-07-06",
                         "20010203008",
                         "Abbuchung Lastschrift OG/000002230",
@@ -169,7 +163,6 @@ namespace QuestMaster.EasyBankToYnab.DomainTests
                         "EUR",
                         "True"});
             table1.AddRow(new string[] {
-                        "9",
                         "2011-07-05",
                         "20010203008",
                         "Abbuchung Einzugsermächtigung OG/000002229",
@@ -180,7 +173,6 @@ namespace QuestMaster.EasyBankToYnab.DomainTests
                         "EUR",
                         "True"});
             table1.AddRow(new string[] {
-                        "10",
                         "2011-07-05",
                         "20010203008",
                         "Kindle Books BG/000002228",
@@ -191,7 +183,6 @@ namespace QuestMaster.EasyBankToYnab.DomainTests
                         "EUR",
                         "True"});
             table1.AddRow(new string[] {
-                        "11",
                         "2011-07-02",
                         "20010203008",
                         "Abbuchung Einzugsermächtigung OG/000002227",
@@ -202,7 +193,6 @@ namespace QuestMaster.EasyBankToYnab.DomainTests
                         "EUR",
                         "True"});
             table1.AddRow(new string[] {
-                        "12",
                         "2011-07-02",
                         "20010203008",
                         "TRN 20110701RX003135",
@@ -213,7 +203,6 @@ namespace QuestMaster.EasyBankToYnab.DomainTests
                         "EUR",
                         "True"});
             table1.AddRow(new string[] {
-                        "13",
                         "2011-07-02",
                         "20010203008",
                         "TRN 20110701RX003134",
@@ -225,80 +214,32 @@ namespace QuestMaster.EasyBankToYnab.DomainTests
                         "True"});
 #line 8
   testRunner.And("the following entries in that account", ((string)(null)), table1);
-#line hidden
-        }
-        
-        [TechTalk.SpecRun.ScenarioAttribute("Export checking account entries")]
-        public virtual void ExportCheckingAccountEntries()
-        {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Export checking account entries", ((string[])(null)));
-#line 24
-this.ScenarioSetup(scenarioInfo);
-#line 6
-this.FeatureBackground();
-#line 25
+#line 23
   testRunner.When("I export all entries");
 #line hidden
-            TechTalk.SpecFlow.Table table2 = new TechTalk.SpecFlow.Table(new string[] {
-                        "Number",
-                        "Line"});
-            table2.AddRow(new string[] {
-                        "1",
-                        "Date,Category,Payee,Memo,Outflow,Inflow"});
-            table2.AddRow(new string[] {
-                        "2",
-                        "11.07.2011,Import Statements,,easykreditkarte MasterCard 000000 MC/000002237,757." +
-                            "70,0.00"});
-            table2.AddRow(new string[] {
-                        "3",
-                        "11.07.2011,Import Statements,14000 06710704145 Margit Obermaier,Abbuchung Onlineb" +
-                            "anking BG/000002236,33.00,0.00"});
-            table2.AddRow(new string[] {
-                        "4",
-                        "08.07.2011,Import Statements,14200 20010351775 Dirk Rombauts,Apotheke BG/00000223" +
-                            "5,23.89,0.00"});
-            table2.AddRow(new string[] {
-                        "5",
-                        "08.07.2011,Import Statements,14200 20010306702 Tatjana Habusta,Kindle Books BG/00" +
-                            "0002234,0.00,21.64"});
-            table2.AddRow(new string[] {
-                        "6",
-                        "05.07.2011,Import Statements,14200 20010351775 Dirk Rombauts,Hornbach BG/00000223" +
-                            "3,9.25,0.00"});
-            table2.AddRow(new string[] {
-                        "7",
-                        "05.07.2011,Import Statements,14200 20010351775 Dirk Rombauts,Kienbacher BG/000002" +
-                            "232,489.00,0.00"});
-            table2.AddRow(new string[] {
-                        "8",
-                        "05.07.2011,Import Statements,32000 00900699090 ORANGE AUSTRIA,000006773435 OG/000" +
-                            "002231,24.10,0.00"});
-            table2.AddRow(new string[] {
-                        "9",
-                        "05.07.2011,Import Statements,WIENER LINIEN GMBH & CO KG 20151 00696216225,Abbuchu" +
-                            "ng Lastschrift OG/000002230,45.80,0.00"});
-            table2.AddRow(new string[] {
-                        "10",
-                        "04.07.2011,Import Statements,BASLER VERSICHERUNGS-AG 32000 00000062141,Abbuchung " +
-                            "Einzugsermächtigung OG/000002229,50.00,0.00"});
-            table2.AddRow(new string[] {
-                        "11",
-                        "04.07.2011,Import Statements,14200 20010306702 Tatjana Habusta,Kindle Books BG/00" +
-                            "0002228,0.00,23.26"});
-            table2.AddRow(new string[] {
-                        "12",
-                        "01.07.2011,Import Statements,AMAZON EU SARL 19100 00040593000,Abbuchung Einzugser" +
-                            "mächtigung OG/000002227,16.31,0.00"});
-            table2.AddRow(new string[] {
-                        "13",
-                        "01.07.2011,Import Statements,I7452063 VB/000002226 Walter Rombauts 14000 00118804" +
-                            "139,TRN 20110701RX003135,250.00,0.00"});
-            table2.AddRow(new string[] {
-                        "14",
-                        "01.07.2011,Import Statements,I7452070 VB/000002225 Walter Rombauts 14000 00118804" +
-                            "139,TRN 20110701RX003134,250.00,0.00"});
-#line 26
-  testRunner.Then("the resulting string should be", ((string)(null)), table2);
+#line 24
+  testRunner.Then("the result should be", "Date,Category,Payee,Memo,Outflow,Inflow                                          " +
+                    "                                            \r\n11.07.2011,Import Statements,,easy" +
+                    "kreditkarte MasterCard 000000 MC/000002237,757.70,0.00                          " +
+                    "           \r\n11.07.2011,Import Statements,14000 06710704145 Margit Obermaier,Abb" +
+                    "uchung Onlinebanking BG/000002236,33.00,0.00              \r\n08.07.2011,Import St" +
+                    "atements,14200 20010351775 Dirk Rombauts,Apotheke BG/000002235,23.89,0.00       " +
+                    "                         \r\n08.07.2011,Import Statements,14200 20010306702 Tatjan" +
+                    "a Habusta,Kindle Books BG/000002234,0.00,21.64                          \r\n05.07." +
+                    "2011,Import Statements,14200 20010351775 Dirk Rombauts,Hornbach BG/000002233,9.2" +
+                    "5,0.00                                 \r\n05.07.2011,Import Statements,14200 2001" +
+                    "0351775 Dirk Rombauts,Kienbacher BG/000002232,489.00,0.00                       " +
+                    "      \r\n05.07.2011,Import Statements,32000 00900699090 ORANGE AUSTRIA,0000067734" +
+                    "35 OG/000002231,24.10,0.00                           \r\n05.07.2011,Import Stateme" +
+                    "nts,WIENER LINIEN GMBH & CO KG 20151 00696216225,Abbuchung Lastschrift OG/000002" +
+                    "230,45.80,0.00      \r\n04.07.2011,Import Statements,BASLER VERSICHERUNGS-AG 32000" +
+                    " 00000062141,Abbuchung Einzugsermächtigung OG/000002229,50.00,0.00 \r\n04.07.2011," +
+                    "Import Statements,14200 20010306702 Tatjana Habusta,Kindle Books BG/000002228,0." +
+                    "00,23.26                          \r\n01.07.2011,Import Statements,AMAZON EU SARL " +
+                    "19100 00040593000,Abbuchung Einzugsermächtigung OG/000002227,16.31,0.00         " +
+                    " \r\n01.07.2011,Import Statements,I7452063 VB/000002226 Walter Rombauts 14000 0011" +
+                    "8804139,TRN 20110701RX003135,250.00,0.00\r\n01.07.2011,Import Statements,I7452070 " +
+                    "VB/000002225 Walter Rombauts 14000 00118804139,TRN 20110701RX003134,250.00,0.00", ((TechTalk.SpecFlow.Table)(null)));
 #line hidden
             this.ScenarioCleanup();
         }

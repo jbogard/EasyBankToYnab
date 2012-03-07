@@ -49,11 +49,9 @@
     <Compile Include="EasyBankContext.cs" />
     <Compile Include="Entry.cs" />
     <Compile Include="IMapper.cs" />
-    <Compile Include="XmlGateway.cs" />
     <Compile Include="IDataContextProvider.cs" />
     <Compile Include="IDefaultPathProvider.cs" />
-    <Compile Include="IFileLookupService.cs" />
-    <Compile Include="IStatementImporter.cs" />
+    <Compile Include="Mapper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

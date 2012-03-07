@@ -61,7 +61,6 @@
     <Compile Include="Bindings\EntryBindings.cs" />
     <Compile Include="Bindings\ScenarioSetup.cs" />
     <Compile Include="Bindings\StatementBindings.cs" />
-    <Compile Include="Bindings\StatementImporter.cs" />
     <Compile Include="CheckingAccountExport.feature.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

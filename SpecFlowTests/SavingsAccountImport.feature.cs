@@ -19,6 +19,7 @@ namespace QuestMaster.EasyBankToYnab.DomainTests
     [System.CodeDom.Compiler.GeneratedCodeAttribute("TechTalk.SpecFlow", "1.8.1.0")]
     [System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     [TechTalk.SpecRun.FeatureAttribute("Import of savings account statements")]
+    [Microsoft.VisualStudio.TestTools.UnitTesting.TestClassAttribute()]
     public partial class ImportOfSavingsAccountStatementsFeature
     {
         
@@ -43,11 +44,18 @@ namespace QuestMaster.EasyBankToYnab.DomainTests
             testRunner = null;
         }
         
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestInitializeAttribute()]
         public virtual void TestInitialize()
         {
+            if (((TechTalk.SpecFlow.FeatureContext.Current != null) 
+                        && (TechTalk.SpecFlow.FeatureContext.Current.FeatureInfo.Title != "Import of savings account statements")))
+            {
+                QuestMaster.EasyBankToYnab.DomainTests.ImportOfSavingsAccountStatementsFeature.FeatureSetupMsTest(null);
+            }
         }
         
         [TechTalk.SpecRun.ScenarioCleanup()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCleanupAttribute()]
         public virtual void ScenarioTearDown()
         {
             testRunner.OnScenarioEnd();
@@ -63,7 +71,22 @@ namespace QuestMaster.EasyBankToYnab.DomainTests
             testRunner.CollectScenarioErrors();
         }
         
+        [Microsoft.VisualStudio.TestTools.UnitTesting.ClassInitializeAttribute()]
+        public static void FeatureSetupMsTest(Microsoft.VisualStudio.TestTools.UnitTesting.TestContext testContext)
+        {
+            new ImportOfSavingsAccountStatementsFeature().FeatureSetup();
+        }
+        
+        [Microsoft.VisualStudio.TestTools.UnitTesting.ClassCleanupAttribute()]
+        public static void FeatureTearDownMsTest()
+        {
+            new ImportOfSavingsAccountStatementsFeature().FeatureTearDown();
+        }
+        
         [TechTalk.SpecRun.ScenarioAttribute("Import savings account statements")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Import savings account statements")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Import of savings account statements")]
         public virtual void ImportSavingsAccountStatements()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Import savings account statements", ((string[])(null)));

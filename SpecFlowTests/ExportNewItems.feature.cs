@@ -19,6 +19,7 @@ namespace QuestMaster.EasyBankToYnab.DomainTests
     [System.CodeDom.Compiler.GeneratedCodeAttribute("TechTalk.SpecFlow", "1.8.1.0")]
     [System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     [TechTalk.SpecRun.FeatureAttribute("Export of new entries")]
+    [Microsoft.VisualStudio.TestTools.UnitTesting.TestClassAttribute()]
     public partial class ExportOfNewEntriesFeature
     {
         
@@ -43,11 +44,18 @@ namespace QuestMaster.EasyBankToYnab.DomainTests
             testRunner = null;
         }
         
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestInitializeAttribute()]
         public virtual void TestInitialize()
         {
+            if (((TechTalk.SpecFlow.FeatureContext.Current != null) 
+                        && (TechTalk.SpecFlow.FeatureContext.Current.FeatureInfo.Title != "Export of new entries")))
+            {
+                QuestMaster.EasyBankToYnab.DomainTests.ExportOfNewEntriesFeature.FeatureSetupMsTest(null);
+            }
         }
         
         [TechTalk.SpecRun.ScenarioCleanup()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCleanupAttribute()]
         public virtual void ScenarioTearDown()
         {
             testRunner.OnScenarioEnd();
@@ -63,14 +71,31 @@ namespace QuestMaster.EasyBankToYnab.DomainTests
             testRunner.CollectScenarioErrors();
         }
         
-        public virtual void FeatureBackground()
+        [Microsoft.VisualStudio.TestTools.UnitTesting.ClassInitializeAttribute()]
+        public static void FeatureSetupMsTest(Microsoft.VisualStudio.TestTools.UnitTesting.TestContext testContext)
         {
+            new ExportOfNewEntriesFeature().FeatureSetup();
+        }
+        
+        [Microsoft.VisualStudio.TestTools.UnitTesting.ClassCleanupAttribute()]
+        public static void FeatureTearDownMsTest()
+        {
+            new ExportOfNewEntriesFeature().FeatureTearDown();
+        }
+        
+        [TechTalk.SpecRun.ScenarioAttribute("Export new entries only")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Export new entries only")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Export of new entries")]
+        public virtual void ExportNewEntriesOnly()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Export new entries only", ((string[])(null)));
 #line 6
+this.ScenarioSetup(scenarioInfo);
 #line 7
   testRunner.Given("I have an account with number \'20010203008\'");
 #line hidden
             TechTalk.SpecFlow.Table table1 = new TechTalk.SpecFlow.Table(new string[] {
-                        "Id",
                         "Booking Date",
                         "Account",
                         "Description",
@@ -81,7 +106,6 @@ namespace QuestMaster.EasyBankToYnab.DomainTests
                         "Currency",
                         "Is New"});
             table1.AddRow(new string[] {
-                        "1",
                         "2011-07-12",
                         "20010203008",
                         "easykreditkarte MasterCard 000000 MC/000002237",
@@ -92,7 +116,6 @@ namespace QuestMaster.EasyBankToYnab.DomainTests
                         "EUR",
                         "True"});
             table1.AddRow(new string[] {
-                        "5",
                         "2011-07-06",
                         "20010203008",
                         "Hornbach BG/000002233",
@@ -103,33 +126,14 @@ namespace QuestMaster.EasyBankToYnab.DomainTests
                         "EUR",
                         "False"});
 #line 8
-  testRunner.And("the following entries in that account", ((string)(null)), table1);
-#line hidden
-        }
-        
-        [TechTalk.SpecRun.ScenarioAttribute("Export new entries only")]
-        public virtual void ExportNewEntriesOnly()
-        {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Export new entries only", ((string[])(null)));
-#line 13
-this.ScenarioSetup(scenarioInfo);
-#line 6
-this.FeatureBackground();
-#line 14
+  testRunner.And("the following entries in the account with number \'20010203008\'", ((string)(null)), table1);
+#line 12
   testRunner.When("I export all new entries");
 #line hidden
-            TechTalk.SpecFlow.Table table2 = new TechTalk.SpecFlow.Table(new string[] {
-                        "Number",
-                        "Line"});
-            table2.AddRow(new string[] {
-                        "1",
-                        "Date,Category,Payee,Memo,Outflow,Inflow"});
-            table2.AddRow(new string[] {
-                        "2",
-                        "11.07.2011,Import Statements,,easykreditkarte MasterCard 000000 MC/000002237,757." +
-                            "70,0.00"});
-#line 15
-  testRunner.Then("the resulting string should be", ((string)(null)), table2);
+#line 13
+  testRunner.Then("the result should be", "Date,Category,Payee,Memo,Outflow,Inflow                                          " +
+                    "        \r\n11.07.2011,Import Statements,,easykreditkarte MasterCard 000000 MC/000" +
+                    "002237,757.70,0.00", ((TechTalk.SpecFlow.Table)(null)));
 #line hidden
             this.ScenarioCleanup();
         }

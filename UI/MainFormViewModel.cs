@@ -147,10 +147,11 @@ namespace QuestMaster.EasyBankToYnab.UI
 
         private void ExportStatementsToFile(Account account)
         {
-            using (StreamWriter writer = new StreamWriter(this.defaultPathProvider.PathToExportFile))
-            {
-                writer.Write(account.ExportNewEntries());
-            }
+            throw new NotImplementedException();
+            //using (StreamWriter writer = new StreamWriter(this.defaultPathProvider.PathToExportFile))
+            //{
+            //    writer.Write(account.ExportNewEntries());
+            //}
         }
 
         private void DoImport(object obj)
@@ -162,11 +163,12 @@ namespace QuestMaster.EasyBankToYnab.UI
 
         private void ImportStatementsFromFile()
         {
-            // todo: pull out
+            throw new NotImplementedException();
+            //// todo: pull out
 
-            IEnumerable<string> readLines = FileHelpers.ReadLines(this.defaultPathProvider.PathToImportFile);
+            //IEnumerable<string> readLines = FileHelpers.ReadLines(this.defaultPathProvider.PathToImportFile);
 
-            this.easyBank.ImportStatements(readLines);
+            //this.easyBank.ImportStatements(readLines);
         }
 
         private void DoMarkAllAsAold(object obj)

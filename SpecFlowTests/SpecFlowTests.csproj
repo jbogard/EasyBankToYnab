@@ -56,11 +56,13 @@
     </CodeAnalysisDependentAssemblyPaths>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Bindings\AccountBindings.cs" />
     <Compile Include="Bindings\CurrentScenarioContext.cs" />
-    <Compile Include="Bindings\EntryBindings.cs" />
+    <Compile Include="Bindings\FakeFileAccess.cs" />
+    <Compile Include="Bindings\GivenDefinitions.cs" />
+    <Compile Include="Bindings\Helpers.cs" />
     <Compile Include="Bindings\ScenarioSetup.cs" />
-    <Compile Include="Bindings\StatementBindings.cs" />
+    <Compile Include="Bindings\ThenDefinitions.cs" />
+    <Compile Include="Bindings\WhenDefinitions.cs" />
     <Compile Include="CheckingAccountExport.feature.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -102,13 +104,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>SavingsAccountImport.feature</DependentUpon>
     </Compile>
-    <Compile Include="Tables\LineTable.cs" />
-    <Compile Include="Tables\EntryRow.cs" />
-    <Compile Include="Tables\EntryTable.cs" />
-    <Compile Include="Tables\LineRow.cs" />
-    <Compile Include="Tables\StatementRow.cs" />
-    <Compile Include="Tables\StatementTable.cs" />
-    <Compile Include="Tables\TableExtensions.cs" />
+    <Compile Include="Bindings\Tables\EntryRow.cs" />
+    <Compile Include="Bindings\Tables\EntryTable.cs" />
+    <Compile Include="Bindings\Tables\TableExtensions.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -157,6 +155,10 @@
     <ProjectReference Include="..\ApplicationLogic\ApplicationLogic.csproj">
       <Project>{806366BB-30AA-4C70-B1DA-9BE3EAFA8153}</Project>
       <Name>ApplicationLogic</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Dto\Gateways.csproj">
+      <Project>{02521171-187B-4E2F-B058-776CB4885782}</Project>
+      <Name>Gateways</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />

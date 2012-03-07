@@ -19,6 +19,7 @@ namespace QuestMaster.EasyBankToYnab.DomainTests
     [System.CodeDom.Compiler.GeneratedCodeAttribute("TechTalk.SpecFlow", "1.8.1.0")]
     [System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     [TechTalk.SpecRun.FeatureAttribute("Export of credit card account entries")]
+    [Microsoft.VisualStudio.TestTools.UnitTesting.TestClassAttribute()]
     public partial class ExportOfCreditCardAccountEntriesFeature
     {
         
@@ -43,11 +44,18 @@ namespace QuestMaster.EasyBankToYnab.DomainTests
             testRunner = null;
         }
         
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestInitializeAttribute()]
         public virtual void TestInitialize()
         {
+            if (((TechTalk.SpecFlow.FeatureContext.Current != null) 
+                        && (TechTalk.SpecFlow.FeatureContext.Current.FeatureInfo.Title != "Export of credit card account entries")))
+            {
+                QuestMaster.EasyBankToYnab.DomainTests.ExportOfCreditCardAccountEntriesFeature.FeatureSetupMsTest(null);
+            }
         }
         
         [TechTalk.SpecRun.ScenarioCleanup()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCleanupAttribute()]
         public virtual void ScenarioTearDown()
         {
             testRunner.OnScenarioEnd();
@@ -63,7 +71,22 @@ namespace QuestMaster.EasyBankToYnab.DomainTests
             testRunner.CollectScenarioErrors();
         }
         
+        [Microsoft.VisualStudio.TestTools.UnitTesting.ClassInitializeAttribute()]
+        public static void FeatureSetupMsTest(Microsoft.VisualStudio.TestTools.UnitTesting.TestContext testContext)
+        {
+            new ExportOfCreditCardAccountEntriesFeature().FeatureSetup();
+        }
+        
+        [Microsoft.VisualStudio.TestTools.UnitTesting.ClassCleanupAttribute()]
+        public static void FeatureTearDownMsTest()
+        {
+            new ExportOfCreditCardAccountEntriesFeature().FeatureTearDown();
+        }
+        
         [TechTalk.SpecRun.ScenarioAttribute("Export credit card account entries")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Export credit card account entries")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Export of credit card account entries")]
         public virtual void ExportCreditCardAccountEntries()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Export credit card account entries", ((string[])(null)));
@@ -193,7 +216,7 @@ this.ScenarioSetup(scenarioInfo);
                         "EUR",
                         "True"});
 #line 8
-  testRunner.And("the following entries in that account", ((string)(null)), table1);
+  testRunner.And("the following entries in the account with number \'20000134083\'", ((string)(null)), table1);
 #line 21
   testRunner.When("I export all new entries");
 #line hidden

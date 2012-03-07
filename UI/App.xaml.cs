@@ -6,13 +6,13 @@ namespace QuestMaster.EasyBankToYnab.UI
 {
     internal class ApplicationData
     {
-        private readonly FileGateway fileGateway = new FileGateway(new Mapper());
+        //private readonly FileGateway fileGateway = new FileGateway(new Mapper());
         private readonly DataContextProvider dataContextProvider;
         private readonly DefaultPathProvider defaultPathProvider = new DefaultPathProvider();
 
         public ApplicationData()
         {
-            this.dataContextProvider = new DataContextProvider(this.fileGateway);
+            //this.dataContextProvider = new DataContextProvider(this.fileGateway);
         }
 
         public DataContextProvider DataContextProvider

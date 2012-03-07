@@ -19,6 +19,7 @@ namespace QuestMaster.EasyBankToYnab.DomainTests
     [System.CodeDom.Compiler.GeneratedCodeAttribute("TechTalk.SpecFlow", "1.8.1.0")]
     [System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     [TechTalk.SpecRun.FeatureAttribute("Export of savings account entries")]
+    [Microsoft.VisualStudio.TestTools.UnitTesting.TestClassAttribute()]
     public partial class ExportOfSavingsAccountEntriesFeature
     {
         
@@ -43,11 +44,18 @@ namespace QuestMaster.EasyBankToYnab.DomainTests
             testRunner = null;
         }
         
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestInitializeAttribute()]
         public virtual void TestInitialize()
         {
+            if (((TechTalk.SpecFlow.FeatureContext.Current != null) 
+                        && (TechTalk.SpecFlow.FeatureContext.Current.FeatureInfo.Title != "Export of savings account entries")))
+            {
+                QuestMaster.EasyBankToYnab.DomainTests.ExportOfSavingsAccountEntriesFeature.FeatureSetupMsTest(null);
+            }
         }
         
         [TechTalk.SpecRun.ScenarioCleanup()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCleanupAttribute()]
         public virtual void ScenarioTearDown()
         {
             testRunner.OnScenarioEnd();
@@ -69,7 +77,22 @@ namespace QuestMaster.EasyBankToYnab.DomainTests
 #line hidden
         }
         
+        [Microsoft.VisualStudio.TestTools.UnitTesting.ClassInitializeAttribute()]
+        public static void FeatureSetupMsTest(Microsoft.VisualStudio.TestTools.UnitTesting.TestContext testContext)
+        {
+            new ExportOfSavingsAccountEntriesFeature().FeatureSetup();
+        }
+        
+        [Microsoft.VisualStudio.TestTools.UnitTesting.ClassCleanupAttribute()]
+        public static void FeatureTearDownMsTest()
+        {
+            new ExportOfSavingsAccountEntriesFeature().FeatureTearDown();
+        }
+        
         [TechTalk.SpecRun.ScenarioAttribute("Export savings account entries")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Export savings account entries")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Export of savings account entries")]
         public virtual void ExportSavingsAccountEntries()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Export savings account entries", ((string[])(null)));
@@ -151,7 +174,7 @@ this.FeatureBackground();
                         "EUR",
                         "True"});
 #line 10
-  testRunner.And("the following entries in that account", ((string)(null)), table1);
+  testRunner.And("the following entries in the account with number \'20027024468\'", ((string)(null)), table1);
 #line 18
   testRunner.When("I export all new entries");
 #line hidden

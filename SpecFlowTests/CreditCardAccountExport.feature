@@ -5,7 +5,7 @@
 
 Scenario: Export credit card account entries
   Given I have an account with number '20000134083'
-  And the following entries in that account
+  And the following entries in the account with number '20000134083'
   | Booking Date | Account     | Description                       | Payee                               | Value Date | Amount In | Amount Out | Currency | Is New |
   | 2011-06-29   | 20000134083 | USD 7,35 55432861179000422081119  | Manipulationsentgelt                | 2011-06-28 | 0.00      | 0.05       | EUR      | True   |
   | 2011-06-29   | 20000134083 | USD 7,35 55432861179000422081119  | Amazon Services-Kindle 866-321-8851 | 2011-06-28 | 0.00      | 5.18       | EUR      | True   |

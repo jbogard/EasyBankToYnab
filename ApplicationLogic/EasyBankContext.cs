@@ -1,23 +1,28 @@
 using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
-using QuestMaster.EasyBankToYnab.Gateways.EasyBank;
-using QuestMaster.EasyBankToYnab.Gateways.Xml;
-using QuestMaster.EasyBankToYnab.Gateways.Ynab;
 
 namespace QuestMaster.EasyBankToYnab.ApplicationLogic
 {
   public class EasyBankContext
   {
-    private readonly IEasyBankGateway statementImporter;
-    private readonly IYnabGateway ynabExporter;
+    private readonly Gateways.EasyBank.IEasyBankGateway statementImporter;
+    private readonly Gateways.Ynab.IYnabGateway ynabExporter;
     private readonly IMapper mapper;
-    private readonly IXmlGateway xmlGateway;
+    private readonly Gateways.Xml.IXmlGateway xmlGateway;
     private readonly List<Account> accounts = new List<Account>();
 
-    public EasyBankContext(IEasyBankGateway statementImporter, IYnabGateway ynabExporter, IMapper mapper, IXmlGateway xmlGateway)
+    public EasyBankContext(
+      Gateways.EasyBank.IEasyBankGateway statementImporter,
+      Gateways.Ynab.IYnabGateway ynabExporter,
+      Gateways.Xml.IXmlGateway xmlGateway,
+      IMapper mapper)
     {
+      if (statementImporter == null) throw new ArgumentNullException("statementImporter");
+      if (ynabExporter == null) throw new ArgumentNullException("ynabExporter");
+      if (xmlGateway == null) throw new ArgumentNullException("xmlGateway");
+      if (mapper == null) throw new ArgumentNullException("mapper");
+
       this.statementImporter = statementImporter;
       this.ynabExporter = ynabExporter;
       this.mapper = mapper;
@@ -55,20 +60,6 @@ namespace QuestMaster.EasyBankToYnab.ApplicationLogic
       this.accounts.Add(new Account(this.ynabExporter, this.mapper, accountNumber));
     }
 
-    //public void ImportStatement(string statement)
-    //{
-    //  this.AddEntry(this.statementImporter.Import(statement));
-    //}
-
-    //public void ImportStatements(IEnumerable<string> statements)
-    //{
-    //  foreach (var statement in statements)
-    //  {
-    //    this.ImportStatement(statement);
-    //  }
-    //}
-
-
     //public void Save()
     //{
     //  if (!File.Exists(path))
@@ -82,5 +73,33 @@ namespace QuestMaster.EasyBankToYnab.ApplicationLogic
 
     //  this.Write(dto);
     //}
+    public void RemoveAllAccounts()
+    {
+      this.accounts.Clear();
+    }
+
+    public void ExportEntries(bool newOnly)
+    {
+      IEnumerable<Entry> entries = this.accounts.SelectMany(acc => acc.Entries);
+
+      if (newOnly)
+      {
+        entries = entries.Where(entry => entry.IsNew);
+      }
+
+      this.ynabExporter.Write(this.mapper.Map<Entry[], Gateways.Ynab.EntryCollection>(entries.ToArray()));
+    }
+
+    public void ImportEntries()
+    {
+      Gateways.EasyBank.EntryCollection entryCollection = this.statementImporter.Read();
+
+      Entry[] entries = this.mapper.Map<Gateways.EasyBank.EntryCollection, Entry[]>(entryCollection);
+
+      foreach (var entry in entries)
+      {
+        this.AddEntry(entry);
+      }
+    }
   }
 }

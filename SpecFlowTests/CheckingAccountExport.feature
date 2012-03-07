@@ -5,7 +5,7 @@
 
 Scenario: Export checking account entries
   Given I have an account with number '20010203008'
-  And the following entries in that account
+  And the following entries in the account with number '20010203008'
   | Booking Date | Account     | Description                                    | Payee                                                   | Value Date | Amount In | Amount Out | Currency | Is New |
   | 2011-07-12   | 20010203008 | easykreditkarte MasterCard 000000 MC/000002237 |                                                         | 2011-07-11 |      0.00 | 757.70     | EUR      | True   |
   | 2011-07-12   | 20010203008 | Abbuchung Onlinebanking BG/000002236           | 14000 06710704145 Margit Obermaier                      | 2011-07-11 |      0.00 | 33.00      | EUR      | True   |

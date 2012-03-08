@@ -1,26 +1,20 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using QuestMaster.EasyBankToYnab.Gateways.Ynab;
 
 namespace QuestMaster.EasyBankToYnab.ApplicationLogic
 {
   public class Account
   {
     private readonly EntryCollection entries;
-    private readonly IYnabGateway ynabExporter;
-    private readonly IMapper mapper;
     private readonly string number;
 
-    public Account(IYnabGateway ynabExporter, IMapper mapper, string number)
-      : this(ynabExporter, mapper, number, new Entry[0])
+    public Account(string number)
+      : this(number, new Entry[0])
     {
     }
 
-    public Account(IYnabGateway ynabExporter, IMapper mapper, string number, IEnumerable<Entry> entries)
+    public Account(string number, IEnumerable<Entry> entries)
     {
-      this.ynabExporter = ynabExporter;
-      this.mapper = mapper;
       this.number = number;
       this.entries = new EntryCollection();
 
@@ -45,27 +39,12 @@ namespace QuestMaster.EasyBankToYnab.ApplicationLogic
       this.entries.Add(entry);
     }
 
-    public void ExportNewEntries()
+    public void MarkStatementsAsOld()
     {
-      ExportTheseEntries(this.Entries.Where(e => e.IsNew));
-    }
-
-    private void ExportTheseEntries(IEnumerable<Entry> selection)
-    {
-      this.ynabExporter.Write(new Gateways.Ynab.EntryCollection(null, selection.Select(mapper.Map<Entry, Gateways.Ynab.Entry>).ToArray()));
-    }
-
-    public void ExportAllEntries()
-    {
-      this.ExportTheseEntries(this.Entries);
-    }
-
-      public void MarkStatementsOfAccountAsOld()
+      foreach (var entry in Entries)
       {
-          foreach (var entry in Entries)
-          {
-              entry.IsNew = false;
-          }
+        entry.IsNew = false;
       }
+    }
   }
 }

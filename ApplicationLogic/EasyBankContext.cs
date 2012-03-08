@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using QuestMaster.EasyBankToYnab.Gateways;
 using QuestMaster.EasyBankToYnab.Gateways.EasyBank;
 using QuestMaster.EasyBankToYnab.Gateways.Xml;
 using QuestMaster.EasyBankToYnab.Gateways.Ynab;
@@ -9,26 +10,28 @@ namespace QuestMaster.EasyBankToYnab.ApplicationLogic
 {
   public class EasyBankContext
   {
-    private readonly Gateways.EasyBank.IEasyBankGateway statementImporter;
-    private readonly Gateways.Ynab.IYnabGateway ynabExporter;
+    private readonly IEasyBankGateway statementImporter;
+    private readonly IYnabGateway ynabExporter;
     private readonly IMapper mapper;
-    private readonly Gateways.Xml.IXmlGateway xmlGateway;
+    private readonly IXmlGateway xmlGateway;
     private readonly AccountCollection accounts = new AccountCollection();
+    private IFileAccess fileAccess;
 
     public EasyBankContext(
-      Gateways.EasyBank.IEasyBankGateway statementImporter,
-      Gateways.Ynab.IYnabGateway ynabExporter,
-      Gateways.Xml.IXmlGateway xmlGateway,
-      IMapper mapper) : this(statementImporter, ynabExporter, xmlGateway, mapper, new Entry[0])
+      IEasyBankGateway statementImporter,
+      IYnabGateway ynabExporter,
+      IXmlGateway xmlGateway,
+      IMapper mapper)
+      : this(statementImporter, ynabExporter, xmlGateway, mapper, new Entry[0])
     {
     }
 
     public EasyBankContext(IEasyBankGateway statementImporter, IYnabGateway ynabExporter, IXmlGateway xmlGateway, IMapper mapper, IEnumerable<Entry> entries)
     {
-      //if (statementImporter == null) throw new ArgumentNullException("statementImporter");
-      //if (ynabExporter == null) throw new ArgumentNullException("ynabExporter");
-      //if (xmlGateway == null) throw new ArgumentNullException("xmlGateway");
-      //if (mapper == null) throw new ArgumentNullException("mapper");
+      if (statementImporter == null) throw new ArgumentNullException("statementImporter");
+      if (ynabExporter == null) throw new ArgumentNullException("ynabExporter");
+      if (xmlGateway == null) throw new ArgumentNullException("xmlGateway");
+      if (mapper == null) throw new ArgumentNullException("mapper");
 
       this.statementImporter = statementImporter;
       this.ynabExporter = ynabExporter;
@@ -67,29 +70,17 @@ namespace QuestMaster.EasyBankToYnab.ApplicationLogic
       return SelectMatchingAccounts(accountNumber).Any();
     }
 
-    private IEnumerable<Account> SelectMatchingAccounts(string accountNumber)
-    {
-      return this.accounts.Where(a => a.Number == accountNumber);
-    }
-
     public void AddAcount(string accountNumber)
     {
-      this.accounts.Add(new Account(this.ynabExporter, this.mapper, accountNumber));
+      this.accounts.Add(new Account(accountNumber));
     }
 
-    //public void Save()
-    //{
-    //  if (!File.Exists(path))
-    //  {
-    //    throw new ArgumentException("Path must exist", "path");
-    //  }
+    public void Save()
+    {
+      BackupCurrentFile(path);
 
-    //  BackupCurrentFile(path);
-
-    //  EasyBank dto = this.Convert(this);
-
-    //  this.Write(dto);
-    //}
+      this.xmlGateway.Write(this.mapper.Map<EasyBankContext, Gateways.Xml.EasyBank>(this));
+    }
     public void RemoveAllAccounts()
     {
       this.accounts.Clear();
@@ -117,6 +108,11 @@ namespace QuestMaster.EasyBankToYnab.ApplicationLogic
       {
         this.AddEntry(entry);
       }
+    }
+
+    private IEnumerable<Account> SelectMatchingAccounts(string accountNumber)
+    {
+      return this.accounts.Where(a => a.Number == accountNumber);
     }
   }
 }

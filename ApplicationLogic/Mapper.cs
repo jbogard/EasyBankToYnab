@@ -12,7 +12,7 @@ namespace QuestMaster.EasyBankToYnab.ApplicationLogic
       AutoMapper.Mapper.CreateMap<Gateways.Xml.Entry, Entry>();
       AutoMapper.Mapper.CreateMap<Account, Gateways.Xml.Account>();
       AutoMapper.Mapper.CreateMap<Gateways.Xml.Account, Account>()
-        .ConstructUsing(xmlAccount => new Account(null, null, xmlAccount.Number, xmlAccount.Entries.Select(Map<Gateways.Xml.Entry, Entry>)));
+        .ConstructUsing(xmlAccount => new Account(xmlAccount.Number, xmlAccount.Entries.Select(Map<Gateways.Xml.Entry, Entry>)));
       AutoMapper.Mapper.CreateMap<EasyBankContext, Gateways.Xml.EasyBank>();
       AutoMapper.Mapper.CreateMap<Gateways.Xml.EasyBank, EasyBankContext>()
         .ConstructUsing(xmlEasyBank => new EasyBankContext(null, null, null, null, xmlEasyBank.Accounts.SelectMany(a => a.Entries).Select(Map<Gateways.Xml.Entry, Entry>)));

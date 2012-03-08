@@ -93,7 +93,7 @@ namespace QuestMaster.EasyBankToYnab.ApplicationLogic
       [TestMethod]
       public void MapAccount()
       {
-        var domainAccount = new Account(new Mock<Gateways.Ynab.IYnabGateway>().Object, new Mock<IMapper>().Object, "account number");
+        var domainAccount = new Account("account number");
         domainAccount.AddEntry(new Entry { Account = "account number", Description = "description 1" });
         domainAccount.AddEntry(new Entry { Account = "account number", Description = "description 2" });
 
@@ -110,8 +110,8 @@ namespace QuestMaster.EasyBankToYnab.ApplicationLogic
       {
         var domainAccounts = new AccountCollection
                                {
-                                 new Account(new Mock<Gateways.Ynab.IYnabGateway>().Object, new Mock<IMapper>().Object, "account number 1"),
-                                 new Account(new Mock<Gateways.Ynab.IYnabGateway>().Object, new Mock<IMapper>().Object, "account number 2")
+                                 new Account("account number 1"),
+                                 new Account("account number 2")
                                };
 
         Gateways.Xml.AccountCollection xmlAccounts = this.mapper.MapDomainToXml(domainAccounts);

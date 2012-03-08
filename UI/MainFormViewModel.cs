@@ -177,7 +177,7 @@ namespace QuestMaster.EasyBankToYnab.UI
 
             if (account != null)
             {
-                account.MarkStatementsOfAccountAsOld();
+                account.MarkStatementsAsOld();
 
                 OnPropertyChanged(() => this.Accounts);
             }

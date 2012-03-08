@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Moq;
 
 namespace QuestMaster.EasyBankToYnab.ApplicationLogic
 {
@@ -8,6 +10,18 @@ namespace QuestMaster.EasyBankToYnab.ApplicationLogic
     private static IMapper ConstructMapper()
     {
       return new Mapper();
+    }
+
+    [TestClass]
+    public class ConfigurationTests
+    {
+      [TestMethod]
+      public void ConfigurationShouldBeValid()
+      {
+        ConstructMapper();
+
+        AutoMapper.Mapper.AssertConfigurationIsValid();
+      }
     }
 
     [TestClass]
@@ -74,6 +88,56 @@ namespace QuestMaster.EasyBankToYnab.ApplicationLogic
         Assert.AreEqual(2, xmlCollection.Count);
         Assert.AreEqual("account number 1", xmlCollection[0].Account);
         Assert.AreEqual("account number 2", xmlCollection[1].Account);
+      }
+
+      [TestMethod]
+      public void MapAccount()
+      {
+        var domainAccount = new Account(new Mock<Gateways.Ynab.IYnabGateway>().Object, new Mock<IMapper>().Object, "account number");
+        domainAccount.AddEntry(new Entry { Account = "account number", Description = "description 1" });
+        domainAccount.AddEntry(new Entry { Account = "account number", Description = "description 2" });
+
+        Gateways.Xml.Account xmlAccount = this.mapper.MapDomainToXml(domainAccount);
+
+        Assert.AreEqual("account number", xmlAccount.Number);
+        Assert.AreEqual(2, xmlAccount.Entries.Count);
+        Assert.AreEqual("description 1", xmlAccount.Entries[0].Description);
+        Assert.AreEqual("description 2", xmlAccount.Entries[1].Description);
+      }
+
+      [TestMethod]
+      public void MapAccountCollection()
+      {
+        var domainAccounts = new AccountCollection
+                               {
+                                 new Account(new Mock<Gateways.Ynab.IYnabGateway>().Object, new Mock<IMapper>().Object, "account number 1"),
+                                 new Account(new Mock<Gateways.Ynab.IYnabGateway>().Object, new Mock<IMapper>().Object, "account number 2")
+                               };
+
+        Gateways.Xml.AccountCollection xmlAccounts = this.mapper.MapDomainToXml(domainAccounts);
+
+        Assert.AreEqual(2, xmlAccounts.Count);
+        Assert.AreEqual("account number 1", xmlAccounts[0].Number);
+        Assert.AreEqual("account number 2", xmlAccounts[1].Number);
+      }
+
+      [TestMethod]
+      public void MapEasyBankContext()
+      {
+        var domainEasyBank = new EasyBankContext(
+          new Mock<Gateways.EasyBank.IEasyBankGateway>().Object,
+          new Mock<Gateways.Ynab.IYnabGateway>().Object,
+          new Mock<Gateways.Xml.IXmlGateway>().Object,
+          new Mock<IMapper>().Object);
+
+        domainEasyBank.AddAcount("account number 1");
+        domainEasyBank.AddAcount("account number 2");
+
+        Gateways.Xml.EasyBank xmlEasyBank = this.mapper.MapDomainToXml(domainEasyBank);
+
+        Assert.AreEqual(2, xmlEasyBank.Accounts.Count);
+        Assert.AreEqual("account number 1", xmlEasyBank.Accounts[0].Number);
+        Assert.AreEqual("account number 2", xmlEasyBank.Accounts[1].Number);
       }
     }
 
@@ -143,6 +207,74 @@ namespace QuestMaster.EasyBankToYnab.ApplicationLogic
         Assert.AreEqual(2, domainCollection.Count);
         Assert.AreEqual("account number 1", domainCollection[0].Account);
         Assert.AreEqual("account number 2", domainCollection[1].Account);
+      }
+
+      [TestMethod]
+      public void MapAccount()
+      {
+        var domainAccount = new Gateways.Xml.Account
+                              {
+                                Number = "account number",
+                                Entries = new Gateways.Xml.EntryCollection
+                                            {
+                                              new Gateways.Xml.Entry { Account = "account number", Description = "description 1" },
+                                              new Gateways.Xml.Entry { Account = "account number", Description = "description 2" },
+                                            }
+                              };
+
+        Account xmlAccount = this.mapper.MapXmlToDomain(domainAccount);
+
+        Assert.AreEqual("account number", xmlAccount.Number);
+        Assert.AreEqual(2, xmlAccount.Entries.Count());
+        Assert.AreEqual("description 1", xmlAccount.Entries.First().Description);
+        Assert.AreEqual("description 2", xmlAccount.Entries.Skip(1).First().Description);
+      }
+
+      [TestMethod]
+      public void MapAccountCollection()
+      {
+        var xmlEntry1 = new Gateways.Xml.Account
+        {
+          Number = "account number 1",
+          Entries = new Gateways.Xml.EntryCollection()
+        };
+
+        var xmlEntry2 = new Gateways.Xml.Account
+        {
+          Number = "account number 2",
+          Entries = new Gateways.Xml.EntryCollection()
+        };
+
+        var xmlCollection = new Gateways.Xml.AccountCollection
+                           {
+                             xmlEntry1,
+                             xmlEntry2
+                           };
+
+        AccountCollection domainCollection = this.mapper.MapXmlToDomain(xmlCollection);
+
+        Assert.AreEqual(2, domainCollection.Count);
+        Assert.AreEqual("account number 1", domainCollection[0].Number);
+        Assert.AreEqual("account number 2", domainCollection[1].Number);
+      }
+      
+      [TestMethod]
+      public void MapEasyBankContext()
+      {
+        var xmlEasyBank = new Gateways.Xml.EasyBank
+                               {
+                                 Accounts = new Gateways.Xml.AccountCollection
+                                              {
+                                                new Gateways.Xml.Account { Number = "account number 1", Entries = new Gateways.Xml.EntryCollection { new Gateways.Xml.Entry { Account = "account number 1" } } },
+                                                new Gateways.Xml.Account { Number = "account number 2", Entries = new Gateways.Xml.EntryCollection { new Gateways.Xml.Entry { Account = "account number 2" } } }
+                                              }
+                               };
+
+        EasyBankContext domainEasyBank = this.mapper.MapXmlToDomain(xmlEasyBank);
+
+        Assert.AreEqual(2, domainEasyBank.Accounts.Count());
+        Assert.AreEqual("account number 1", domainEasyBank.Accounts.First().Number);
+        Assert.AreEqual("account number 2", domainEasyBank.Accounts.Skip(1).First().Number);
       }
     }
   }

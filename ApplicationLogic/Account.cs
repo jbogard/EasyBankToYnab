@@ -13,11 +13,21 @@ namespace QuestMaster.EasyBankToYnab.ApplicationLogic
     private readonly string number;
 
     public Account(IYnabGateway ynabExporter, IMapper mapper, string number)
+      : this(ynabExporter, mapper, number, new Entry[0])
+    {
+    }
+
+    public Account(IYnabGateway ynabExporter, IMapper mapper, string number, IEnumerable<Entry> entries)
     {
       this.ynabExporter = ynabExporter;
       this.mapper = mapper;
       this.number = number;
       this.entries = new EntryCollection();
+
+      foreach (var entry in entries)
+      {
+        this.AddEntry(entry);
+      }
     }
 
     public string Number

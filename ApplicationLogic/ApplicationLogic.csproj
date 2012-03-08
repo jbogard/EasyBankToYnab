@@ -44,6 +44,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Account.cs" />
+    <Compile Include="AccountCollection.cs" />
     <Compile Include="AutoMapperConfiguration.cs" />
     <Compile Include="DataContextProvider.cs" />
     <Compile Include="EasyBankContext.cs" />

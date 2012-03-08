@@ -1,6 +1,9 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using QuestMaster.EasyBankToYnab.Gateways.EasyBank;
+using QuestMaster.EasyBankToYnab.Gateways.Xml;
+using QuestMaster.EasyBankToYnab.Gateways.Ynab;
 
 namespace QuestMaster.EasyBankToYnab.ApplicationLogic
 {
@@ -10,28 +13,42 @@ namespace QuestMaster.EasyBankToYnab.ApplicationLogic
     private readonly Gateways.Ynab.IYnabGateway ynabExporter;
     private readonly IMapper mapper;
     private readonly Gateways.Xml.IXmlGateway xmlGateway;
-    private readonly List<Account> accounts = new List<Account>();
+    private readonly AccountCollection accounts = new AccountCollection();
 
     public EasyBankContext(
       Gateways.EasyBank.IEasyBankGateway statementImporter,
       Gateways.Ynab.IYnabGateway ynabExporter,
       Gateways.Xml.IXmlGateway xmlGateway,
-      IMapper mapper)
+      IMapper mapper) : this(statementImporter, ynabExporter, xmlGateway, mapper, new Entry[0])
     {
-      if (statementImporter == null) throw new ArgumentNullException("statementImporter");
-      if (ynabExporter == null) throw new ArgumentNullException("ynabExporter");
-      if (xmlGateway == null) throw new ArgumentNullException("xmlGateway");
-      if (mapper == null) throw new ArgumentNullException("mapper");
+    }
+
+    public EasyBankContext(IEasyBankGateway statementImporter, IYnabGateway ynabExporter, IXmlGateway xmlGateway, IMapper mapper, IEnumerable<Entry> entries)
+    {
+      //if (statementImporter == null) throw new ArgumentNullException("statementImporter");
+      //if (ynabExporter == null) throw new ArgumentNullException("ynabExporter");
+      //if (xmlGateway == null) throw new ArgumentNullException("xmlGateway");
+      //if (mapper == null) throw new ArgumentNullException("mapper");
 
       this.statementImporter = statementImporter;
       this.ynabExporter = ynabExporter;
       this.mapper = mapper;
       this.xmlGateway = xmlGateway;
+
+      foreach (var entry in entries)
+      {
+        this.AddEntry(entry);
+      }
     }
 
     public Account this[string accountNumber]
     {
       get { return this.SelectMatchingAccounts(accountNumber).SingleOrDefault(); }
+    }
+
+    public IEnumerable<Account> Accounts
+    {
+      get { return this.accounts; }
     }
 
     public void AddEntry(Entry entry)

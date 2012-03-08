@@ -6,6 +6,11 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpecFlowTests", "SpecFlowTests\SpecFlowTests.csproj", "{8BD9D6C8-E676-4754-9B79-6CF9EB76E347}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{8F490E61-3FB5-496F-B4FA-93C778C768D2}"
+	ProjectSection(SolutionItems) = preProject
+		EasyBankToYnab.vsmdi = EasyBankToYnab.vsmdi
+		Local.testsettings = Local.testsettings
+		TraceAndTestImpact.testsettings = TraceAndTestImpact.testsettings
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gateways", "Dto\Gateways.csproj", "{02521171-187B-4E2F-B058-776CB4885782}"
 EndProject
@@ -17,7 +22,12 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{524C34
 		.nuget\NuGet.targets = .nuget\NuGet.targets
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApplicationLogic.Tests", "ApplicationLogic.Tests\ApplicationLogic.Tests.csproj", "{ECE7AEF9-AF6D-4942-9B3D-8AD1FA541223}"
+EndProject
 Global
+	GlobalSection(TestCaseManagementSettings) = postSolution
+		CategoryFile = EasyBankToYnab.vsmdi
+	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
@@ -39,6 +49,10 @@ Global
 		{806366BB-30AA-4C70-B1DA-9BE3EAFA8153}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{806366BB-30AA-4C70-B1DA-9BE3EAFA8153}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{806366BB-30AA-4C70-B1DA-9BE3EAFA8153}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ECE7AEF9-AF6D-4942-9B3D-8AD1FA541223}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ECE7AEF9-AF6D-4942-9B3D-8AD1FA541223}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ECE7AEF9-AF6D-4942-9B3D-8AD1FA541223}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ECE7AEF9-AF6D-4942-9B3D-8AD1FA541223}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -7,7 +7,7 @@ namespace QuestMaster.EasyBankToYnab.ApplicationLogic
 {
   public class Account
   {
-    private readonly List<Entry> entries;
+    private readonly EntryCollection entries;
     private readonly IYnabGateway ynabExporter;
     private readonly IMapper mapper;
     private readonly string number;
@@ -17,7 +17,7 @@ namespace QuestMaster.EasyBankToYnab.ApplicationLogic
       this.ynabExporter = ynabExporter;
       this.mapper = mapper;
       this.number = number;
-      this.entries = new List<Entry>();
+      this.entries = new EntryCollection();
     }
 
     public string Number
@@ -42,7 +42,7 @@ namespace QuestMaster.EasyBankToYnab.ApplicationLogic
 
     private void ExportTheseEntries(IEnumerable<Entry> selection)
     {
-      this.ynabExporter.Write(new EntryCollection(null, selection.Select(mapper.Map<Entry, Gateways.Ynab.Entry>).ToArray()));
+      this.ynabExporter.Write(new Gateways.Ynab.EntryCollection(null, selection.Select(mapper.Map<Entry, Gateways.Ynab.Entry>).ToArray()));
     }
 
     public void ExportAllEntries()

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using QuestMaster.EasyBankToYnab.Gateways.Ynab;
 
-namespace QuestMaster.EasyBankToYnab.ApplicationLogic
+namespace QuestMaster.EasyBankToYnab.ApplicationLogic.Agents
 {
   public class YnabAgent : IYnabAgent
   {

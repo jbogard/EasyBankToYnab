@@ -1,5 +1,6 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using QuestMaster.EasyBankToYnab.ApplicationLogic.Mappers;
 
 namespace QuestMaster.EasyBankToYnab.ApplicationLogic
 {

@@ -2,7 +2,7 @@ using System;
 using System.Linq;
 using QuestMaster.EasyBankToYnab.Gateways.Xml;
 
-namespace QuestMaster.EasyBankToYnab.ApplicationLogic
+namespace QuestMaster.EasyBankToYnab.ApplicationLogic.Mappers
 {
   public class XmlMapper : IXmlMapper
   {

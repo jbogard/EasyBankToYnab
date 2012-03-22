@@ -1,6 +1,7 @@
 ﻿using System;
 using QuestMaster.EasyBankToYnab.ApplicationLogic;
 using QuestMaster.EasyBankToYnab.ApplicationLogic.Agents;
+using QuestMaster.EasyBankToYnab.ApplicationLogic.Mappers;
 using QuestMaster.EasyBankToYnab.Gateways.Csv;
 using QuestMaster.EasyBankToYnab.Gateways.Xml;
 using QuestMaster.EasyBankToYnab.Gateways.Ynab;

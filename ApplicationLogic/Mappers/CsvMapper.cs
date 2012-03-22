@@ -1,7 +1,7 @@
 using System;
 using QuestMaster.EasyBankToYnab.Gateways.Csv;
 
-namespace QuestMaster.EasyBankToYnab.ApplicationLogic
+namespace QuestMaster.EasyBankToYnab.ApplicationLogic.Mappers
 {
   public class CsvMapper : ICsvMapper
   {

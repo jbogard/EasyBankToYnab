@@ -6,7 +6,7 @@ namespace QuestMaster.EasyBankToYnab.ApplicationLogic
 {
   public class YnabMapperTests
   {
-    private static IYnabMapper ConstructMapper()
+    private static YnabMapper ConstructMapper()
     {
       return new YnabMapper();
     }
@@ -26,7 +26,7 @@ namespace QuestMaster.EasyBankToYnab.ApplicationLogic
     [TestClass]
     public class MapDomainToYnab
     {
-      private IYnabMapper mapper;
+      private YnabMapper mapper;
 
       [TestInitialize]
       public void Setup()

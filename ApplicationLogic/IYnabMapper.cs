@@ -5,7 +5,6 @@ namespace QuestMaster.EasyBankToYnab.ApplicationLogic
 {
   public interface IYnabMapper
   {
-    YnabEntry MapToYnab(Entry entry);
     YnabEntryCollection MapToYnab(Entry[] entries);
   }
 }

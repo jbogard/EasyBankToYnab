@@ -19,7 +19,7 @@ namespace QuestMaster.EasyBankToYnab.ApplicationLogic
         .ConstructUsing(xmlAccount => new Account(xmlAccount.Number, xmlAccount.Entries.Select(Map<XmlEntry, Entry>)));
       AutoMapper.Mapper.CreateMap<EasyBankContext, XmlEasyBank>();
       AutoMapper.Mapper.CreateMap<XmlEasyBank, EasyBankContext>()
-        .ConstructUsing(xmlEasyBank => new EasyBankContext(null, null, null, null, null, null, xmlEasyBank.Accounts.SelectMany(a => a.Entries).Select(Map<XmlEntry, Entry>)));
+        .ConstructUsing(xmlEasyBank => new EasyBankContext(null, null, null, null, null, xmlEasyBank.Accounts.SelectMany(a => a.Entries).Select(Map<XmlEntry, Entry>)));
 
       AutoMapper.Mapper.CreateMap<Entry, YnabEntry>()
         .ConstructUsing(

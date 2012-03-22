@@ -2,15 +2,13 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using QuestMaster.EasyBankToYnab.Gateways;
-using QuestMaster.EasyBankToYnab.Gateways.Ynab;
 
 namespace QuestMaster.EasyBankToYnab.ApplicationLogic
 {
   public class EasyBankContext
   {
     private readonly ICsvAgent statementImporter;
-    private readonly IYnabGateway ynabExporter;
-    private readonly IMapper mapper;
+    private readonly IYnabAgent ynabExporter;
     private readonly IXmlAgent xmlAgent;
     private readonly AccountCollection accounts = new AccountCollection();
     private readonly IFileAccess fileAccess;
@@ -18,20 +16,18 @@ namespace QuestMaster.EasyBankToYnab.ApplicationLogic
 
     public EasyBankContext(
       ICsvAgent statementImporter,
-      IYnabGateway ynabExporter,
+      IYnabAgent ynabExporter,
       IXmlAgent xmlAgent,
-      IMapper mapper,
       IFileAccess fileAccess,
       IDefaultPathProvider pathProvider)
-      : this(statementImporter, ynabExporter, xmlAgent, mapper, fileAccess, pathProvider, new Entry[0])
+      : this(statementImporter, ynabExporter, xmlAgent, fileAccess, pathProvider, new Entry[0])
     {
     }
 
     public EasyBankContext(
       ICsvAgent statementImporter,
-      IYnabGateway ynabExporter,
+      IYnabAgent ynabExporter,
       IXmlAgent xmlAgent, 
-      IMapper mapper, 
       IFileAccess fileAccess, 
       IDefaultPathProvider pathProvider,
       IEnumerable<Entry> entries)
@@ -39,13 +35,11 @@ namespace QuestMaster.EasyBankToYnab.ApplicationLogic
       if (statementImporter == null) throw new ArgumentNullException("statementImporter");
       if (ynabExporter == null) throw new ArgumentNullException("ynabExporter");
       if (xmlAgent == null) throw new ArgumentNullException("xmlAgent");
-      if (mapper == null) throw new ArgumentNullException("mapper");
       if (fileAccess == null) throw new ArgumentNullException("fileAccess");
       if (pathProvider == null) throw new ArgumentNullException("pathProvider");
 
       this.statementImporter = statementImporter;
       this.ynabExporter = ynabExporter;
-      this.mapper = mapper;
       this.xmlAgent = xmlAgent;
       this.fileAccess = fileAccess;
       this.pathProvider = pathProvider;
@@ -118,7 +112,7 @@ namespace QuestMaster.EasyBankToYnab.ApplicationLogic
         entries = entries.Where(entry => entry.IsNew);
       }
 
-      this.ynabExporter.Write(this.mapper.MapToYnab(entries.ToArray()));
+      this.ynabExporter.Write(entries);
     }
 
     public void ImportEntries()

@@ -21,16 +21,4 @@ namespace QuestMaster.EasyBankToYnab.ApplicationLogic
     Gateways.Ynab.YnabEntryCollection MapToYnab(Entry[] entries);
     Entry MapToDomain(Gateways.Csv.CsvEntry csvEntry);
 }
-
-  public interface IXmlMapper : IMapper
-  {
-  }
-
-  public interface IYnabMapper : IMapper
-  {
-  }
-
-  public interface ICsvMapper : IMapper
-  {
-  }
 }

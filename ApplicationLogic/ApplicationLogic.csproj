@@ -52,6 +52,7 @@
     <Compile Include="IMapper.cs" />
     <Compile Include="IDataContextProvider.cs" />
     <Compile Include="IDefaultPathProvider.cs" />
+    <Compile Include="IXmlAgent.cs" />
     <Compile Include="Mapper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

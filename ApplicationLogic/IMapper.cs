@@ -4,33 +4,33 @@ namespace QuestMaster.EasyBankToYnab.ApplicationLogic
 {
   public interface IMapper
   {
-    Gateways.Xml.XmlEntry MapToXml(Entry entry);
-    Entry MapToDomain(Gateways.Xml.XmlEntry xmlEntry);
+    XmlEntry MapToXml(Entry entry);
+    Entry MapToDomain(XmlEntry xmlEntry);
 
-    Gateways.Xml.XmlEntryCollection MapToXml(EntryCollection entries);
-    EntryCollection MapToDomain(Gateways.Xml.XmlEntryCollection xmlEntries);
+    XmlEntryCollection MapToXml(EntryCollection entries);
+    EntryCollection MapToDomain(XmlEntryCollection xmlEntries);
 
-    //Gateways.Xml.XmlAccount MapToXml(XmlAccount account);
-    //Gateways.Xml.XmlAccountCollection MapToXml(XmlAccountCollection accounts);
+    //XmlAccount MapToXml(XmlAccount account);
+    //XmlAccountCollection MapToXml(XmlAccountCollection accounts);
     XmlEasyBank MapToXml(EasyBankContext easyBank);
 
-    //XmlAccount MapToDomain(Gateways.Xml.XmlAccount account);
-    //XmlAccountCollection MapToDomain(Gateways.Xml.XmlAccountCollection accounts);
+    //XmlAccount MapToDomain(XmlAccount account);
+    //XmlAccountCollection MapToDomain(XmlAccountCollection accounts);
     //EasyBankContext MapToDomain(XmlEasyBank easyBank);
     Gateways.Ynab.YnabEntry MapToYnab(Entry entry);
     Gateways.Ynab.YnabEntryCollection MapToYnab(Entry[] entries);
-     Entry MapToDomain(Gateways.Csv.CsvEntry csvEntry);
+    Entry MapToDomain(Gateways.Csv.CsvEntry csvEntry);
 }
 
-  public interface IXmlMapper
+  public interface IXmlMapper : IMapper
   {
   }
 
-  public interface IYnabMapper
+  public interface IYnabMapper : IMapper
   {
   }
 
-  public interface IEasyBankMapper
+  public interface IEasyBankMapper : IMapper
   {
   }
 }

@@ -3,7 +3,6 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 using QuestMaster.EasyBankToYnab.Gateways;
 using QuestMaster.EasyBankToYnab.Gateways.Csv;
-using QuestMaster.EasyBankToYnab.Gateways.Xml;
 using QuestMaster.EasyBankToYnab.Gateways.Ynab;
 
 namespace QuestMaster.EasyBankToYnab.ApplicationLogic
@@ -20,7 +19,7 @@ namespace QuestMaster.EasyBankToYnab.ApplicationLogic
         new EasyBankContext(
           null,
           new Mock<IYnabGateway>().Object,
-          new Mock<IXmlGateway>().Object,
+          new Mock<IXmlAgent>().Object,
           new Mock<IMapper>().Object,
           new Mock<IFileAccess>().Object,
           new Mock<IDefaultPathProvider>().Object);
@@ -33,7 +32,7 @@ namespace QuestMaster.EasyBankToYnab.ApplicationLogic
         new EasyBankContext(
           new Mock<ICsvGateway>().Object,
           null,
-          new Mock<IXmlGateway>().Object,
+          new Mock<IXmlAgent>().Object,
           new Mock<IMapper>().Object,
           new Mock<IFileAccess>().Object,
           new Mock<IDefaultPathProvider>().Object);
@@ -59,7 +58,7 @@ namespace QuestMaster.EasyBankToYnab.ApplicationLogic
         new EasyBankContext(
           new Mock<ICsvGateway>().Object,
           new Mock<IYnabGateway>().Object,
-          new Mock<IXmlGateway>().Object,
+          new Mock<IXmlAgent>().Object,
           null,
           new Mock<IFileAccess>().Object,
           new Mock<IDefaultPathProvider>().Object);
@@ -72,7 +71,7 @@ namespace QuestMaster.EasyBankToYnab.ApplicationLogic
         new EasyBankContext(
           new Mock<ICsvGateway>().Object,
           new Mock<IYnabGateway>().Object,
-          new Mock<IXmlGateway>().Object,
+          new Mock<IXmlAgent>().Object,
           new Mock<IMapper>().Object,
           null,
           new Mock<IDefaultPathProvider>().Object);
@@ -85,7 +84,7 @@ namespace QuestMaster.EasyBankToYnab.ApplicationLogic
         new EasyBankContext(
           new Mock<ICsvGateway>().Object,
           new Mock<IYnabGateway>().Object,
-          new Mock<IXmlGateway>().Object,
+          new Mock<IXmlAgent>().Object,
           new Mock<IMapper>().Object,
           new Mock<IFileAccess>().Object,
           null);

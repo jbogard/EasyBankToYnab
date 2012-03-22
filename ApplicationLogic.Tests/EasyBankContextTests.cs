@@ -3,7 +3,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 using QuestMaster.EasyBankToYnab.Gateways;
 
-namespace QuestMaster.EasyBankToYnab.ApplicationLogic.Mappers
+namespace QuestMaster.EasyBankToYnab.ApplicationLogic
 {
   public class EasyBankContextTests
   {

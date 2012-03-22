@@ -11,7 +11,7 @@ namespace QuestMaster.EasyBankToYnab.ApplicationLogic.Mappers
     }
 
     [TestClass]
-    public class ConfigurationTests
+    public class ConstructorTests
     {
       [TestMethod]
       public void ConfigurationShouldBeValid()
@@ -23,19 +23,7 @@ namespace QuestMaster.EasyBankToYnab.ApplicationLogic.Mappers
     }
 
     [TestClass]
-    public class MapDomainToYnab
-    {
-      private ICsvMapper mapper;
-
-      [TestInitialize]
-      public void Setup()
-      {
-        this.mapper = ConstructMapper();
-      }
-    }
-
-    [TestClass]
-    public class MapEasyBankToDomain
+    public class MapToDomainTests
     {
       private ICsvMapper mapper;
 

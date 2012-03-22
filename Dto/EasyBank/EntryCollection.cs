@@ -14,7 +14,7 @@ namespace QuestMaster.EasyBankToYnab.Gateways.EasyBank
       if (lines == null) throw new ArgumentNullException("lines");
       if (lines.Length < 1) throw new ArgumentException("Array 'lines' must not be empty.", "lines");
 
-      this.entries = lines.Skip(1).Select(line => new Entry(line)).ToArray();
+      this.entries = lines.Select(line => new Entry(line)).ToArray();
     }
 
     public IEnumerator<Entry> GetEnumerator()

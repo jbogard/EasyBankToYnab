@@ -41,21 +41,21 @@ namespace QuestMaster.EasyBankToYnab.DomainTests.Bindings
 
       for (int i = 0; i < expectedRows.Length; i++)
       {
-        AssertEntry(expectedRows[i], actualEntries[i + 1]);
+        AssertEntry(expectedRows[i], actualEntries[i], i);
       }
     }
 
-    private static void AssertEntry(EntryRow expected, Entry actual)
+    private static void AssertEntry(EntryRow expected, Entry actual, int index)
     {
-      Assert.AreEqual(expected.Account, actual.Account, "Account");
-      Assert.AreEqual(expected.BookingDate, actual.BookingDate, "BookingDate");
-      Assert.AreEqual(expected.Description, actual.Description, "Description");
-      Assert.AreEqual(expected.Payee, actual.Payee, "Payee");
-      Assert.AreEqual(expected.ValueDate, actual.ValueDate, "Value Date");
-      Assert.AreEqual(expected.AmountIn, actual.AmountIn, "Amount In");
-      Assert.AreEqual(expected.AmountOut, actual.AmountOut, "Amount Out");
-      Assert.AreEqual(expected.Currency, actual.Currency, "Currency");
-      Assert.AreEqual(expected.IsNew, actual.IsNew, "Is New");
+      Assert.AreEqual(expected.Account, actual.Account, "Row {0} Account", index);
+      Assert.AreEqual(expected.BookingDate, actual.BookingDate, "Row {0} BookingDate", index);
+      Assert.AreEqual(expected.Description, actual.Description, "Row {0} Description", index);
+      Assert.AreEqual(expected.Payee, actual.Payee, "Row {0} Payee", index);
+      Assert.AreEqual(expected.ValueDate, actual.ValueDate, "Row {0} Value Date", index);
+      Assert.AreEqual(expected.AmountIn, actual.AmountIn, "Row {0} Amount In", index);
+      Assert.AreEqual(expected.AmountOut, actual.AmountOut, "Row {0} Amount Out", index);
+      Assert.AreEqual(expected.Currency, actual.Currency, "Row {0} Currency", index);
+      Assert.AreEqual(expected.IsNew, actual.IsNew, "Row {0} Is New", index);
     }
   }
 }

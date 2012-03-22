@@ -21,16 +21,16 @@ Scenario: Export credit card account entries
   When I export all new entries
   Then the result should be
   """
-  Date,Category,Payee,Memo,Outflow,Inflow                                                                       
-  28.06.2011,Import Statements,Manipulationsentgelt,USD 7-35 55432861179000422081119,0.05,0.00                  
-  28.06.2011,Import Statements,Amazon Services-Kindle 866-321-8851,USD 7-35 55432861179000422081119,5.18,0.00   
-  24.06.2011,Import Statements,SONY ONLINE SERVICES INTERNET,95505511177040364736255,15.00,0.00                 
-  21.06.2011,Import Statements,Manipulationsentgelt,USD 7-20 55432861172000042272210,0.05,0.00                  
-  21.06.2011,Import Statements,Amazon Services-Kindle 866-321-8851,USD 7-20 55432861172000042272210,5.03,0.00   
-  20.06.2011,Import Statements,ORANGE AUSTRIA WIEN,75494041172005182779231,5.00,0.00                            
-  18.06.2011,Import Statements,Manipulationsentgelt,USD 23-31 55432861169000494943859,0.16,0.00                 
-  18.06.2011,Import Statements,Amazon Services-Kindle 866-321-8851,USD 23-31 55432861169000494943859,16.47,0.00 
-  17.06.2011,Import Statements,OESTERR.BUNDESBAHNEN WIEN,05460651169061800530249,16.00,0.00                     
-  16.06.2011,Import Statements,Manipulationsentgelt,GBP 70-96 55504431167083109723160,0.81,0.00                 
-  16.06.2011,Import Statements,FORGE WORLD NOTTINGHAM,GBP 70-96 55504431167083109723160,80.57,0.00              
+  Date;Category;Payee;Memo;Outflow;Inflow                                                                       
+  28.06.2011;Import Statements;Manipulationsentgelt;USD 7,35 55432861179000422081119;0.05;0.00                  
+  28.06.2011;Import Statements;Amazon Services-Kindle 866-321-8851;USD 7,35 55432861179000422081119;5.18;0.00   
+  24.06.2011;Import Statements;SONY ONLINE SERVICES INTERNET;95505511177040364736255;15.00;0.00                 
+  21.06.2011;Import Statements;Manipulationsentgelt;USD 7,20 55432861172000042272210;0.05;0.00                  
+  21.06.2011;Import Statements;Amazon Services-Kindle 866-321-8851;USD 7,20 55432861172000042272210;5.03;0.00   
+  20.06.2011;Import Statements;ORANGE AUSTRIA WIEN;75494041172005182779231;5.00;0.00                            
+  18.06.2011;Import Statements;Manipulationsentgelt;USD 23,31 55432861169000494943859;0.16;0.00                 
+  18.06.2011;Import Statements;Amazon Services-Kindle 866-321-8851;USD 23,31 55432861169000494943859;16.47;0.00 
+  17.06.2011;Import Statements;OESTERR.BUNDESBAHNEN WIEN;05460651169061800530249;16.00;0.00                     
+  16.06.2011;Import Statements;Manipulationsentgelt;GBP 70,96 55504431167083109723160;0.81;0.00                 
+  16.06.2011;Import Statements;FORGE WORLD NOTTINGHAM;GBP 70,96 55504431167083109723160;80.57;0.00              
   """

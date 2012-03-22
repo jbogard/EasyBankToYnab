@@ -8,12 +8,12 @@ namespace QuestMaster.EasyBankToYnab.ApplicationLogic
   {
     private readonly IXmlGateway xmlGateway;
     private string path;
-    private readonly IMapper mapper;
+    //private readonly IMapper mapper;
 
-    public DataContextProvider(IXmlGateway xmlGateway, IMapper mapper)
+    public DataContextProvider(IXmlGateway xmlGateway)
     {
       this.xmlGateway = xmlGateway;
-      this.mapper = mapper;
+      //this.mapper = mapper;
     }
 
     public EasyBankContext DataContext

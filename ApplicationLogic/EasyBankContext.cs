@@ -15,28 +15,42 @@ namespace QuestMaster.EasyBankToYnab.ApplicationLogic
     private readonly IMapper mapper;
     private readonly IXmlGateway xmlGateway;
     private readonly AccountCollection accounts = new AccountCollection();
-    private IFileAccess fileAccess;
+    private readonly IFileAccess fileAccess;
+    private readonly IDefaultPathProvider pathProvider;
 
     public EasyBankContext(
       IEasyBankGateway statementImporter,
       IYnabGateway ynabExporter,
       IXmlGateway xmlGateway,
-      IMapper mapper)
-      : this(statementImporter, ynabExporter, xmlGateway, mapper, new Entry[0])
+      IMapper mapper,
+      IFileAccess fileAccess,
+      IDefaultPathProvider pathProvider)
+      : this(statementImporter, ynabExporter, xmlGateway, mapper, fileAccess, pathProvider, new Entry[0])
     {
     }
 
-    public EasyBankContext(IEasyBankGateway statementImporter, IYnabGateway ynabExporter, IXmlGateway xmlGateway, IMapper mapper, IEnumerable<Entry> entries)
+    public EasyBankContext(
+      IEasyBankGateway statementImporter,
+      IYnabGateway ynabExporter,
+      IXmlGateway xmlGateway, 
+      IMapper mapper, 
+      IFileAccess fileAccess, 
+      IDefaultPathProvider pathProvider,
+      IEnumerable<Entry> entries)
     {
       if (statementImporter == null) throw new ArgumentNullException("statementImporter");
       if (ynabExporter == null) throw new ArgumentNullException("ynabExporter");
       if (xmlGateway == null) throw new ArgumentNullException("xmlGateway");
       if (mapper == null) throw new ArgumentNullException("mapper");
+      if (fileAccess == null) throw new ArgumentNullException("fileAccess");
+      if (pathProvider == null) throw new ArgumentNullException("pathProvider");
 
       this.statementImporter = statementImporter;
       this.ynabExporter = ynabExporter;
       this.mapper = mapper;
       this.xmlGateway = xmlGateway;
+      this.fileAccess = fileAccess;
+      this.pathProvider = pathProvider;
 
       foreach (var entry in entries)
       {
@@ -77,10 +91,21 @@ namespace QuestMaster.EasyBankToYnab.ApplicationLogic
 
     public void Save()
     {
-      BackupCurrentFile(path);
+      this.fileAccess.BackupFile(this.pathProvider.PathToDataFile, "Backup");
 
-      this.xmlGateway.Write(this.mapper.Map<EasyBankContext, Gateways.Xml.EasyBank>(this));
+      this.xmlGateway.Write(this.mapper.Map<EasyBankContext, EasyBank>(this));
     }
+
+    public void Load()
+    {
+      var entries = this.xmlGateway.Read().Accounts.SelectMany(a => a.Entries).Select(e => mapper.MapXmlToDomain(e));
+
+      foreach (var entry in entries)
+      {
+        this.AddEntry(entry);
+      }
+    }
+
     public void RemoveAllAccounts()
     {
       this.accounts.Clear();

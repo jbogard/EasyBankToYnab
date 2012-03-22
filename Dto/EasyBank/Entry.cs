@@ -43,21 +43,21 @@ namespace QuestMaster.EasyBankToYnab.Gateways.EasyBank
       this.Currency = parts[CurrencyIndex];
     }
 
-    public string Currency { get; set; }
+    public string Currency { get; private set; }
 
-    public decimal AmountOut { get; set; }
+    public decimal AmountOut { get; private set; }
 
-    public decimal AmountIn { get; set; }
+    public decimal AmountIn { get; private set; }
 
-    public DateTime ValueDate { get; set; }
+    public DateTime ValueDate { get; private set; }
 
-    public DateTime BookingDate { get; set; }
+    public DateTime BookingDate { get; private set; }
 
-    public string Payee { get; set; }
+    public string Payee { get; private set; }
 
-    public string Description { get; set; }
+    public string Description { get; private set; }
 
-    protected string Account { get; set; }
+    public string Account { get; private set; }
 
     private static bool IsCreditCardAccount(string account)
     {
@@ -85,7 +85,7 @@ namespace QuestMaster.EasyBankToYnab.Gateways.EasyBank
       var description = parts[DescriptionIndex];
       description = regex.Replace(description, @" ");
 
-      string[] descriptionParts = description.Split('#');
+      string[] descriptionParts = description.Split('|');
       return descriptionParts;
     }
   }

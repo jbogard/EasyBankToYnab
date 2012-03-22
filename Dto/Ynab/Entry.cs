@@ -4,13 +4,6 @@ namespace QuestMaster.EasyBankToYnab.Gateways.Ynab
 {
   public class Entry
   {
-    private readonly CultureSettings cultureSettings;
-
-    public Entry(CultureSettings cultureSettings)
-    {
-      this.cultureSettings = cultureSettings;
-    }
-
     public string Payee { get; set; }
 
     public string Description { get; set; }
@@ -21,7 +14,7 @@ namespace QuestMaster.EasyBankToYnab.Gateways.Ynab
 
     public DateTime ValueDate { get; set; }
 
-    internal string ToYnabString()
+    internal string ToYnabString(CultureSettings cultureSettings)
     {
       var result = string.Format(
         cultureSettings.CultureInfo,
@@ -31,8 +24,8 @@ namespace QuestMaster.EasyBankToYnab.Gateways.Ynab
             cultureSettings.Separator,
             this.ValueDate.ToString(cultureSettings.DateTimeFormatString, cultureSettings.CultureInfo),
             "Import Statements",
-            ReplaceSeparator(this.Payee),
-            ReplaceSeparator(this.Description),
+            ReplaceSeparator(this.Payee, cultureSettings),
+            ReplaceSeparator(this.Description, cultureSettings),
             this.AmountOut.ToString("0.00"),
             this.AmountIn.ToString("0.00")
           });
@@ -40,7 +33,7 @@ namespace QuestMaster.EasyBankToYnab.Gateways.Ynab
       return result;
     }
 
-    private string ReplaceSeparator(string s)
+    private string ReplaceSeparator(string s, CultureSettings cultureSettings)
     {
       return s.Replace(cultureSettings.Separator, cultureSettings.ReplacementForSeparator);
     }

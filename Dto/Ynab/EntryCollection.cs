@@ -6,27 +6,24 @@ namespace QuestMaster.EasyBankToYnab.Gateways.Ynab
 {
   public class EntryCollection
   {
-    private readonly CultureSettings cultureSettings;
     private readonly Entry[] entries;
 
-    public EntryCollection(CultureSettings cultureSettings, Entry[] entries)
+    public EntryCollection(Entry[] entries)
     {
-      if (cultureSettings == null) throw new ArgumentNullException("cultureSettings");
       if (entries == null) throw new ArgumentNullException("entries");
 
-      this.cultureSettings = cultureSettings;
       this.entries = entries;
     }
 
-    private string GetHeaderLine()
+    private string GetHeaderLine(CultureSettings cultureSettings)
     {
-      var result = string.Format(this.cultureSettings.CultureInfo, "Date{0}Category{0}Payee{0}Memo{0}Outflow{0}Inflow", new object[] { this.cultureSettings.Separator });
+      var result = string.Format(cultureSettings.CultureInfo, "Date{0}Category{0}Payee{0}Memo{0}Outflow{0}Inflow", new object[] { cultureSettings.Separator });
       return result;
     }
 
-    internal IEnumerable<string> ToYnabStrings()
+    internal IEnumerable<string> ToYnabStrings(CultureSettings cultureSettings)
     {
-      return new[] { GetHeaderLine() }.Concat(this.entries.Select(entry => entry.ToYnabString()));
+      return new[] { GetHeaderLine(cultureSettings) }.Concat(this.entries.Select(entry => entry.ToYnabString(cultureSettings)));
     }
   }
 }

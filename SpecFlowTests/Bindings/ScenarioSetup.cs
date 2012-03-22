@@ -1,5 +1,6 @@
 ﻿using System;
 using QuestMaster.EasyBankToYnab.ApplicationLogic;
+using QuestMaster.EasyBankToYnab.Gateways;
 using QuestMaster.EasyBankToYnab.Gateways.EasyBank;
 using QuestMaster.EasyBankToYnab.Gateways.Xml;
 using QuestMaster.EasyBankToYnab.Gateways.Ynab;
@@ -14,13 +15,31 @@ namespace QuestMaster.EasyBankToYnab.DomainTests.Bindings
     public static void BeforeFeatures()
     {
       var fakeFileAccess = new FakeFileAccess();
+      var fakePathProvider = new FakePathProvider
+                               {
+                                 PathToDataFile = @"c:\temp\file.xml",
+                                 PathToExportFile = @"c:\temp\file.ynab",
+                                 PathToImportFile = @"c:\temp\file.csv"
+                               };
+
       CurrentScenarioContext.FakeFileAccess = fakeFileAccess;
       CurrentScenarioContext.InitializeEasyBankContext(
         new EasyBankContext(
-          new EasyBankGateway(fakeFileAccess, "c:\temp\test.txt"),
-          new YnabGateway(fakeFileAccess, "c:\temp\test.txt"),
-          new XmlGateway(fakeFileAccess, "c:\temp\test.txt"),
-          new Mapper()));
+          new EasyBankGateway(fakeFileAccess, fakePathProvider.PathToImportFile),
+          new YnabGateway(fakeFileAccess, fakePathProvider.PathToExportFile, CultureSettings.German()),
+          new XmlGateway(fakeFileAccess, fakePathProvider.PathToDataFile),
+          new Mapper(),
+          fakeFileAccess,
+          new FakePathProvider()));
     }
+  }
+
+  public class FakePathProvider : IDefaultPathProvider
+  {
+    public string PathToDataFile { get; set; }
+
+    public string PathToExportFile { get; set; }
+
+    public string PathToImportFile { get; set; }
   }
 }

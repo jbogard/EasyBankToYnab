@@ -53,9 +53,9 @@
     </CodeAnalysisDependentAssemblyPaths>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CsvMapperTests.cs" />
-    <Compile Include="EasyBankContextTests.cs" />
-    <Compile Include="YnabMapperTests.cs" />
+    <Compile Include="Mappers\CsvMapperTests.cs" />
+    <Compile Include="Mappers\EasyBankContextTests.cs" />
+    <Compile Include="Mappers\YnabMapperTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="XmlMapperTests.cs" />
   </ItemGroup>

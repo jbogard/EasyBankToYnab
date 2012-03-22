@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using QuestMaster.EasyBankToYnab.Gateways;
-using QuestMaster.EasyBankToYnab.Gateways.EasyBank;
+using QuestMaster.EasyBankToYnab.Gateways.Csv;
 using QuestMaster.EasyBankToYnab.Gateways.Xml;
 using QuestMaster.EasyBankToYnab.Gateways.Ynab;
 
@@ -10,7 +10,7 @@ namespace QuestMaster.EasyBankToYnab.ApplicationLogic
 {
   public class EasyBankContext
   {
-    private readonly IEasyBankGateway statementImporter;
+    private readonly ICsvGateway statementImporter;
     private readonly IYnabGateway ynabExporter;
     private readonly IMapper mapper;
     private readonly IXmlGateway xmlGateway;
@@ -19,7 +19,7 @@ namespace QuestMaster.EasyBankToYnab.ApplicationLogic
     private readonly IDefaultPathProvider pathProvider;
 
     public EasyBankContext(
-      IEasyBankGateway statementImporter,
+      ICsvGateway statementImporter,
       IYnabGateway ynabExporter,
       IXmlGateway xmlGateway,
       IMapper mapper,
@@ -30,7 +30,7 @@ namespace QuestMaster.EasyBankToYnab.ApplicationLogic
     }
 
     public EasyBankContext(
-      IEasyBankGateway statementImporter,
+      ICsvGateway statementImporter,
       IYnabGateway ynabExporter,
       IXmlGateway xmlGateway, 
       IMapper mapper, 
@@ -125,9 +125,9 @@ namespace QuestMaster.EasyBankToYnab.ApplicationLogic
 
     public void ImportEntries()
     {
-      Gateways.EasyBank.EntryCollection entryCollection = this.statementImporter.Read();
+      Gateways.Csv.CsvEntryCollection csvEntryCollection = this.statementImporter.Read();
 
-      var entries = entryCollection.Select(e => this.mapper.MapToDomain(e));
+      var entries = csvEntryCollection.Select(e => this.mapper.MapToDomain(e));
 
       foreach (var entry in entries)
       {

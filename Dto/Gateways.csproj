@@ -43,10 +43,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="EasyBank\EasyBankGateway.cs" />
-    <Compile Include="EasyBank\Entry.cs" />
-    <Compile Include="EasyBank\EntryCollection.cs" />
-    <Compile Include="EasyBank\IEasyBankGateway.cs" />
+    <Compile Include="Csv\CsvGateway.cs" />
+    <Compile Include="Csv\CsvEntry.cs" />
+    <Compile Include="Csv\CsvEntryCollection.cs" />
+    <Compile Include="Csv\ICsvGateway.cs" />
     <Compile Include="FileAccess.cs" />
     <Compile Include="IFileAccess.cs" />
     <Compile Include="Xml\Account.cs" />

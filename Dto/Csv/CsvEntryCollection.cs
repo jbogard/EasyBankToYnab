@@ -3,23 +3,23 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace QuestMaster.EasyBankToYnab.Gateways.EasyBank
+namespace QuestMaster.EasyBankToYnab.Gateways.Csv
 {
-  public class EntryCollection : IEnumerable<Entry>
+  public class CsvEntryCollection : IEnumerable<CsvEntry>
   {
-    private readonly Entry[] entries;
+    private readonly CsvEntry[] csvEntries;
 
-    public EntryCollection(string[] lines)
+    public CsvEntryCollection(string[] lines)
     {
       if (lines == null) throw new ArgumentNullException("lines");
       if (lines.Length < 1) throw new ArgumentException("Array 'lines' must not be empty.", "lines");
 
-      this.entries = lines.Select(line => new Entry(line)).ToArray();
+      this.csvEntries = lines.Select(line => new CsvEntry(line)).ToArray();
     }
 
-    public IEnumerator<Entry> GetEnumerator()
+    public IEnumerator<CsvEntry> GetEnumerator()
     {
-      return this.entries.OfType<Entry>().GetEnumerator();
+      return this.csvEntries.OfType<CsvEntry>().GetEnumerator();
     }
 
     IEnumerator IEnumerable.GetEnumerator()

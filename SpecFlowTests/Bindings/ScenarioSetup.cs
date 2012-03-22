@@ -1,7 +1,7 @@
 ﻿using System;
 using QuestMaster.EasyBankToYnab.ApplicationLogic;
 using QuestMaster.EasyBankToYnab.Gateways;
-using QuestMaster.EasyBankToYnab.Gateways.EasyBank;
+using QuestMaster.EasyBankToYnab.Gateways.Csv;
 using QuestMaster.EasyBankToYnab.Gateways.Xml;
 using QuestMaster.EasyBankToYnab.Gateways.Ynab;
 using TechTalk.SpecFlow;
@@ -25,7 +25,7 @@ namespace QuestMaster.EasyBankToYnab.DomainTests.Bindings
       CurrentScenarioContext.FakeFileAccess = fakeFileAccess;
       CurrentScenarioContext.InitializeEasyBankContext(
         new EasyBankContext(
-          new EasyBankGateway(fakeFileAccess, fakePathProvider.PathToImportFile),
+          new CsvGateway(fakeFileAccess, fakePathProvider.PathToImportFile),
           new YnabGateway(fakeFileAccess, fakePathProvider.PathToExportFile, CultureSettings.German()),
           new XmlGateway(fakeFileAccess, fakePathProvider.PathToDataFile),
           new Mapper(),

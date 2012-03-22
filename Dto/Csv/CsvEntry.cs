@@ -3,9 +3,9 @@ using System.Globalization;
 using System.Linq;
 using System.Text.RegularExpressions;
 
-namespace QuestMaster.EasyBankToYnab.Gateways.EasyBank
+namespace QuestMaster.EasyBankToYnab.Gateways.Csv
 {
-  public class Entry
+  public class CsvEntry
   {
     private readonly Regex regex = new Regex(@"[ ]{2,}", RegexOptions.None);
     private static readonly CultureInfo cultureInfo = new CultureInfo("de-DE");
@@ -17,7 +17,7 @@ namespace QuestMaster.EasyBankToYnab.Gateways.EasyBank
     private const int AmountIndex = 4;
     private const int CurrencyIndex = 5;
     
-    public Entry(string statement)
+    public CsvEntry(string statement)
     {
       string[] parts = statement.Split(';');
       var amount = decimal.Parse(parts[AmountIndex], cultureInfo);

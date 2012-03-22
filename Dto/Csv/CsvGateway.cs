@@ -1,14 +1,14 @@
 using System;
 using System.Linq;
 
-namespace QuestMaster.EasyBankToYnab.Gateways.EasyBank
+namespace QuestMaster.EasyBankToYnab.Gateways.Csv
 {
-  public class EasyBankGateway : IEasyBankGateway
+  public class CsvGateway : ICsvGateway
   {
     private readonly IFileAccess fileAccess;
     private readonly string path;
 
-    public EasyBankGateway(IFileAccess fileAccess, string path)
+    public CsvGateway(IFileAccess fileAccess, string path)
     {
       if (fileAccess == null) throw new ArgumentNullException("fileAccess");
       if (string.IsNullOrEmpty(path)) throw new ArgumentNullException("path");
@@ -17,9 +17,9 @@ namespace QuestMaster.EasyBankToYnab.Gateways.EasyBank
       this.path = path;
     }
 
-    public EntryCollection Read()
+    public CsvEntryCollection Read()
     {
-      return new EntryCollection(this.fileAccess.ReadLines(path).ToArray());
+      return new CsvEntryCollection(this.fileAccess.ReadLines(path).ToArray());
     }
   }
 }

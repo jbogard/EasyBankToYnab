@@ -94,8 +94,8 @@ namespace QuestMaster.EasyBankToYnab.ApplicationLogic
       //public void MapAccount()
       //{
       //  var domainAccount = new Account("account number");
-      //  domainAccount.AddEntry(new Entry { Account = "account number", Description = "description 1" });
-      //  domainAccount.AddEntry(new Entry { Account = "account number", Description = "description 2" });
+      //  domainAccount.AddEntry(new CsvEntry { Account = "account number", Description = "description 1" });
+      //  domainAccount.AddEntry(new CsvEntry { Account = "account number", Description = "description 2" });
 
       //  Gateways.Xml.Account xmlAccount = this.mapper.MapToXml(domainAccount);
 
@@ -125,7 +125,7 @@ namespace QuestMaster.EasyBankToYnab.ApplicationLogic
       //public void MapEasyBankContext()
       //{
       //  var domainEasyBank = new EasyBankContext(
-      //    new Mock<Gateways.EasyBank.IEasyBankGateway>().Object,
+      //    new Mock<Gateways.EasyBank.ICsvGateway>().Object,
       //    new Mock<Gateways.Ynab.IYnabGateway>().Object,
       //    new Mock<Gateways.Xml.IXmlGateway>().Object,
       //    new Mock<IMapper>().Object,
@@ -217,10 +217,10 @@ namespace QuestMaster.EasyBankToYnab.ApplicationLogic
       //  var domainAccount = new Gateways.Xml.Account
       //                        {
       //                          Number = "account number",
-      //                          Entries = new Gateways.Xml.EntryCollection
+      //                          Entries = new Gateways.Xml.CsvEntryCollection
       //                                      {
-      //                                        new Gateways.Xml.Entry { Account = "account number", Description = "description 1" },
-      //                                        new Gateways.Xml.Entry { Account = "account number", Description = "description 2" },
+      //                                        new Gateways.Xml.CsvEntry { Account = "account number", Description = "description 1" },
+      //                                        new Gateways.Xml.CsvEntry { Account = "account number", Description = "description 2" },
       //                                      }
       //                        };
 
@@ -238,13 +238,13 @@ namespace QuestMaster.EasyBankToYnab.ApplicationLogic
       //  var xmlEntry1 = new Gateways.Xml.Account
       //  {
       //    Number = "account number 1",
-      //    Entries = new Gateways.Xml.EntryCollection()
+      //    Entries = new Gateways.Xml.CsvEntryCollection()
       //  };
 
       //  var xmlEntry2 = new Gateways.Xml.Account
       //  {
       //    Number = "account number 2",
-      //    Entries = new Gateways.Xml.EntryCollection()
+      //    Entries = new Gateways.Xml.CsvEntryCollection()
       //  };
 
       //  var xmlCollection = new Gateways.Xml.AccountCollection
@@ -267,8 +267,8 @@ namespace QuestMaster.EasyBankToYnab.ApplicationLogic
       //                         {
       //                           Accounts = new Gateways.Xml.AccountCollection
       //                                        {
-      //                                          new Gateways.Xml.Account { Number = "account number 1", Entries = new Gateways.Xml.EntryCollection { new Gateways.Xml.Entry { Account = "account number 1" } } },
-      //                                          new Gateways.Xml.Account { Number = "account number 2", Entries = new Gateways.Xml.EntryCollection { new Gateways.Xml.Entry { Account = "account number 2" } } }
+      //                                          new Gateways.Xml.Account { Number = "account number 1", Entries = new Gateways.Xml.CsvEntryCollection { new Gateways.Xml.CsvEntry { Account = "account number 1" } } },
+      //                                          new Gateways.Xml.Account { Number = "account number 2", Entries = new Gateways.Xml.CsvEntryCollection { new Gateways.Xml.CsvEntry { Account = "account number 2" } } }
       //                                        }
       //                         };
 
@@ -344,7 +344,7 @@ namespace QuestMaster.EasyBankToYnab.ApplicationLogic
       [TestMethod]
       public void MapEntry()
       {
-        var entry = new Gateways.EasyBank.Entry("account;some description|some payee;01.01.2012;02.01.2012;-2;EUR");
+        var entry = new Gateways.Csv.CsvEntry("account;some description|some payee;01.01.2012;02.01.2012;-2;EUR");
 
         Entry domainEntry = this.mapper.MapToDomain(entry);
 

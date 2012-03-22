@@ -2,7 +2,7 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 using QuestMaster.EasyBankToYnab.Gateways;
-using QuestMaster.EasyBankToYnab.Gateways.EasyBank;
+using QuestMaster.EasyBankToYnab.Gateways.Csv;
 using QuestMaster.EasyBankToYnab.Gateways.Xml;
 using QuestMaster.EasyBankToYnab.Gateways.Ynab;
 
@@ -31,7 +31,7 @@ namespace QuestMaster.EasyBankToYnab.ApplicationLogic
       public void NullYnabGateway_ShouldThrowArgumentNullException()
       {
         new EasyBankContext(
-          new Mock<IEasyBankGateway>().Object,
+          new Mock<ICsvGateway>().Object,
           null,
           new Mock<IXmlGateway>().Object,
           new Mock<IMapper>().Object,
@@ -44,7 +44,7 @@ namespace QuestMaster.EasyBankToYnab.ApplicationLogic
       public void NullXmlGateway_ShouldThrowArgumentNullException()
       {
         new EasyBankContext(
-          new Mock<IEasyBankGateway>().Object,
+          new Mock<ICsvGateway>().Object,
           new Mock<IYnabGateway>().Object,
           null,
           new Mock<IMapper>().Object,
@@ -57,7 +57,7 @@ namespace QuestMaster.EasyBankToYnab.ApplicationLogic
       public void NullMapper_ShouldThrowArgumentNullException()
       {
         new EasyBankContext(
-          new Mock<IEasyBankGateway>().Object,
+          new Mock<ICsvGateway>().Object,
           new Mock<IYnabGateway>().Object,
           new Mock<IXmlGateway>().Object,
           null,
@@ -70,7 +70,7 @@ namespace QuestMaster.EasyBankToYnab.ApplicationLogic
       public void NullFileAccess_ShouldThrowArgumentNullException()
       {
         new EasyBankContext(
-          new Mock<IEasyBankGateway>().Object,
+          new Mock<ICsvGateway>().Object,
           new Mock<IYnabGateway>().Object,
           new Mock<IXmlGateway>().Object,
           new Mock<IMapper>().Object,
@@ -83,7 +83,7 @@ namespace QuestMaster.EasyBankToYnab.ApplicationLogic
       public void NullPathProviderFileAccess_ShouldThrowArgumentNullException()
       {
         new EasyBankContext(
-          new Mock<IEasyBankGateway>().Object,
+          new Mock<ICsvGateway>().Object,
           new Mock<IYnabGateway>().Object,
           new Mock<IXmlGateway>().Object,
           new Mock<IMapper>().Object,

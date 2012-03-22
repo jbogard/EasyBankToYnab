@@ -19,7 +19,7 @@ namespace QuestMaster.EasyBankToYnab.ApplicationLogic
     //EasyBankContext MapToDomain(EasyBank easyBank);
     Gateways.Ynab.Entry MapToYnab(Entry entry);
     Gateways.Ynab.EntryCollection MapToYnab(Entry[] entries);
-     Entry MapToDomain(Gateways.EasyBank.Entry entry);
+     Entry MapToDomain(Gateways.Csv.CsvEntry csvEntry);
 }
 
   public interface IXmlMapper

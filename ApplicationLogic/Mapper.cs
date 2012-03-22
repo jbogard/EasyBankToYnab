@@ -36,7 +36,7 @@ namespace QuestMaster.EasyBankToYnab.ApplicationLogic
       AutoMapper.Mapper.CreateMap<IEnumerable<Entry>, Gateways.Ynab.EntryCollection>()
         .ConstructUsing(entries => new Gateways.Ynab.EntryCollection(entries.Select(Map<Entry, Gateways.Ynab.Entry>).ToArray()));
 
-      AutoMapper.Mapper.CreateMap<Gateways.EasyBank.Entry, Entry>().ForMember(e => e.IsNew, expr => expr.UseValue(true));
+      AutoMapper.Mapper.CreateMap<Gateways.Csv.CsvEntry, Entry>().ForMember(e => e.IsNew, expr => expr.UseValue(true));
     }
 
     private TOutput Map<TInput, TOutput>(TInput input)
@@ -104,9 +104,9 @@ namespace QuestMaster.EasyBankToYnab.ApplicationLogic
       return this.Map<IEnumerable<Entry>, Gateways.Ynab.EntryCollection>(entries);
     }
 
-    public Entry MapToDomain(Gateways.EasyBank.Entry entry)
+    public Entry MapToDomain(Gateways.Csv.CsvEntry csvEntry)
     {
-      return this.Map<Gateways.EasyBank.Entry, Entry>(entry);
+      return this.Map<Gateways.Csv.CsvEntry, Entry>(csvEntry);
     }
 
     public EasyBankContext MapXmlToDomain(Gateways.Xml.EasyBank easyBank)

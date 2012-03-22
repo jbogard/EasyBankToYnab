@@ -28,8 +28,8 @@ namespace QuestMaster.EasyBankToYnab.DomainTests.Bindings
       CurrentScenarioContext.InitializeEasyBankContext(
         new EasyBankContext(
           new CsvAgent(new CsvGateway(fakeFileAccess, fakePathProvider.PathToImportFile), new CsvMapper()),
-          new YnabAgent(new YnabMapper(), new YnabGateway(fakeFileAccess, fakePathProvider.PathToExportFile, CultureSettings.German())),
-          new XmlAgent(new XmlMapper(), new XmlGateway(fakeFileAccess, fakePathProvider.PathToDataFile)),
+          new YnabAgent(new YnabGateway(fakeFileAccess, fakePathProvider.PathToExportFile, CultureSettings.German()), new YnabMapper()),
+          new XmlAgent(new XmlGateway(fakeFileAccess, fakePathProvider.PathToDataFile), new XmlMapper()),
           fakeFileAccess,
           new FakePathProvider()));
     }

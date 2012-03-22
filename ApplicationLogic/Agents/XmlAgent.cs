@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using QuestMaster.EasyBankToYnab.ApplicationLogic.Mappers;
 using QuestMaster.EasyBankToYnab.Gateways.Xml;
 
 namespace QuestMaster.EasyBankToYnab.ApplicationLogic.Agents
@@ -10,7 +11,12 @@ namespace QuestMaster.EasyBankToYnab.ApplicationLogic.Agents
     private readonly IXmlMapper mapper;
     private readonly IXmlGateway gateway;
 
-    public XmlAgent(IXmlMapper mapper, IXmlGateway gateway)
+    public XmlAgent(IXmlGateway gateway)
+      : this(gateway, new XmlMapper())
+    {
+    }
+
+    public XmlAgent(IXmlGateway gateway, IXmlMapper mapper)
     {
       this.mapper = mapper;
       this.gateway = gateway;

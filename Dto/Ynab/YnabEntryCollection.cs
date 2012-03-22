@@ -4,15 +4,15 @@ using System.Linq;
 
 namespace QuestMaster.EasyBankToYnab.Gateways.Ynab
 {
-  public class EntryCollection
+  public class YnabEntryCollection
   {
-    private readonly Entry[] entries;
+    private readonly YnabEntry[] ynabEntries;
 
-    public EntryCollection(Entry[] entries)
+    public YnabEntryCollection(YnabEntry[] ynabEntries)
     {
-      if (entries == null) throw new ArgumentNullException("entries");
+      if (ynabEntries == null) throw new ArgumentNullException("ynabEntries");
 
-      this.entries = entries;
+      this.ynabEntries = ynabEntries;
     }
 
     private string GetHeaderLine(CultureSettings cultureSettings)
@@ -23,7 +23,7 @@ namespace QuestMaster.EasyBankToYnab.Gateways.Ynab
 
     internal IEnumerable<string> ToYnabStrings(CultureSettings cultureSettings)
     {
-      return new[] { GetHeaderLine(cultureSettings) }.Concat(this.entries.Select(entry => entry.ToYnabString(cultureSettings)));
+      return new[] { GetHeaderLine(cultureSettings) }.Concat(this.ynabEntries.Select(entry => entry.ToYnabString(cultureSettings)));
     }
   }
 }

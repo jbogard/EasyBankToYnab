@@ -17,8 +17,8 @@ namespace QuestMaster.EasyBankToYnab.ApplicationLogic
     //Account MapToDomain(Gateways.Xml.Account account);
     //AccountCollection MapToDomain(Gateways.Xml.AccountCollection accounts);
     //EasyBankContext MapToDomain(EasyBank easyBank);
-    Gateways.Ynab.Entry MapToYnab(Entry entry);
-    Gateways.Ynab.EntryCollection MapToYnab(Entry[] entries);
+    Gateways.Ynab.YnabEntry MapToYnab(Entry entry);
+    Gateways.Ynab.YnabEntryCollection MapToYnab(Entry[] entries);
      Entry MapToDomain(Gateways.Csv.CsvEntry csvEntry);
 }
 

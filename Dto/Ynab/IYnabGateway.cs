@@ -2,6 +2,6 @@
 {
   public interface IYnabGateway
   {
-    void Write(EntryCollection entries);
+    void Write(YnabEntryCollection ynabEntries);
   }
 }

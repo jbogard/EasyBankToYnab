@@ -59,8 +59,8 @@
     <Compile Include="StreamExtensions.cs" />
     <Compile Include="Xml\XmlGateway.cs" />
     <Compile Include="Ynab\CultureSettings.cs" />
-    <Compile Include="Ynab\Entry.cs" />
-    <Compile Include="Ynab\EntryCollection.cs" />
+    <Compile Include="Ynab\YnabEntry.cs" />
+    <Compile Include="Ynab\YnabEntryCollection.cs" />
     <Compile Include="Ynab\IYnabGateway.cs" />
     <Compile Include="Ynab\YnabGateway.cs" />
   </ItemGroup>

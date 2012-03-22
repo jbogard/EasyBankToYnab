@@ -2,7 +2,7 @@
 
 namespace QuestMaster.EasyBankToYnab.Gateways.Ynab
 {
-  public class Entry
+  public class YnabEntry
   {
     public string Payee { get; set; }
 

@@ -19,11 +19,11 @@ namespace QuestMaster.EasyBankToYnab.Gateways.Ynab
       this.cultureSettings = cultureSettings;
     }
 
-    public void Write(EntryCollection entries)
+    public void Write(YnabEntryCollection ynabEntries)
     {
-      if (entries == null) throw new ArgumentNullException("entries");
+      if (ynabEntries == null) throw new ArgumentNullException("ynabEntries");
 
-      fileAccess.WriteLines(this.path, entries.ToYnabStrings(cultureSettings));
+      fileAccess.WriteLines(this.path, ynabEntries.ToYnabStrings(cultureSettings));
     }
   }
 }

@@ -303,13 +303,13 @@ namespace QuestMaster.EasyBankToYnab.ApplicationLogic
           ValueDate = new DateTime(2012, 1, 1)
         };
 
-        Gateways.Ynab.Entry ynabEntry = this.mapper.MapToYnab(domainEntry);
+        Gateways.Ynab.YnabEntry ynabYnabEntry = this.mapper.MapToYnab(domainEntry);
 
-        Assert.AreEqual(1m, ynabEntry.AmountIn);
-        Assert.AreEqual(2m, ynabEntry.AmountOut);
-        Assert.AreEqual("some description", ynabEntry.Description);
-        Assert.AreEqual("some payee", ynabEntry.Payee);
-        Assert.AreEqual(new DateTime(2012, 1, 1), ynabEntry.ValueDate);
+        Assert.AreEqual(1m, ynabYnabEntry.AmountIn);
+        Assert.AreEqual(2m, ynabYnabEntry.AmountOut);
+        Assert.AreEqual("some description", ynabYnabEntry.Description);
+        Assert.AreEqual("some payee", ynabYnabEntry.Payee);
+        Assert.AreEqual(new DateTime(2012, 1, 1), ynabYnabEntry.ValueDate);
       }
 
       [TestMethod]
@@ -324,7 +324,7 @@ namespace QuestMaster.EasyBankToYnab.ApplicationLogic
           Description = "some description",
         };
 
-        Gateways.Ynab.EntryCollection ynabEntries = this.mapper.MapToYnab(new[] { domainEntry1, domainEntry2 });
+        Gateways.Ynab.YnabEntryCollection ynabEntries = this.mapper.MapToYnab(new[] { domainEntry1, domainEntry2 });
 
         Assert.IsNotNull(ynabEntries);
       }

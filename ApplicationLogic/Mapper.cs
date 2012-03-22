@@ -21,10 +21,10 @@ namespace QuestMaster.EasyBankToYnab.ApplicationLogic
       AutoMapper.Mapper.CreateMap<Gateways.Xml.EasyBank, EasyBankContext>()
         .ConstructUsing(xmlEasyBank => new EasyBankContext(null, null, null, null, null, null, xmlEasyBank.Accounts.SelectMany(a => a.Entries).Select(Map<Gateways.Xml.Entry, Entry>)));
 
-      AutoMapper.Mapper.CreateMap<Entry, Gateways.Ynab.Entry>()
+      AutoMapper.Mapper.CreateMap<Entry, Gateways.Ynab.YnabEntry>()
         .ConstructUsing(
         entry =>
-          new Gateways.Ynab.Entry
+          new Gateways.Ynab.YnabEntry
           {
             AmountIn = entry.AmountIn,
             AmountOut = entry.AmountOut,
@@ -33,8 +33,8 @@ namespace QuestMaster.EasyBankToYnab.ApplicationLogic
             ValueDate = entry.ValueDate
           });
 
-      AutoMapper.Mapper.CreateMap<IEnumerable<Entry>, Gateways.Ynab.EntryCollection>()
-        .ConstructUsing(entries => new Gateways.Ynab.EntryCollection(entries.Select(Map<Entry, Gateways.Ynab.Entry>).ToArray()));
+      AutoMapper.Mapper.CreateMap<IEnumerable<Entry>, Gateways.Ynab.YnabEntryCollection>()
+        .ConstructUsing(entries => new Gateways.Ynab.YnabEntryCollection(entries.Select(Map<Entry, Gateways.Ynab.YnabEntry>).ToArray()));
 
       AutoMapper.Mapper.CreateMap<Gateways.Csv.CsvEntry, Entry>().ForMember(e => e.IsNew, expr => expr.UseValue(true));
     }
@@ -94,14 +94,14 @@ namespace QuestMaster.EasyBankToYnab.ApplicationLogic
       return this.Map<EasyBankContext, Gateways.Xml.EasyBank>(easyBank);
     }
 
-    public Gateways.Ynab.Entry MapToYnab(Entry entry)
+    public Gateways.Ynab.YnabEntry MapToYnab(Entry entry)
     {
-      return this.Map<Entry, Gateways.Ynab.Entry>(entry);
+      return this.Map<Entry, Gateways.Ynab.YnabEntry>(entry);
     }
 
-    public Gateways.Ynab.EntryCollection MapToYnab(Entry[] entries)
+    public Gateways.Ynab.YnabEntryCollection MapToYnab(Entry[] entries)
     {
-      return this.Map<IEnumerable<Entry>, Gateways.Ynab.EntryCollection>(entries);
+      return this.Map<IEnumerable<Entry>, Gateways.Ynab.YnabEntryCollection>(entries);
     }
 
     public Entry MapToDomain(Gateways.Csv.CsvEntry csvEntry)

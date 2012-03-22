@@ -6,7 +6,7 @@ namespace QuestMaster.EasyBankToYnab.ApplicationLogic
 {
   public class XmlMapperTests
   {
-    private static IXmlMapper ConstructMapper()
+    private static XmlMapper ConstructMapper()
     {
       return new XmlMapper();
     }
@@ -27,7 +27,7 @@ namespace QuestMaster.EasyBankToYnab.ApplicationLogic
     [TestClass]
     public class MapToDomainTests
     {
-      private IXmlMapper mapper;
+      private XmlMapper mapper;
 
       [TestInitialize]
       public void Setup()
@@ -162,7 +162,7 @@ namespace QuestMaster.EasyBankToYnab.ApplicationLogic
     [TestClass]
     public class MapToXmlTests
     {
-      private IXmlMapper mapper;
+      private XmlMapper mapper;
 
       [TestInitialize]
       public void Setup()

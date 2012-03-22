@@ -34,13 +34,4 @@ namespace QuestMaster.EasyBankToYnab.DomainTests.Bindings
           new FakePathProvider()));
     }
   }
-
-  public class FakePathProvider : IDefaultPathProvider
-  {
-    public string PathToDataFile { get; set; }
-
-    public string PathToExportFile { get; set; }
-
-    public string PathToImportFile { get; set; }
-  }
 }

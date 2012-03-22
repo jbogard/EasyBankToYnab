@@ -58,6 +58,7 @@
   <ItemGroup>
     <Compile Include="Bindings\CurrentScenarioContext.cs" />
     <Compile Include="Bindings\FakeFileAccess.cs" />
+    <Compile Include="Bindings\FakePathProvider.cs" />
     <Compile Include="Bindings\GivenDefinitions.cs" />
     <Compile Include="Bindings\Helpers.cs" />
     <Compile Include="Bindings\ScenarioSetup.cs" />

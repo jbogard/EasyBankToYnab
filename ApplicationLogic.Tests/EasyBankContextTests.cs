@@ -2,7 +2,6 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 using QuestMaster.EasyBankToYnab.Gateways;
-using QuestMaster.EasyBankToYnab.Gateways.Csv;
 using QuestMaster.EasyBankToYnab.Gateways.Ynab;
 
 namespace QuestMaster.EasyBankToYnab.ApplicationLogic
@@ -30,7 +29,7 @@ namespace QuestMaster.EasyBankToYnab.ApplicationLogic
       public void NullYnabGateway_ShouldThrowArgumentNullException()
       {
         new EasyBankContext(
-          new Mock<ICsvGateway>().Object,
+          new Mock<ICsvAgent>().Object,
           null,
           new Mock<IXmlAgent>().Object,
           new Mock<IMapper>().Object,
@@ -43,7 +42,7 @@ namespace QuestMaster.EasyBankToYnab.ApplicationLogic
       public void NullXmlGateway_ShouldThrowArgumentNullException()
       {
         new EasyBankContext(
-          new Mock<ICsvGateway>().Object,
+          new Mock<ICsvAgent>().Object,
           new Mock<IYnabGateway>().Object,
           null,
           new Mock<IMapper>().Object,
@@ -56,7 +55,7 @@ namespace QuestMaster.EasyBankToYnab.ApplicationLogic
       public void NullMapper_ShouldThrowArgumentNullException()
       {
         new EasyBankContext(
-          new Mock<ICsvGateway>().Object,
+          new Mock<ICsvAgent>().Object,
           new Mock<IYnabGateway>().Object,
           new Mock<IXmlAgent>().Object,
           null,
@@ -69,7 +68,7 @@ namespace QuestMaster.EasyBankToYnab.ApplicationLogic
       public void NullFileAccess_ShouldThrowArgumentNullException()
       {
         new EasyBankContext(
-          new Mock<ICsvGateway>().Object,
+          new Mock<ICsvAgent>().Object,
           new Mock<IYnabGateway>().Object,
           new Mock<IXmlAgent>().Object,
           new Mock<IMapper>().Object,
@@ -82,7 +81,7 @@ namespace QuestMaster.EasyBankToYnab.ApplicationLogic
       public void NullPathProviderFileAccess_ShouldThrowArgumentNullException()
       {
         new EasyBankContext(
-          new Mock<ICsvGateway>().Object,
+          new Mock<ICsvAgent>().Object,
           new Mock<IYnabGateway>().Object,
           new Mock<IXmlAgent>().Object,
           new Mock<IMapper>().Object,

@@ -7,7 +7,7 @@ using QuestMaster.EasyBankToYnab.Gateways.Ynab;
 
 namespace QuestMaster.EasyBankToYnab.ApplicationLogic
 {
-  public class Mapper : IMapper, IXmlMapper, IYnabMapper, IEasyBankMapper
+  public class Mapper : IMapper, IXmlMapper, IYnabMapper, ICsvMapper
   {
     public Mapper()
     {

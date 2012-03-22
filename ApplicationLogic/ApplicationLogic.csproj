@@ -49,6 +49,7 @@
     <Compile Include="EasyBankContext.cs" />
     <Compile Include="Entry.cs" />
     <Compile Include="EntryCollection.cs" />
+    <Compile Include="ICsvAgent.cs" />
     <Compile Include="IMapper.cs" />
     <Compile Include="IDataContextProvider.cs" />
     <Compile Include="IDefaultPathProvider.cs" />

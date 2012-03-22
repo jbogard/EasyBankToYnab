@@ -30,7 +30,7 @@ namespace QuestMaster.EasyBankToYnab.ApplicationLogic
   {
   }
 
-  public interface IEasyBankMapper : IMapper
+  public interface ICsvMapper : IMapper
   {
   }
 }

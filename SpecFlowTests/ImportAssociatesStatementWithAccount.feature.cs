@@ -83,13 +83,13 @@ namespace QuestMaster.EasyBankToYnab.DomainTests
             new ImportOfUnknownAccountCreatesAccountFeature().FeatureTearDown();
         }
         
-        [TechTalk.SpecRun.ScenarioAttribute("Create New Account")]
+        [TechTalk.SpecRun.ScenarioAttribute("Create New XmlAccount")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Create New Account")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Create New XmlAccount")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Import of unknown account creates account")]
         public virtual void CreateNewAccount()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Create New Account", ((string[])(null)));
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Create New XmlAccount", ((string[])(null)));
 #line 6
 this.ScenarioSetup(scenarioInfo);
 #line 7

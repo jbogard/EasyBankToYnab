@@ -168,7 +168,7 @@ namespace QuestMaster.EasyBankToYnab.UI
 
             //IEnumerable<string> readLines = FileHelpers.ReadLines(this.defaultPathProvider.PathToImportFile);
 
-            //this.easyBank.ImportStatements(readLines);
+            //this.XmlEasyBank.ImportStatements(readLines);
         }
 
         private void DoMarkAllAsAold(object obj)

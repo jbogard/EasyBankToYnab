@@ -105,7 +105,7 @@ this.FeatureBackground();
 #line hidden
             TechTalk.SpecFlow.Table table1 = new TechTalk.SpecFlow.Table(new string[] {
                         "Booking Date",
-                        "Account",
+                        "XmlAccount",
                         "Description",
                         "Payee",
                         "Value Date",

@@ -16,23 +16,23 @@ namespace QuestMaster.EasyBankToYnab.Gateways.Xml
       this.path = path;
     }
 
-    public void Write(EasyBank easyBank)
+    public void Write(XmlEasyBank xmlEasyBank)
     {
-      if (easyBank == null) throw new ArgumentNullException("easyBank");
+      if (xmlEasyBank == null) throw new ArgumentNullException("xmlEasyBank");
 
-      fileAccess.Write(path, easyBank);
+      fileAccess.Write(path, xmlEasyBank);
     }
 
-    public EasyBank Read()
+    public XmlEasyBank Read()
     {
-      EasyBank easyBank = this.fileAccess.Read<EasyBank>(path);
+      XmlEasyBank xmlEasyBank = this.fileAccess.Read<XmlEasyBank>(path);
 
-      if (easyBank == null)
+      if (xmlEasyBank == null)
       {
         throw new ApplicationException();
       }
 
-      return easyBank;
+      return xmlEasyBank;
     }
   }
 }

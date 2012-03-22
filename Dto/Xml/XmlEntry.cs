@@ -4,7 +4,7 @@ using System.Runtime.Serialization;
 namespace QuestMaster.EasyBankToYnab.Gateways.Xml
 {
   [DataContract(Name = "entry", Namespace = "")]
-  public class Entry
+  public class XmlEntry
   {
     [DataMember(Name = "account")]
     public string Account { get; set; }

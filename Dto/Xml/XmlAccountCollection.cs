@@ -4,8 +4,8 @@ using System.Runtime.Serialization;
 
 namespace QuestMaster.EasyBankToYnab.Gateways.Xml
 {
-  [CollectionDataContract(Name = "entries", Namespace = "", ItemName = "entry")]
-  public class EntryCollection : List<Entry>
+  [CollectionDataContract(Name = "accounts", Namespace = "", ItemName = "account")]
+  public class XmlAccountCollection : List<XmlAccount>
   {
   }
 }

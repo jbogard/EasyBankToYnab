@@ -49,11 +49,11 @@
     <Compile Include="Csv\ICsvGateway.cs" />
     <Compile Include="FileAccess.cs" />
     <Compile Include="IFileAccess.cs" />
-    <Compile Include="Xml\Account.cs" />
-    <Compile Include="Xml\AccountCollection.cs" />
-    <Compile Include="Xml\EasyBank.cs" />
-    <Compile Include="Xml\Entry.cs" />
-    <Compile Include="Xml\EntryCollection.cs" />
+    <Compile Include="Xml\XmlAccount.cs" />
+    <Compile Include="Xml\XmlAccountCollection.cs" />
+    <Compile Include="Xml\XmlEasyBank.cs" />
+    <Compile Include="Xml\XmlEntry.cs" />
+    <Compile Include="Xml\XmlEntryCollection.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Xml\IXmlGateway.cs" />
     <Compile Include="StreamExtensions.cs" />

@@ -12,14 +12,14 @@ namespace QuestMaster.EasyBankToYnab.ApplicationLogic
     public Mapper()
     {
       // Xml mapping
-      AutoMapper.Mapper.CreateMap<Entry, Gateways.Xml.Entry>();
-      AutoMapper.Mapper.CreateMap<Gateways.Xml.Entry, Entry>();
-      AutoMapper.Mapper.CreateMap<Account, Gateways.Xml.Account>();
-      AutoMapper.Mapper.CreateMap<Gateways.Xml.Account, Account>()
-        .ConstructUsing(xmlAccount => new Account(xmlAccount.Number, xmlAccount.Entries.Select(Map<Gateways.Xml.Entry, Entry>)));
-      AutoMapper.Mapper.CreateMap<EasyBankContext, Gateways.Xml.EasyBank>();
-      AutoMapper.Mapper.CreateMap<Gateways.Xml.EasyBank, EasyBankContext>()
-        .ConstructUsing(xmlEasyBank => new EasyBankContext(null, null, null, null, null, null, xmlEasyBank.Accounts.SelectMany(a => a.Entries).Select(Map<Gateways.Xml.Entry, Entry>)));
+      AutoMapper.Mapper.CreateMap<Entry, Gateways.Xml.XmlEntry>();
+      AutoMapper.Mapper.CreateMap<Gateways.Xml.XmlEntry, Entry>();
+      AutoMapper.Mapper.CreateMap<Account, Gateways.Xml.XmlAccount>();
+      AutoMapper.Mapper.CreateMap<Gateways.Xml.XmlAccount, Account>()
+        .ConstructUsing(xmlAccount => new Account(xmlAccount.Number, xmlAccount.Entries.Select(Map<Gateways.Xml.XmlEntry, Entry>)));
+      AutoMapper.Mapper.CreateMap<EasyBankContext, Gateways.Xml.XmlEasyBank>();
+      AutoMapper.Mapper.CreateMap<Gateways.Xml.XmlEasyBank, EasyBankContext>()
+        .ConstructUsing(xmlEasyBank => new EasyBankContext(null, null, null, null, null, null, xmlEasyBank.Accounts.SelectMany(a => a.Entries).Select(Map<Gateways.Xml.XmlEntry, Entry>)));
 
       AutoMapper.Mapper.CreateMap<Entry, Gateways.Ynab.YnabEntry>()
         .ConstructUsing(
@@ -44,54 +44,54 @@ namespace QuestMaster.EasyBankToYnab.ApplicationLogic
       return AutoMapper.Mapper.Map<TInput, TOutput>(input);
     }
 
-    public Gateways.Xml.Entry MapToXml(Entry entry)
+    public Gateways.Xml.XmlEntry MapToXml(Entry entry)
     {
-      return this.Map<Entry, Gateways.Xml.Entry>(entry);
+      return this.Map<Entry, Gateways.Xml.XmlEntry>(entry);
     }
 
-    public Entry MapToDomain(Gateways.Xml.Entry entry)
+    public Entry MapToDomain(Gateways.Xml.XmlEntry xmlEntry)
     {
-      return this.Map<Gateways.Xml.Entry, Entry>(entry);
+      return this.Map<Gateways.Xml.XmlEntry, Entry>(xmlEntry);
     }
 
-    public Gateways.Xml.EntryCollection MapToXml(EntryCollection entries)
+    public Gateways.Xml.XmlEntryCollection MapToXml(EntryCollection entries)
     {
-      return this.Map<EntryCollection, Gateways.Xml.EntryCollection>(entries);
+      return this.Map<EntryCollection, Gateways.Xml.XmlEntryCollection>(entries);
     }
 
-    public EntryCollection MapToDomain(Gateways.Xml.EntryCollection entries)
+    public EntryCollection MapToDomain(Gateways.Xml.XmlEntryCollection xmlEntries)
     {
-      return this.Map<Gateways.Xml.EntryCollection, EntryCollection>(entries);
+      return this.Map<Gateways.Xml.XmlEntryCollection, EntryCollection>(xmlEntries);
     }
 
-    public Gateways.Xml.EasyBank MapToXml(EasyBankContext easyBank)
+    public Gateways.Xml.XmlEasyBank MapToXml(EasyBankContext easyBank)
     {
-      return this.Map<EasyBankContext, Gateways.Xml.EasyBank>(easyBank);
+      return this.Map<EasyBankContext, Gateways.Xml.XmlEasyBank>(easyBank);
     }
 
-    public Gateways.Xml.Account MapDomainToXml(Account account)
+    public Gateways.Xml.XmlAccount MapDomainToXml(Account account)
     {
-      return this.Map<Account, Gateways.Xml.Account>(account);
+      return this.Map<Account, Gateways.Xml.XmlAccount>(account);
     }
 
-    public Gateways.Xml.AccountCollection MapDomainToXml(AccountCollection accounts)
+    public Gateways.Xml.XmlAccountCollection MapDomainToXml(AccountCollection accounts)
     {
-      return this.Map<AccountCollection, Gateways.Xml.AccountCollection>(accounts);
+      return this.Map<AccountCollection, Gateways.Xml.XmlAccountCollection>(accounts);
     }
 
-    public Account MapXmlToDomain(Gateways.Xml.Account account)
+    public Account MapXmlToDomain(Gateways.Xml.XmlAccount xmlAccount)
     {
-      return this.Map<Gateways.Xml.Account, Account>(account);
+      return this.Map<Gateways.Xml.XmlAccount, Account>(xmlAccount);
     }
 
-    public AccountCollection MapXmlToDomain(Gateways.Xml.AccountCollection accounts)
+    public AccountCollection MapXmlToDomain(Gateways.Xml.XmlAccountCollection xmlAccounts)
     {
-      return this.Map<Gateways.Xml.AccountCollection, AccountCollection>(accounts);
+      return this.Map<Gateways.Xml.XmlAccountCollection, AccountCollection>(xmlAccounts);
     }
 
-    public Gateways.Xml.EasyBank MapDomainToXml(EasyBankContext easyBank)
+    public Gateways.Xml.XmlEasyBank MapDomainToXml(EasyBankContext easyBank)
     {
-      return this.Map<EasyBankContext, Gateways.Xml.EasyBank>(easyBank);
+      return this.Map<EasyBankContext, Gateways.Xml.XmlEasyBank>(easyBank);
     }
 
     public Gateways.Ynab.YnabEntry MapToYnab(Entry entry)
@@ -109,9 +109,9 @@ namespace QuestMaster.EasyBankToYnab.ApplicationLogic
       return this.Map<Gateways.Csv.CsvEntry, Entry>(csvEntry);
     }
 
-    public EasyBankContext MapXmlToDomain(Gateways.Xml.EasyBank easyBank)
+    public EasyBankContext MapXmlToDomain(Gateways.Xml.XmlEasyBank xmlEasyBank)
     {
-      return this.Map<Gateways.Xml.EasyBank, EasyBankContext>(easyBank);
+      return this.Map<Gateways.Xml.XmlEasyBank, EasyBankContext>(xmlEasyBank);
     }
   }
 }

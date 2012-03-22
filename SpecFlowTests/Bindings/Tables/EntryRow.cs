@@ -19,7 +19,7 @@ namespace QuestMaster.EasyBankToYnab.DomainTests.Bindings.Tables
 
     public string Account
     {
-      get { return this.row["Account"]; }
+      get { return this.row["XmlAccount"]; }
     }
 
     public DateTime BookingDate

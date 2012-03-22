@@ -2,8 +2,8 @@
 {
   public interface IXmlGateway
   {
-    void Write(EasyBank easyBank);
+    void Write(XmlEasyBank xmlEasyBank);
 
-    EasyBank Read();
+    XmlEasyBank Read();
   }
 }

@@ -29,21 +29,21 @@ namespace QuestMaster.EasyBankToYnab.ApplicationLogic
 
     public void SaveAndClose()
     {
-        var easyBank = this.DataContext;
+        //var easyBank = this.DataContext;
 
-        if (easyBank != null)
-        {
-          this.xmlGateway.Write(this.mapper.Map<EasyBankContext, EasyBank>(this.DataContext));
-        }
+        //if (easyBank != null)
+        //{
+        //  this.xmlGateway.Write(this.mapper.MapToXml(this.DataContext));
+        //}
     }
 
     private EasyBankContext DoLoadDataContext(string pathToDataFile)
     {
-      if (File.Exists(pathToDataFile))
-      {
-        this.path = pathToDataFile;
-        return this.mapper.Map<EasyBank, EasyBankContext>(this.xmlGateway.Read());
-      }
+      //if (File.Exists(pathToDataFile))
+      //{
+      //  this.path = pathToDataFile;
+      //  return this.mapper.MapToDomain(this.xmlGateway.Read());
+      //}
 
       return null;
     }

@@ -2,11 +2,12 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using AutoMapper;
+//using QuestMaster.EasyBankToYnab.Gateways.Xml;
 using QuestMaster.EasyBankToYnab.Gateways.Ynab;
 
 namespace QuestMaster.EasyBankToYnab.ApplicationLogic
 {
-  public class Mapper : IMapper
+  public class Mapper : IMapper, IXmlMapper, IYnabMapper, IEasyBankMapper
   {
     public Mapper()
     {
@@ -22,15 +23,15 @@ namespace QuestMaster.EasyBankToYnab.ApplicationLogic
 
       AutoMapper.Mapper.CreateMap<Entry, Gateways.Ynab.Entry>()
         .ConstructUsing(
-        entry => 
+        entry =>
           new Gateways.Ynab.Entry
-            {
-              AmountIn = entry.AmountIn,
-              AmountOut = entry.AmountOut,
-              Description = entry.Description,
-              Payee = entry.Payee,
-              ValueDate = entry.ValueDate
-            });
+          {
+            AmountIn = entry.AmountIn,
+            AmountOut = entry.AmountOut,
+            Description = entry.Description,
+            Payee = entry.Payee,
+            ValueDate = entry.ValueDate
+          });
 
       AutoMapper.Mapper.CreateMap<IEnumerable<Entry>, Gateways.Ynab.EntryCollection>()
         .ConstructUsing(entries => new Gateways.Ynab.EntryCollection(entries.Select(Map<Entry, Gateways.Ynab.Entry>).ToArray()));
@@ -38,29 +39,34 @@ namespace QuestMaster.EasyBankToYnab.ApplicationLogic
       AutoMapper.Mapper.CreateMap<Gateways.EasyBank.Entry, Entry>().ForMember(e => e.IsNew, expr => expr.UseValue(true));
     }
 
-    public TOutput Map<TInput, TOutput>(TInput input)
+    private TOutput Map<TInput, TOutput>(TInput input)
     {
       return AutoMapper.Mapper.Map<TInput, TOutput>(input);
     }
 
-    public Gateways.Xml.Entry MapDomainToXml(Entry entry)
+    public Gateways.Xml.Entry MapToXml(Entry entry)
     {
       return this.Map<Entry, Gateways.Xml.Entry>(entry);
     }
 
-    public Entry MapXmlToDomain(Gateways.Xml.Entry entry)
+    public Entry MapToDomain(Gateways.Xml.Entry entry)
     {
       return this.Map<Gateways.Xml.Entry, Entry>(entry);
     }
 
-    public Gateways.Xml.EntryCollection MapDomainToXml(EntryCollection entries)
+    public Gateways.Xml.EntryCollection MapToXml(EntryCollection entries)
     {
       return this.Map<EntryCollection, Gateways.Xml.EntryCollection>(entries);
     }
 
-    public EntryCollection MapXmlToDomain(Gateways.Xml.EntryCollection entries)
+    public EntryCollection MapToDomain(Gateways.Xml.EntryCollection entries)
     {
       return this.Map<Gateways.Xml.EntryCollection, EntryCollection>(entries);
+    }
+
+    public Gateways.Xml.EasyBank MapToXml(EasyBankContext easyBank)
+    {
+      return this.Map<EasyBankContext, Gateways.Xml.EasyBank>(easyBank);
     }
 
     public Gateways.Xml.Account MapDomainToXml(Account account)
@@ -88,17 +94,17 @@ namespace QuestMaster.EasyBankToYnab.ApplicationLogic
       return this.Map<EasyBankContext, Gateways.Xml.EasyBank>(easyBank);
     }
 
-    public Gateways.Ynab.Entry MapDomainToYnab(Entry entry)
+    public Gateways.Ynab.Entry MapToYnab(Entry entry)
     {
       return this.Map<Entry, Gateways.Ynab.Entry>(entry);
     }
 
-    public Gateways.Ynab.EntryCollection MapDomainToYnab(Entry[] entries)
+    public Gateways.Ynab.EntryCollection MapToYnab(Entry[] entries)
     {
       return this.Map<IEnumerable<Entry>, Gateways.Ynab.EntryCollection>(entries);
     }
 
-    public Entry MapEasyBankToDomain(Gateways.EasyBank.Entry entry)
+    public Entry MapToDomain(Gateways.EasyBank.Entry entry)
     {
       return this.Map<Gateways.EasyBank.Entry, Entry>(entry);
     }

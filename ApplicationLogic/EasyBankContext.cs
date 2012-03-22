@@ -93,12 +93,12 @@ namespace QuestMaster.EasyBankToYnab.ApplicationLogic
     {
       this.fileAccess.BackupFile(this.pathProvider.PathToDataFile, "Backup");
 
-      this.xmlGateway.Write(this.mapper.Map<EasyBankContext, EasyBank>(this));
+      this.xmlGateway.Write(this.mapper.MapToXml(this));
     }
 
     public void Load()
     {
-      var entries = this.xmlGateway.Read().Accounts.SelectMany(a => a.Entries).Select(e => mapper.MapXmlToDomain(e));
+      var entries = this.xmlGateway.Read().Accounts.SelectMany(a => a.Entries).Select(e => mapper.MapToDomain(e));
 
       foreach (var entry in entries)
       {
@@ -120,14 +120,14 @@ namespace QuestMaster.EasyBankToYnab.ApplicationLogic
         entries = entries.Where(entry => entry.IsNew);
       }
 
-      this.ynabExporter.Write(this.mapper.Map<Entry[], Gateways.Ynab.EntryCollection>(entries.ToArray()));
+      this.ynabExporter.Write(this.mapper.MapToYnab(entries.ToArray()));
     }
 
     public void ImportEntries()
     {
       Gateways.EasyBank.EntryCollection entryCollection = this.statementImporter.Read();
 
-      Entry[] entries = this.mapper.Map<Gateways.EasyBank.EntryCollection, Entry[]>(entryCollection);
+      var entries = entryCollection.Select(e => this.mapper.MapToDomain(e));
 
       foreach (var entry in entries)
       {

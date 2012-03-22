@@ -4,24 +4,33 @@ namespace QuestMaster.EasyBankToYnab.ApplicationLogic
 {
   public interface IMapper
   {
-    TOutput Map<TInput, TOutput>(TInput input);
+    Gateways.Xml.Entry MapToXml(Entry entry);
+    Entry MapToDomain(Gateways.Xml.Entry entry);
 
-    Gateways.Xml.Entry MapDomainToXml(Entry entry); 
-    Entry MapXmlToDomain(Gateways.Xml.Entry entry);
+    Gateways.Xml.EntryCollection MapToXml(EntryCollection entries);
+    EntryCollection MapToDomain(Gateways.Xml.EntryCollection entries);
 
-    Gateways.Xml.EntryCollection MapDomainToXml(EntryCollection entries);
-    EntryCollection MapXmlToDomain(Gateways.Xml.EntryCollection entries);
+    //Gateways.Xml.Account MapToXml(Account account);
+    //Gateways.Xml.AccountCollection MapToXml(AccountCollection accounts);
+    EasyBank MapToXml(EasyBankContext easyBank);
 
-    Gateways.Xml.Account MapDomainToXml(Account account);
-    Gateways.Xml.AccountCollection MapDomainToXml(AccountCollection accounts);
-    EasyBank MapDomainToXml(EasyBankContext easyBank);
+    //Account MapToDomain(Gateways.Xml.Account account);
+    //AccountCollection MapToDomain(Gateways.Xml.AccountCollection accounts);
+    //EasyBankContext MapToDomain(EasyBank easyBank);
+    Gateways.Ynab.Entry MapToYnab(Entry entry);
+    Gateways.Ynab.EntryCollection MapToYnab(Entry[] entries);
+     Entry MapToDomain(Gateways.EasyBank.Entry entry);
+}
 
-    //Account MapXmlToDomain(Gateways.Xml.Account account);
-    //AccountCollection MapXmlToDomain(Gateways.Xml.AccountCollection accounts);
-    //EasyBankContext MapXmlToDomain(EasyBank easyBank);
+  public interface IXmlMapper
+  {
+  }
 
-    Gateways.Ynab.Entry MapDomainToYnab(Entry entry);
-    Gateways.Ynab.EntryCollection MapDomainToYnab(Entry[] entries);
-    Entry MapEasyBankToDomain(Gateways.EasyBank.Entry entry);
+  public interface IYnabMapper
+  {
+  }
+
+  public interface IEasyBankMapper
+  {
   }
 }

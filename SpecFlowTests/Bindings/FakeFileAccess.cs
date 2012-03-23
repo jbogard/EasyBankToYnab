@@ -23,7 +23,7 @@ namespace QuestMaster.EasyBankToYnab.DomainTests.Bindings
     {
     }
 
-    public void Write(string path, object dataContract)
+    public void Write<T>(string path, T dataContract)
     {
     }
 

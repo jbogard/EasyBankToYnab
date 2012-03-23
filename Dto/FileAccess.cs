@@ -63,13 +63,13 @@ namespace QuestMaster.EasyBankToYnab.Gateways
       File.Copy(path, backupPath);
     }
 
-    public void Write(string path, object dataContract)
+    public void Write<T>(string path, T dataContract)
     {
       if (string.IsNullOrWhiteSpace(path)) throw new ArgumentNullException("path");
 
       using (Stream stream = File.Create(path))
       {
-        stream.Serialize(dataContract);
+        stream.Serialize<T>(dataContract);
       }
     }
 

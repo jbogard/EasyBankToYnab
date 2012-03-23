@@ -23,8 +23,10 @@ namespace QuestMaster.EasyBankToYnab.UI
         private readonly SimpleCommand openCommand;
 
         private readonly IFileLookupService fileLookupService = new FileLookupService();
+        private readonly SimpleCommand saveAsCommand;
+        private readonly SimpleCommand saveCommand;
 
-        public MainFormViewModel(IDataContextProvider dataContextProvider, IPathProvider pathProvider)
+      public MainFormViewModel(IDataContextProvider dataContextProvider, IPathProvider pathProvider)
         {
             this.dataContextProvider = dataContextProvider;
             this.pathProvider = pathProvider;
@@ -35,16 +37,44 @@ namespace QuestMaster.EasyBankToYnab.UI
             this.openCommand = new SimpleCommand(this.DoOpen);
             this.exitCommand = new SimpleCommand(this.RequestExit);
             this.markAllAsOldCommand = new SimpleCommand(this.DoMarkAllAsAold);
+            this.saveCommand = new SimpleCommand(this.DoSave);
+            this.saveAsCommand = new SimpleCommand(this.DoSaveAs);
         }
 
-        public event EventHandler Exit;
+      private void DoSave(object obj)
+      {
+        this.easyBank.Save();
+      }
+
+      private void DoSaveAs(object obj)
+      {
+        var lookForFile = this.fileLookupService.LookForFile(this.pathProvider.PathToXmlFile, "*.xml|*.xml", Mode.Save);
+
+        if(lookForFile.Item2)
+        {
+          this.pathProvider.PathToXmlFile = lookForFile.Item1;
+          this.easyBank.Save();
+        }
+      }
+
+      public event EventHandler Exit;
 
         public IEnumerable<Account> Accounts
         {
             get
             {
-                return this.easyBank != null ? (IEnumerable<Account>)this.easyBank: new Account[0];
+                return this.easyBank != null ? this.easyBank.Accounts: new Account[0];
             }
+        }
+
+        public ICommand SaveAsCommand
+        {
+          get { return this.saveAsCommand; }
+        }
+
+        public ICommand SaveCommand
+        {
+          get { return this.saveCommand; }
         }
 
         public ICommand ExitCommand

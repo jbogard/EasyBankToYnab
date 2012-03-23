@@ -10,6 +10,7 @@ namespace QuestMaster.EasyBankToYnab.Gateways.Csv
     private readonly Regex regex = new Regex(@"[ ]{2,}", RegexOptions.None);
     private static readonly CultureInfo cultureInfo = new CultureInfo("de-DE");
 
+    // 20010351775;Kunde 1270519, Rechnung 074595730            FE/000004847|GIBAATWW AT062011129642361200 Vet-Concept GmbH Co KG;21.02.2012;21.02.2012;-322,39;EUR
     private const int AccountIndex = 0;
     private const int DescriptionIndex = 1;
     private const int BookingDateIndex = 2;
@@ -19,7 +20,7 @@ namespace QuestMaster.EasyBankToYnab.Gateways.Csv
     
     public CsvEntry(string statement)
     {
-      string[] parts = statement.Split(';');
+      string[] parts = statement.Replace("&#214;", "Ö").Replace("&#246;", "ö").Replace("&#196;", "Ä").Replace("&#228;", "ä").Replace("&#220;", "Ü").Replace("&#252;", "ü").Replace("&#233;", "ß").Split(';');
       var amount = decimal.Parse(parts[AmountIndex], cultureInfo);
 
       string description = RetrieveDescription(parts);

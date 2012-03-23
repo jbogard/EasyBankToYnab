@@ -10,7 +10,9 @@
       <MenuItem Header="_File">
         <MenuItem.Items>
           <MenuItem Header="_Open ..." Command="{Binding Path=Open}" />
-                    <MenuItem Header="_Import ..." Command="{Binding Path=Import}" />
+          <MenuItem Header="_Save" Command="{Binding Path=SaveCommand}" />
+          <MenuItem Header="Save _As ..." Command="{Binding Path=SaveAsCommand}" />
+          <MenuItem Header="_Import ..." Command="{Binding Path=Import}" />
                     <MenuItem Header="Import _Now" Command="{Binding Path=ImportNow}" />
                     <MenuItem Header="Ex_port ..." Command="{Binding Path=Export}" />
                     <MenuItem Header="Export No_w" Command="{Binding Path=ExportNow}" />
@@ -21,14 +23,14 @@
 
     <DockPanel DockPanel.Dock="Top">
       <Label DockPanel.Dock="Left">Account: </Label>
-      <ComboBox ItemsSource="{Binding Path=Accounts}"></ComboBox>
+      <ComboBox ItemsSource="{Binding Path=Accounts}" DisplayMemberPath="Number"></ComboBox>
     </DockPanel>
         
       <StackPanel Orientation="Horizontal" DockPanel.Dock="Bottom">
             <Button Command="{Binding Path=MarkAllAsOld}">Mark all as old</Button>
             <Button Command="{Binding Path=ExportNow}">Export all new now</Button>
     </StackPanel>
-        <ListView ItemsSource="{Binding Path=Accounts/Entries}">
+    <ListView ItemsSource="{Binding Path=Accounts/Entries}">
       <ListView.View>
         <GridView>
           <GridView.Columns>

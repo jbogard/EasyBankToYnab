@@ -53,7 +53,10 @@ namespace QuestMaster.EasyBankToYnab.UI
         new FileAccess(),
         pathProvider);
 
-      context.Load();
+      if (System.IO.File.Exists(pathProvider.PathToXmlFile))
+      {
+        context.Load();
+      }
 
       return context;
     }

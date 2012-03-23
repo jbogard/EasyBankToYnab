@@ -67,7 +67,10 @@ namespace QuestMaster.EasyBankToYnab.ApplicationLogic
 
     public void Save()
     {
-      this.fileAccess.BackupFile(this.pathProvider.PathToXmlFile, "Backup");
+      if(System.IO.File.Exists(this.pathProvider.PathToXmlFile))
+      {
+        this.fileAccess.BackupFile(this.pathProvider.PathToXmlFile, "Backup");
+      }
 
       this.xmlAgent.Write(this);
     }

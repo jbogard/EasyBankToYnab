@@ -5,17 +5,17 @@ namespace QuestMaster.EasyBankToYnab.Gateways.Ynab
   public class YnabGateway : IYnabGateway
   {
     private readonly IFileAccess fileAccess;
-    private readonly string path;
+    private readonly IPathProvider pathProvider;
     private readonly CultureSettings cultureSettings;
 
-    public YnabGateway(IFileAccess fileAccess, string path, CultureSettings cultureSettings)
+    public YnabGateway(IFileAccess fileAccess, IPathProvider pathProvider, CultureSettings cultureSettings)
     {
       if (fileAccess == null) throw new ArgumentNullException("fileAccess");
-      if (string.IsNullOrEmpty(path)) throw new ArgumentNullException("path");
+      if (pathProvider == null) throw new ArgumentNullException("pathProvider");
       if (cultureSettings == null) throw new ArgumentNullException("cultureSettings");
 
       this.fileAccess = fileAccess;
-      this.path = path;
+      this.pathProvider = pathProvider;
       this.cultureSettings = cultureSettings;
     }
 
@@ -23,7 +23,7 @@ namespace QuestMaster.EasyBankToYnab.Gateways.Ynab
     {
       if (ynabEntries == null) throw new ArgumentNullException("ynabEntries");
 
-      fileAccess.WriteLines(this.path, ynabEntries.ToYnabStrings(cultureSettings));
+      fileAccess.WriteLines(this.pathProvider.PathToYnabFile, ynabEntries.ToYnabStrings(cultureSettings));
     }
   }
 }

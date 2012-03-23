@@ -48,6 +48,7 @@
     <Compile Include="Csv\CsvEntryCollection.cs" />
     <Compile Include="Csv\ICsvGateway.cs" />
     <Compile Include="FileAccess.cs" />
+    <Compile Include="IPathProvider.cs" />
     <Compile Include="IFileAccess.cs" />
     <Compile Include="Xml\XmlAccount.cs" />
     <Compile Include="Xml\XmlAccountCollection.cs" />

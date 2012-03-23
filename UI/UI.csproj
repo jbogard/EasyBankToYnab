@@ -61,6 +61,8 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="ApplicationData.cs" />
+    <Compile Include="DataContextProvider.cs" />
     <Compile Include="DefaultPathProvider.cs" />
     <Compile Include="FileLookupService.cs" />
     <Compile Include="Foundation\EventHandlerExtensions.cs" />
@@ -102,6 +104,10 @@
     <ProjectReference Include="..\ApplicationLogic\ApplicationLogic.csproj">
       <Project>{806366BB-30AA-4C70-B1DA-9BE3EAFA8153}</Project>
       <Name>ApplicationLogic</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Dto\Gateways.csproj">
+      <Project>{02521171-187B-4E2F-B058-776CB4885782}</Project>
+      <Name>Gateways</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Windows.Input;
 using QuestMaster.EasyBankToYnab.ApplicationLogic;
+using QuestMaster.EasyBankToYnab.Gateways;
 using QuestMaster.EasyBankToYnab.UI.Foundation;
 
 namespace QuestMaster.EasyBankToYnab.UI
@@ -11,9 +11,9 @@ namespace QuestMaster.EasyBankToYnab.UI
     {
         private readonly IDataContextProvider dataContextProvider;
 
-        private readonly IDefaultPathProvider defaultPathProvider;
+        private readonly IPathProvider pathProvider;
 
-        private EasyBankContext easyBank;
+        private EasyBankContext easyBank { get { return this.dataContextProvider.DataContext; } }
         private readonly SimpleCommand exitCommand;
         private readonly SimpleCommand exportCommand;
         private readonly SimpleCommand exportNowCommand;
@@ -24,11 +24,10 @@ namespace QuestMaster.EasyBankToYnab.UI
 
         private readonly IFileLookupService fileLookupService = new FileLookupService();
 
-        public MainFormViewModel(IDataContextProvider dataContextProvider, IDefaultPathProvider defaultPathProvider)
+        public MainFormViewModel(IDataContextProvider dataContextProvider, IPathProvider pathProvider)
         {
             this.dataContextProvider = dataContextProvider;
-            this.defaultPathProvider = defaultPathProvider;
-            this.easyBank = dataContextProvider.DataContext;
+            this.pathProvider = pathProvider;
             this.importNowCommand = new SimpleCommand(this.DoImport);
             this.importCommand = new SimpleCommand(this.AskFileAndImport);
             this.exportNowCommand = new SimpleCommand(this.DoExport);
@@ -106,8 +105,7 @@ namespace QuestMaster.EasyBankToYnab.UI
 
         public void LoadDataContextFromDefaultPath()
         {
-            this.dataContextProvider.LoadDataContext(this.defaultPathProvider.PathToDataFile);
-            this.easyBank = this.dataContextProvider.DataContext;
+            this.dataContextProvider.LoadDataContext();
             OnPropertyChanged(() => this.Accounts);
         }
 
@@ -118,20 +116,20 @@ namespace QuestMaster.EasyBankToYnab.UI
 
         private void AskFileAndExport(object obj)
         {
-            Tuple<string, bool> couple = this.ViewModelPathToExportFileRequested(this.defaultPathProvider.PathToExportFile);
+            Tuple<string, bool> couple = this.ViewModelPathToExportFileRequested(this.pathProvider.PathToYnabFile);
             if (couple.Item2)
             {
-                this.defaultPathProvider.PathToExportFile = couple.Item1;
+                this.pathProvider.PathToYnabFile = couple.Item1;
                 this.DoExport(obj);
             }
         }
 
         private void AskFileAndImport(object obj)
         {
-            Tuple<string, bool> couple = this.ViewModelPathToImportFileRequested(this.defaultPathProvider.PathToImportFile);
+            Tuple<string, bool> couple = this.ViewModelPathToImportFileRequested(this.pathProvider.PathToCsvFile);
             if (couple.Item2)
             {
-                this.defaultPathProvider.PathToImportFile = couple.Item1;
+                this.pathProvider.PathToCsvFile = couple.Item1;
                 this.DoImport(obj);
             }
         }
@@ -141,17 +139,13 @@ namespace QuestMaster.EasyBankToYnab.UI
             var account = obj as Account;
             if (account != null)
             {
-                ExportStatementsToFile(account);
+                ExportStatementsToFile();
             }
         }
 
-        private void ExportStatementsToFile(Account account)
+        private void ExportStatementsToFile()
         {
-            throw new NotImplementedException();
-            //using (StreamWriter writer = new StreamWriter(this.defaultPathProvider.PathToExportFile))
-            //{
-            //    writer.Write(account.ExportNewEntries());
-            //}
+          this.easyBank.ExportEntries(true);
         }
 
         private void DoImport(object obj)
@@ -163,12 +157,7 @@ namespace QuestMaster.EasyBankToYnab.UI
 
         private void ImportStatementsFromFile()
         {
-            throw new NotImplementedException();
-            //// todo: pull out
-
-            //IEnumerable<string> readLines = FileHelpers.ReadLines(this.defaultPathProvider.PathToImportFile);
-
-            //this.XmlEasyBank.ImportStatements(readLines);
+          this.easyBank.ImportEntries();
         }
 
         private void DoMarkAllAsAold(object obj)
@@ -185,10 +174,10 @@ namespace QuestMaster.EasyBankToYnab.UI
 
         private void DoOpen(object obj)
         {
-            Tuple<string, bool> couple = this.ViewModelPathToDatabaseRequested(this.defaultPathProvider.PathToDataFile);
+            Tuple<string, bool> couple = this.ViewModelPathToDatabaseRequested(this.pathProvider.PathToXmlFile);
             if (couple.Item2)
             {
-                this.defaultPathProvider.PathToDataFile = couple.Item1;
+                this.pathProvider.PathToXmlFile = couple.Item1;
                 LoadDataContextFromDefaultPath();
             }
         }

@@ -12,25 +12,14 @@ namespace QuestMaster.EasyBankToYnab.ApplicationLogic
     private readonly IXmlAgent xmlAgent;
     private readonly AccountCollection accounts = new AccountCollection();
     private readonly IFileAccess fileAccess;
-    private readonly IDefaultPathProvider pathProvider;
-
-    public EasyBankContext(
-      ICsvAgent statementImporter,
-      IYnabAgent ynabExporter,
-      IXmlAgent xmlAgent,
-      IFileAccess fileAccess,
-      IDefaultPathProvider pathProvider)
-      : this(statementImporter, ynabExporter, xmlAgent, fileAccess, pathProvider, new Entry[0])
-    {
-    }
+    private readonly IPathProvider pathProvider;
 
     public EasyBankContext(
       ICsvAgent statementImporter,
       IYnabAgent ynabExporter,
       IXmlAgent xmlAgent, 
       IFileAccess fileAccess, 
-      IDefaultPathProvider pathProvider,
-      IEnumerable<Entry> entries)
+      IPathProvider pathProvider)
     {
       if (statementImporter == null) throw new ArgumentNullException("statementImporter");
       if (ynabExporter == null) throw new ArgumentNullException("ynabExporter");
@@ -43,11 +32,6 @@ namespace QuestMaster.EasyBankToYnab.ApplicationLogic
       this.xmlAgent = xmlAgent;
       this.fileAccess = fileAccess;
       this.pathProvider = pathProvider;
-
-      foreach (var entry in entries)
-      {
-        this.AddEntry(entry);
-      }
     }
 
     public Account this[string accountNumber]
@@ -83,7 +67,7 @@ namespace QuestMaster.EasyBankToYnab.ApplicationLogic
 
     public void Save()
     {
-      this.fileAccess.BackupFile(this.pathProvider.PathToDataFile, "Backup");
+      this.fileAccess.BackupFile(this.pathProvider.PathToXmlFile, "Backup");
 
       this.xmlAgent.Write(this);
     }

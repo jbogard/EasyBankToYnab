@@ -264,7 +264,7 @@ namespace QuestMaster.EasyBankToYnab.ApplicationLogic.Mappers
       //    new Mock<Gateways.Xml.IXmlGateway>().Object,
       //    new Mock<IMapper>().Object,
       //    new Mock<IFileAccess>().Object,
-      //    new Mock<IDefaultPathProvider>().Object);
+      //    new Mock<IPathProvider>().Object);
 
       //  domainEasyBank.AddAcount("account number 1");
       //  domainEasyBank.AddAcount("account number 2");

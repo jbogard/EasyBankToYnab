@@ -19,7 +19,7 @@ namespace QuestMaster.EasyBankToYnab.ApplicationLogic
           new Mock<IYnabAgent>().Object,
           new Mock<IXmlAgent>().Object,
           new Mock<IFileAccess>().Object,
-          new Mock<IDefaultPathProvider>().Object);
+          new Mock<IPathProvider>().Object);
       }
 
       [TestMethod]
@@ -31,7 +31,7 @@ namespace QuestMaster.EasyBankToYnab.ApplicationLogic
           null,
           new Mock<IXmlAgent>().Object,
           new Mock<IFileAccess>().Object,
-          new Mock<IDefaultPathProvider>().Object);
+          new Mock<IPathProvider>().Object);
       }
 
       [TestMethod]
@@ -43,7 +43,7 @@ namespace QuestMaster.EasyBankToYnab.ApplicationLogic
           new Mock<IYnabAgent>().Object,
           null,
           new Mock<IFileAccess>().Object,
-          new Mock<IDefaultPathProvider>().Object);
+          new Mock<IPathProvider>().Object);
       }
 
       [TestMethod]
@@ -55,7 +55,7 @@ namespace QuestMaster.EasyBankToYnab.ApplicationLogic
           new Mock<IYnabAgent>().Object,
           new Mock<IXmlAgent>().Object,
           null,
-          new Mock<IDefaultPathProvider>().Object);
+          new Mock<IPathProvider>().Object);
       }
 
       [TestMethod]

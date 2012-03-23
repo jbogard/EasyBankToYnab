@@ -15,15 +15,8 @@ namespace QuestMaster.EasyBankToYnab.UI
 
     public MainFormViewModel ViewModel
     {
-      get
-      {
-        return this.DataContext as MainFormViewModel;
-      }
-
-      set
-      {
-        this.DataContext = value;
-      }
+      get { return this.DataContext as MainFormViewModel; }
+      set { this.DataContext = value; }
     }
 
     private void ViewModelExit(object sender, EventArgs e)
@@ -44,13 +37,13 @@ namespace QuestMaster.EasyBankToYnab.UI
     private void WindowDataContextChanged(object sender, DependencyPropertyChangedEventArgs e)
     {
       MainFormViewModel oldViewModel = e.OldValue as MainFormViewModel;
-      if (!object.ReferenceEquals(oldViewModel, null))
+      if (!ReferenceEquals(oldViewModel, null))
       {
         oldViewModel.Exit -= this.ViewModelExit;
       }
 
       MainFormViewModel newViewModel = e.NewValue as MainFormViewModel;
-      if (!object.ReferenceEquals(newViewModel, null))
+      if (!ReferenceEquals(newViewModel, null))
       {
         newViewModel.Exit += this.ViewModelExit;
       }

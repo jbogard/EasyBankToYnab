@@ -18,18 +18,18 @@ namespace QuestMaster.EasyBankToYnab.DomainTests.Bindings
       var fakeFileAccess = new FakeFileAccess();
       var fakePathProvider = new FakePathProvider
                                {
-                                 PathToDataFile = @"c:\temp\file.xml",
-                                 PathToExportFile = @"c:\temp\file.ynab",
-                                 PathToImportFile = @"c:\temp\file.csv"
+                                 PathToXmlFile = @"c:\temp\file.xml",
+                                 PathToYnabFile = @"c:\temp\file.ynab",
+                                 PathToCsvFile = @"c:\temp\file.csv"
                                };
 
       CurrentScenarioContext.FakeFileAccess = fakeFileAccess;
 
       CurrentScenarioContext.InitializeEasyBankContext(
         new EasyBankContext(
-          new CsvAgent(new CsvGateway(fakeFileAccess, fakePathProvider.PathToImportFile), new CsvMapper()),
-          new YnabAgent(new YnabGateway(fakeFileAccess, fakePathProvider.PathToExportFile, CultureSettings.German()), new YnabMapper()),
-          new XmlAgent(new XmlGateway(fakeFileAccess, fakePathProvider.PathToDataFile), new XmlMapper()),
+          new CsvAgent(new CsvGateway(fakeFileAccess, fakePathProvider), new CsvMapper()),
+          new YnabAgent(new YnabGateway(fakeFileAccess, fakePathProvider, CultureSettings.German()), new YnabMapper()),
+          new XmlAgent(new XmlGateway(fakeFileAccess, fakePathProvider), new XmlMapper()),
           fakeFileAccess,
           new FakePathProvider()));
     }

@@ -47,14 +47,12 @@
     <Compile Include="AccountCollection.cs" />
     <Compile Include="Agents\CsvAgent.cs" />
     <Compile Include="Mappers\CsvMapper.cs" />
-    <Compile Include="DataContextProvider.cs" />
     <Compile Include="EasyBankContext.cs" />
     <Compile Include="Entry.cs" />
     <Compile Include="EntryCollection.cs" />
     <Compile Include="ICsvAgent.cs" />
     <Compile Include="ICsvMapper.cs" />
     <Compile Include="IDataContextProvider.cs" />
-    <Compile Include="IDefaultPathProvider.cs" />
     <Compile Include="IXmlAgent.cs" />
     <Compile Include="IXmlMapper.cs" />
     <Compile Include="IYnabAgent.cs" />

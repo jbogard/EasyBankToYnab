@@ -1,12 +1,13 @@
 ﻿using System;
 using QuestMaster.EasyBankToYnab.ApplicationLogic;
+using QuestMaster.EasyBankToYnab.Gateways;
 using QuestMaster.EasyBankToYnab.UI.Properties;
 
 namespace QuestMaster.EasyBankToYnab.UI
 {
-    internal class DefaultPathProvider : IDefaultPathProvider
+    internal class PathProvider : IPathProvider
     {
-        public string PathToDataFile
+        public string PathToXmlFile
         {
             get
             {
@@ -19,7 +20,7 @@ namespace QuestMaster.EasyBankToYnab.UI
             }
         }
 
-        public string PathToExportFile
+        public string PathToYnabFile
         {
             get
             {
@@ -32,7 +33,7 @@ namespace QuestMaster.EasyBankToYnab.UI
             }
         }
 
-        public string PathToImportFile
+        public string PathToCsvFile
         {
             get
             {

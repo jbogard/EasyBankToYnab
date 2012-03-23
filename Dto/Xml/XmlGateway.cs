@@ -5,27 +5,27 @@ namespace QuestMaster.EasyBankToYnab.Gateways.Xml
   public class XmlGateway : IXmlGateway
   {
     private readonly IFileAccess fileAccess;
-    private readonly string path;
+    private readonly IPathProvider pathProvider;
 
-    public XmlGateway(IFileAccess fileAccess, string path)
+    public XmlGateway(IFileAccess fileAccess, IPathProvider pathProvider)
     {
       if (fileAccess == null) throw new ArgumentNullException("fileAccess");
-      if (string.IsNullOrWhiteSpace(path)) throw new ArgumentNullException("path");
+      if (pathProvider == null) throw new ArgumentNullException("pathProvider");
 
       this.fileAccess = fileAccess;
-      this.path = path;
+      this.pathProvider = pathProvider;
     }
 
     public void Write(XmlEasyBank xmlEasyBank)
     {
       if (xmlEasyBank == null) throw new ArgumentNullException("xmlEasyBank");
 
-      fileAccess.Write(path, xmlEasyBank);
+      fileAccess.Write(pathProvider.PathToXmlFile, xmlEasyBank);
     }
 
     public XmlEasyBank Read()
     {
-      XmlEasyBank xmlEasyBank = this.fileAccess.Read<XmlEasyBank>(path);
+      XmlEasyBank xmlEasyBank = this.fileAccess.Read<XmlEasyBank>(pathProvider.PathToXmlFile);
 
       if (xmlEasyBank == null)
       {

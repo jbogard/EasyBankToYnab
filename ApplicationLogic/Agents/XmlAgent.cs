@@ -29,7 +29,19 @@ namespace QuestMaster.EasyBankToYnab.ApplicationLogic.Agents
 
     public IEnumerable<Entry> Read()
     {
-      return this.gateway.Read().Accounts.SelectMany(a => a.Entries).Select(this.mapper.MapToDomain);
+      var xmlEasyBank = this.gateway.Read();
+
+      if (xmlEasyBank != null)
+      {
+        var accounts = xmlEasyBank.Accounts;
+
+        if (accounts != null)
+        {
+          return accounts.SelectMany(a => a.Entries).Select(this.mapper.MapToDomain);
+        }
+      }
+
+      return new Entry[0];
     }
   }
 }

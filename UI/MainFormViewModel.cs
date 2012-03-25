@@ -141,7 +141,7 @@ namespace QuestMaster.EasyBankToYnab.UI
 
         private Tuple<string, bool> ViewModelPathToDatabaseRequested(string fileName)
         {
-            return this.fileLookupService.LookForFile(fileName, "SDF Files (*.sdf)|*.sdf", Mode.Open);
+          return this.fileLookupService.LookForFile(fileName, "*.xml|*.xml", Mode.Open);
         }
 
         private void AskFileAndExport(object obj)

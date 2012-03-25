@@ -27,8 +27,8 @@
     </DockPanel>
         
       <StackPanel Orientation="Horizontal" DockPanel.Dock="Bottom">
-            <Button Command="{Binding Path=MarkAllAsOld}">Mark all as old</Button>
-            <Button Command="{Binding Path=ExportNow}">Export all new now</Button>
+            <Button Command="{Binding Path=MarkAllAsOld}" CommandParameter="{Binding Path=Accounts/}">Mark all as old</Button>
+      <Button Command="{Binding Path=ExportNow}" CommandParameter="{Binding Path=Accounts/}">Export all new now</Button>
     </StackPanel>
     <ListView ItemsSource="{Binding Path=Accounts/Entries}">
       <ListView.View>

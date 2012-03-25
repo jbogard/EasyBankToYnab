@@ -55,7 +55,7 @@ namespace QuestMaster.EasyBankToYnab.Gateways
         Directory.CreateDirectory(backupDirectory);
       }
 
-      string backupFilename = Path.GetFileNameWithoutExtension(path) + "." + DateTime.Now.ToString("yyyy-MM-dd--HH-mm") +
+      string backupFilename = Path.GetFileNameWithoutExtension(path) + "." + DateTime.Now.ToString("yyyy-MM-dd--HH-mm-ss-fff") +
                               Path.GetExtension(path);
 
       string backupPath = Path.Combine(backupDirectory, backupFilename);

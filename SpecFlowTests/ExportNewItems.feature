@@ -12,6 +12,6 @@ Scenario: Export new entries only
   When I export all new entries
   Then the result should be
   """
-  Date;Category;Payee;Memo;Outflow;Inflow                                                  
-  11.07.2011;Import Statements;;easykreditkarte MasterCard 000000 MC/000002237;757.70;0.00
+  Date,Category,Payee,Memo,Outflow,Inflow                                                  
+  11.07.2011,Import Statements,,easykreditkarte MasterCard 000000 MC/000002237,757.70,0.00
   """

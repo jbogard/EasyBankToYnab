@@ -131,9 +131,9 @@ this.ScenarioSetup(scenarioInfo);
   testRunner.When("I export all new entries");
 #line hidden
 #line 13
-  testRunner.Then("the result should be", "Date;Category;Payee;Memo;Outflow;Inflow                                          " +
-                    "        \r\n11.07.2011;Import Statements;;easykreditkarte MasterCard 000000 MC/000" +
-                    "002237;757.70;0.00", ((TechTalk.SpecFlow.Table)(null)));
+  testRunner.Then("the result should be", "Date,Category,Payee,Memo,Outflow,Inflow                                          " +
+                    "        \r\n11.07.2011,Import Statements,,easykreditkarte MasterCard 000000 MC/000" +
+                    "002237,757.70,0.00", ((TechTalk.SpecFlow.Table)(null)));
 #line hidden
             this.ScenarioCleanup();
         }

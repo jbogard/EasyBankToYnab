@@ -25,19 +25,16 @@ namespace QuestMaster.EasyBankToYnab.DomainTests.Bindings
     {
       var entries = entryTable.Entries.Select(
         e =>
-          new Entry
-            {
-              Account = e.Account,
-              AmountIn = e.AmountIn,
-              AmountOut = e.AmountOut,
-              BookingDate = e.BookingDate,
-              Currency = e.Currency,
-              Description = e.Description,
-              IsNew = e.IsNew,
-              Payee = e.Payee,
-              ValueDate = e.ValueDate
-            })
-          .ToArray();
+          new Entry(
+              account: e.Account,
+              amountIn: e.AmountIn,
+              amountOut: e.AmountOut,
+              bookingDate: e.BookingDate,
+              currency: e.Currency,
+              description: e.Description,
+              payee: e.Payee,
+              valueDate: e.ValueDate)
+      { IsNew = e.IsNew }).ToArray();
 
       foreach (var entry in entries)
       {

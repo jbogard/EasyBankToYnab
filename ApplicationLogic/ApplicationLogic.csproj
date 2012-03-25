@@ -46,6 +46,7 @@
     <Compile Include="Account.cs" />
     <Compile Include="AccountCollection.cs" />
     <Compile Include="Agents\CsvAgent.cs" />
+    <Compile Include="EventHandlerExtensions.cs" />
     <Compile Include="Mappers\CsvMapper.cs" />
     <Compile Include="EasyBankContext.cs" />
     <Compile Include="Entry.cs" />
@@ -57,6 +58,7 @@
     <Compile Include="IXmlMapper.cs" />
     <Compile Include="IYnabAgent.cs" />
     <Compile Include="IYnabMapper.cs" />
+    <Compile Include="NotifyPropertyChanged.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Agents\XmlAgent.cs" />
     <Compile Include="Agents\YnabAgent.cs" />

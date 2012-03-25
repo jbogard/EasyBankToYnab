@@ -65,8 +65,6 @@
     <Compile Include="DataContextProvider.cs" />
     <Compile Include="DefaultPathProvider.cs" />
     <Compile Include="FileLookupService.cs" />
-    <Compile Include="Foundation\EventHandlerExtensions.cs" />
-    <Compile Include="Foundation\NotifyPropertyChanged.cs" />
     <Compile Include="Foundation\SimpleCommand.cs" />
     <Compile Include="IFileLookupService.cs" />
     <Compile Include="MainFormViewModel.cs" />

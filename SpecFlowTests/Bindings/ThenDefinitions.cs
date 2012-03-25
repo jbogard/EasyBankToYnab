@@ -47,7 +47,7 @@ namespace QuestMaster.EasyBankToYnab.DomainTests.Bindings
 
     private static void AssertEntry(EntryRow expected, Entry actual, int index)
     {
-      Assert.AreEqual(expected.Account, actual.Account, "Row {0} raAccount", index);
+      Assert.AreEqual(expected.Account, actual.Account, "Row {0} Account", index);
       Assert.AreEqual(expected.BookingDate, actual.BookingDate, "Row {0} BookingDate", index);
       Assert.AreEqual(expected.Description, actual.Description, "Row {0} Description", index);
       Assert.AreEqual(expected.Payee, actual.Payee, "Row {0} Payee", index);

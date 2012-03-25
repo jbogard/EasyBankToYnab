@@ -172,18 +172,16 @@ namespace QuestMaster.EasyBankToYnab.ApplicationLogic.Mappers
       [TestMethod]
       public void MapEntry()
       {
-        var domainEntry = new Entry
-                            {
-                              Account = "account number",
-                              AmountIn = 1m,
-                              AmountOut = 2m,
-                              BookingDate = new DateTime(2012, 1, 1),
-                              Currency = "EUR",
-                              Description = "my description",
-                              IsNew = true,
-                              Payee = "the payee",
-                              ValueDate = new DateTime(2012, 1, 16)
-                            };
+        var domainEntry = new Entry(
+                              account: "account number",
+                              amountIn: 1m,
+                              amountOut: 2m,
+                              bookingDate: new DateTime(2012, 1, 1),
+                              currency:"EUR",
+                              description: "my description",
+                              payee: "the payee",
+                              valueDate: new DateTime(2012, 1, 16))
+                            { IsNew = true };
 
         Gateways.Xml.XmlEntry xmlEntry = mapper.MapToXml(domainEntry);
 
@@ -201,15 +199,25 @@ namespace QuestMaster.EasyBankToYnab.ApplicationLogic.Mappers
       [TestMethod]
       public void MapEntryCollection()
       {
-        var domainEntry1 = new Entry
-                             {
-                               Account = "account number 1",
-                             };
+        var domainEntry1 = new Entry(
+                              account: "account number 1",
+                              amountIn: 1m,
+                              amountOut: 2m,
+                              bookingDate: new DateTime(2012, 1, 1),
+                              currency: "EUR",
+                              description: "my description",
+                              payee: "the payee",
+                              valueDate: new DateTime(2012, 1, 16)) { IsNew = true };
 
-        var domainEntry2 = new Entry
-                             {
-                               Account = "account number 2",
-                             };
+        var domainEntry2 = new Entry(
+                              account: "account number 2",
+                              amountIn: 3m,
+                              amountOut: 4m,
+                              bookingDate: new DateTime(2012, 1, 3),
+                              currency: "USD",
+                              description: "my other description",
+                              payee: "the other payee",
+                              valueDate: new DateTime(2012, 1, 17)) { IsNew = true };
 
         var collection = new EntryCollection
                            {

@@ -33,7 +33,7 @@ namespace QuestMaster.EasyBankToYnab.DomainTests
         {
             testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
             TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Import of credit cart account statements", "In order to update my list of transactions\r\nAs a user\r\nI want to import CSV files" +
-                    " from XmlEasyBank", ProgrammingLanguage.CSharp, ((string[])(null)));
+                    " from EasyBank", ProgrammingLanguage.CSharp, ((string[])(null)));
             testRunner.OnFeatureStart(featureInfo);
         }
         
@@ -110,7 +110,7 @@ this.ScenarioSetup(scenarioInfo);
 #line hidden
             TechTalk.SpecFlow.Table table1 = new TechTalk.SpecFlow.Table(new string[] {
                         "Booking Date",
-                        "XmlAccount",
+                        "Account",
                         "Description",
                         "Payee",
                         "Value Date",

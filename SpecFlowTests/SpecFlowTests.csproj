@@ -84,6 +84,11 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
+    <Compile Include="ImportSkipsDuplicates.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ImportSkipsDuplicates.feature</DependentUpon>
+    </Compile>
     <Compile Include="SavingsAccountExport.feature.cs">
       <DependentUpon>SavingsAccountExport.feature</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -129,6 +134,10 @@
     <None Include="CreditCardAccountExport.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>CreditCardAccountExport.feature.cs</LastGenOutput>
+    </None>
+    <None Include="ImportSkipsDuplicates.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>ImportSkipsDuplicates.feature.cs</LastGenOutput>
     </None>
     <None Include="packages.config" />
     <None Include="runtests.cmd" />

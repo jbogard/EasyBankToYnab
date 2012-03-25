@@ -3,7 +3,7 @@ using System.ComponentModel;
 using System.Linq.Expressions;
 using System.Reflection;
 
-namespace QuestMaster.EasyBankToYnab.UI.Foundation
+namespace QuestMaster.EasyBankToYnab.ApplicationLogic
 {
     public abstract class NotifyPropertyChanged : INotifyPropertyChanged
     {
@@ -60,24 +60,8 @@ namespace QuestMaster.EasyBankToYnab.UI.Foundation
 
         protected void OnPropertyChanged<TValue>(Expression<Func<TValue>> selector)
         {
-            this.OnPropertyChanged(new PropertyChangedEventArgs(GetProperty(selector).Name));
+            this.OnPropertyChanged(new PropertyChangedEventArgs(EventHandlerExtensions.GetProperty(selector).Name));
         }
-
-        private static PropertyInfo GetProperty(Expression expression)
-        {
-            if (expression is LambdaExpression)
-            {
-                expression = ((LambdaExpression)expression).Body;
-            }
-            switch (expression.NodeType)
-            {
-                case ExpressionType.MemberAccess:
-                    return (PropertyInfo)((MemberExpression)expression).Member;
-                default:
-                    throw new InvalidOperationException("Expression does not contain a property.");
-            }
-        }
-
     }
 }
 

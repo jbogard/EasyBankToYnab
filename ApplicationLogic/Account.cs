@@ -36,7 +36,10 @@ namespace QuestMaster.EasyBankToYnab.ApplicationLogic
 
     public void AddEntry(Entry entry)
     {
-      this.entries.Add(entry);
+      if (!this.entries.Contains(entry))
+      {
+        this.entries.Add(entry);
+      }
     }
 
     public void MarkStatementsAsOld()

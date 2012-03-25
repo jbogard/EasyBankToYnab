@@ -36,14 +36,15 @@ namespace QuestMaster.EasyBankToYnab.ApplicationLogic.Mappers
       [TestMethod]
       public void MapDomainEntryToYnabEntry()
       {
-        var domainEntry = new Entry
-        {
-          AmountIn = 1m,
-          AmountOut = 2m,
-          Description = "some description",
-          Payee = "some payee",
-          ValueDate = new DateTime(2012, 1, 1)
-        };
+        var domainEntry = new Entry(
+          amountIn: 1m,
+          amountOut: 2m,
+          description: "some description",
+          payee: "some payee",
+          valueDate: new DateTime(2012, 1, 1),
+          account: "some account",
+          bookingDate: new DateTime(2012, 1, 2),
+          currency: "EUR");
 
         Gateways.Ynab.YnabEntry ynabYnabEntry = this.mapper.MapToYnab(domainEntry);
 
@@ -57,14 +58,25 @@ namespace QuestMaster.EasyBankToYnab.ApplicationLogic.Mappers
       [TestMethod]
       public void MapDomainEntrySequenceToYnabEntryCollection()
       {
-        var domainEntry1 = new Entry
-        {
-          Description = "some description",
-        };
-        var domainEntry2 = new Entry
-        {
-          Description = "some description",
-        };
+        var domainEntry1 = new Entry(
+          amountIn: 1m,
+          amountOut: 2m,
+          description: "some description",
+          payee: "some payee",
+          valueDate: new DateTime(2012, 1, 1),
+          account: "some account",
+          bookingDate: new DateTime(2012, 1, 2),
+          currency: "EUR");
+
+        var domainEntry2 = new Entry(
+          amountIn: 3m,
+          amountOut: 4m,
+          description: "some other description",
+          payee: "some other payee",
+          valueDate: new DateTime(2012, 1, 3),
+          account: "some other account",
+          bookingDate: new DateTime(2012, 1, 4),
+          currency: "USD");
 
         Gateways.Ynab.YnabEntryCollection ynabEntries = this.mapper.MapToYnab(new[] { domainEntry1, domainEntry2 });
 

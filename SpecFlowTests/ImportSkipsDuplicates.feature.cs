@@ -18,22 +18,21 @@ namespace QuestMaster.EasyBankToYnab.DomainTests
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("TechTalk.SpecFlow", "1.8.1.0")]
     [System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    [TechTalk.SpecRun.FeatureAttribute("Import of unknown account creates account")]
+    [TechTalk.SpecRun.FeatureAttribute("Import skips duplicates")]
     [Microsoft.VisualStudio.TestTools.UnitTesting.TestClassAttribute()]
-    public partial class ImportOfUnknownAccountCreatesAccountFeature
+    public partial class ImportSkipsDuplicatesFeature
     {
         
         private static TechTalk.SpecFlow.ITestRunner testRunner;
         
-#line 1 "ImportAssociatesStatementWithAccount.feature"
+#line 1 "ImportSkipsDuplicates.feature"
 #line hidden
         
         [TechTalk.SpecRun.FeatureInitialize()]
         public virtual void FeatureSetup()
         {
             testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
-            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Import of unknown account creates account", "In order to associate my statements with an account\r\nAs a user\r\nI want accounts t" +
-                    "o be created when a statement of a previously unknown account is imported", ProgrammingLanguage.CSharp, ((string[])(null)));
+            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Import skips duplicates", "", ProgrammingLanguage.CSharp, ((string[])(null)));
             testRunner.OnFeatureStart(featureInfo);
         }
         
@@ -48,9 +47,9 @@ namespace QuestMaster.EasyBankToYnab.DomainTests
         public virtual void TestInitialize()
         {
             if (((TechTalk.SpecFlow.FeatureContext.Current != null) 
-                        && (TechTalk.SpecFlow.FeatureContext.Current.FeatureInfo.Title != "Import of unknown account creates account")))
+                        && (TechTalk.SpecFlow.FeatureContext.Current.FeatureInfo.Title != "Import skips duplicates")))
             {
-                QuestMaster.EasyBankToYnab.DomainTests.ImportOfUnknownAccountCreatesAccountFeature.FeatureSetupMsTest(null);
+                QuestMaster.EasyBankToYnab.DomainTests.ImportSkipsDuplicatesFeature.FeatureSetupMsTest(null);
             }
         }
         
@@ -74,32 +73,53 @@ namespace QuestMaster.EasyBankToYnab.DomainTests
         [Microsoft.VisualStudio.TestTools.UnitTesting.ClassInitializeAttribute()]
         public static void FeatureSetupMsTest(Microsoft.VisualStudio.TestTools.UnitTesting.TestContext testContext)
         {
-            new ImportOfUnknownAccountCreatesAccountFeature().FeatureSetup();
+            new ImportSkipsDuplicatesFeature().FeatureSetup();
         }
         
         [Microsoft.VisualStudio.TestTools.UnitTesting.ClassCleanupAttribute()]
         public static void FeatureTearDownMsTest()
         {
-            new ImportOfUnknownAccountCreatesAccountFeature().FeatureTearDown();
+            new ImportSkipsDuplicatesFeature().FeatureTearDown();
         }
         
-        [TechTalk.SpecRun.ScenarioAttribute("Create New Account")]
+        [TechTalk.SpecRun.ScenarioAttribute("Import Duplicates")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Create New Account")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Import of unknown account creates account")]
-        public virtual void CreateNewAccount()
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Import Duplicates")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Import skips duplicates")]
+        public virtual void ImportDuplicates()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Create New Account", ((string[])(null)));
-#line 6
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Import Duplicates", ((string[])(null)));
+#line 3
 this.ScenarioSetup(scenarioInfo);
-#line 7
+#line 4
   testRunner.Given("I have an empty list of accounts");
 #line hidden
-#line 8
-  testRunner.When("I import these statements", "20027024468;Abbuchung Onlinebanking                      BG/000000107|14200 20010" +
-                    "203008 Dirk Rombauts;01.07.2011;01.07.2011;-5,28;EUR", ((TechTalk.SpecFlow.Table)(null)));
-#line 12
-  testRunner.Then("the list of accounts should contain \'20027024468\'");
+#line 5
+  testRunner.When("I import these statements", @"20027024468;Abbuchung Onlinebanking                      BG/000000107|14200 20010203008 Dirk Rombauts;01.07.2011;01.07.2011;-5,28;EUR
+20027024468;Abbuchung Onlinebanking                      BG/000000107|14200 20010203008 Dirk Rombauts;01.07.2011;01.07.2011;-5,28;EUR", ((TechTalk.SpecFlow.Table)(null)));
+#line hidden
+            TechTalk.SpecFlow.Table table1 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Booking Date",
+                        "Account",
+                        "Description",
+                        "Payee",
+                        "Value Date",
+                        "Amount In",
+                        "Amount Out",
+                        "Currency",
+                        "Is New"});
+            table1.AddRow(new string[] {
+                        "2011-07-01",
+                        "20027024468",
+                        "Abbuchung Onlinebanking BG/000000107",
+                        "14200 20010203008 Dirk Rombauts",
+                        "2011-07-01",
+                        "0.00",
+                        "5.28",
+                        "EUR",
+                        "True"});
+#line 10
+  testRunner.Then("the account with number \'20027024468\' should contain these entries", ((string)(null)), table1);
 #line hidden
             this.ScenarioCleanup();
         }

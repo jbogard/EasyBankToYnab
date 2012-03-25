@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows;
+using System.Windows.Markup;
 
 namespace QuestMaster.EasyBankToYnab.UI
 {
@@ -22,6 +23,11 @@ namespace QuestMaster.EasyBankToYnab.UI
 
         private void ApplicationStartup(object sender, StartupEventArgs e)
         {
+          FrameworkElement.LanguageProperty.OverrideMetadata(
+    typeof(FrameworkElement),
+    new FrameworkPropertyMetadata(
+        XmlLanguage.GetLanguage("de-AT")));
+
             var window = new MainWindow
                              {
                                  ViewModel =

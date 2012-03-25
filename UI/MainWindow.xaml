@@ -23,14 +23,14 @@
 
     <DockPanel DockPanel.Dock="Top">
       <Label DockPanel.Dock="Left">Account: </Label>
-      <ComboBox ItemsSource="{Binding Path=Accounts}" DisplayMemberPath="Number"></ComboBox>
+      <ComboBox ItemsSource="{Binding Path=Accounts}" DisplayMemberPath="Number" IsSynchronizedWithCurrentItem="True"></ComboBox>
     </DockPanel>
         
       <StackPanel Orientation="Horizontal" DockPanel.Dock="Bottom">
             <Button Command="{Binding Path=MarkAllAsOld}" CommandParameter="{Binding Path=Accounts/}">Mark all as old</Button>
       <Button Command="{Binding Path=ExportNow}" CommandParameter="{Binding Path=Accounts/}">Export all new now</Button>
     </StackPanel>
-    <ListView ItemsSource="{Binding Path=Accounts/Entries}">
+    <ListView ItemsSource="{Binding Path=Accounts/Entries}" IsSynchronizedWithCurrentItem="True">
       <ListView.View>
         <GridView>
           <GridView.Columns>

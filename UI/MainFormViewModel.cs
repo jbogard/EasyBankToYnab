@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Windows.Input;
 using QuestMaster.EasyBankToYnab.ApplicationLogic;
 using QuestMaster.EasyBankToYnab.Gateways;
-using QuestMaster.EasyBankToYnab.UI.Foundation;
 
 namespace QuestMaster.EasyBankToYnab.UI
 {

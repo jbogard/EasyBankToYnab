@@ -65,7 +65,7 @@
     <Compile Include="DataContextProvider.cs" />
     <Compile Include="DefaultPathProvider.cs" />
     <Compile Include="FileLookupService.cs" />
-    <Compile Include="Foundation\SimpleCommand.cs" />
+    <Compile Include="SimpleCommand.cs" />
     <Compile Include="IFileLookupService.cs" />
     <Compile Include="MainFormViewModel.cs" />
     <Compile Include="MainWindow.xaml.cs">

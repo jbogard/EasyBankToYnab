@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Globalization;
 
 namespace QuestMaster.EasyBankToYnab.Gateways.Ynab
 {
@@ -26,8 +27,8 @@ namespace QuestMaster.EasyBankToYnab.Gateways.Ynab
             "Import Statements",
             ReplaceSeparator(this.Payee, cultureSettings),
             ReplaceSeparator(this.Description, cultureSettings),
-            this.AmountOut.ToString("0.00"),
-            this.AmountIn.ToString("0.00")
+            this.AmountOut.ToString("0.00", CultureInfo.InvariantCulture),
+            this.AmountIn.ToString("0.00", CultureInfo.InvariantCulture)
           });
 
       return result;

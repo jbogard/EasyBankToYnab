@@ -176,7 +176,7 @@ this.FeatureBackground();
 #line 10
   testRunner.And("the following entries in the account with number \'20027024468\'", ((string)(null)), table1);
 #line 18
-  testRunner.When("I export all new entries");
+  testRunner.When("I export all new entries from the account with number \'20027024468\'");
 #line hidden
 #line 19
   testRunner.Then("the result should be", @"Date,Category,Payee,Memo,Outflow,Inflow                                                                           

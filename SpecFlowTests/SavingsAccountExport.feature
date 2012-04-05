@@ -15,7 +15,7 @@ Scenario: Export savings account entries
  | 2011-06-02   | 20027024468 | Gutschrift Dauerauftrag BG/000000104 | 14200 20010203008 Mag Dirk Rombauts | 2011-06-01 | 250       | 0          | EUR      | True   |
  | 2011-05-03   | 20027024468 | Gutschrift Dauerauftrag BG/000000103 | 14200 20010203008 Mag Dirk Rombauts | 2011-05-02 | 250.00    | 0          | EUR      | True   |
  | 2011-04-02   | 20027024468 | Gutschrift Dauerauftrag BG/000000102 | 14200 20010203008 Mag Dirk Rombauts | 2011-04-01 | 250.00    | 0          | EUR      | True   |
-  When I export all new entries
+  When I export all new entries from the account with number '20027024468'
   Then the result should be
   """
   Date,Category,Payee,Memo,Outflow,Inflow                                                                           

@@ -90,9 +90,9 @@ namespace QuestMaster.EasyBankToYnab.ApplicationLogic
       this.accounts.Clear();
     }
 
-    public void ExportEntries(bool newOnly)
+    public void ExportEntries(string accountNumber, bool newOnly)
     {
-      IEnumerable<Entry> entries = this.accounts.SelectMany(acc => acc.Entries);
+      IEnumerable<Entry> entries = this.accounts.Where(acc => acc.Number == accountNumber).SelectMany(acc => acc.Entries);
 
       if (newOnly)
       {

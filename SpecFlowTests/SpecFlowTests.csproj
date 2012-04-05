@@ -69,10 +69,10 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>CheckingAccountExport.feature</DependentUpon>
     </Compile>
-    <Compile Include="ExportNewItems.feature.cs">
+    <Compile Include="Export.feature.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>ExportNewItems.feature</DependentUpon>
+      <DependentUpon>Export.feature</DependentUpon>
     </Compile>
     <Compile Include="CheckingAccountImport.feature.cs">
       <AutoGen>True</AutoGen>
@@ -123,9 +123,9 @@
     <None Include="Default.srprofile">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="ExportNewItems.feature">
+    <None Include="Export.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
-      <LastGenOutput>ExportNewItems.feature.cs</LastGenOutput>
+      <LastGenOutput>Export.feature.cs</LastGenOutput>
     </None>
     <None Include="CheckingAccountImport.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>

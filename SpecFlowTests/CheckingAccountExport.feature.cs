@@ -238,7 +238,7 @@ this.ScenarioSetup(scenarioInfo);
 #line 8
   testRunner.And("the following entries in the account with number \'20010203008\'", ((string)(null)), table1);
 #line 23
-  testRunner.When("I export all entries");
+  testRunner.When("I export all entries from the account with number \'20010203008\'");
 #line hidden
 #line 24
   testRunner.Then("the result should be", "Date,Category,Payee,Memo,Outflow,Inflow                                          " +

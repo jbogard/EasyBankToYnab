@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using TechTalk.SpecFlow;
 
 namespace QuestMaster.EasyBankToYnab.DomainTests.Bindings
@@ -6,10 +7,10 @@ namespace QuestMaster.EasyBankToYnab.DomainTests.Bindings
   [Binding]
   public class WhenDefinitions
   {
-    [When(@"I export all entries")]
-    public void WhenIExportAllEntries()
+    [When(@"I export all entries from the account with number '(.*)'")]
+    public void WhenIExportAllEntries(string accountNumber)
     {
-      CurrentScenarioContext.EasyBankContext.ExportEntries(newOnly: false);
+        CurrentScenarioContext.EasyBankContext.ExportEntries(accountNumber, newOnly: false);
     }
 
     [When(@"I import these statements")]
@@ -19,10 +20,10 @@ namespace QuestMaster.EasyBankToYnab.DomainTests.Bindings
       CurrentScenarioContext.EasyBankContext.ImportEntries();
     }
 
-    [When(@"I export all new entries")]
-    public void WhenIExportAllNewEntries()
+    [When(@"I export all new entries from the account with number '(.*)'")]
+    public void WhenIExportAllNewEntries(string accountNumber)
     {
-      CurrentScenarioContext.EasyBankContext.ExportEntries(newOnly: true);
+        CurrentScenarioContext.EasyBankContext.ExportEntries(accountNumber, newOnly: true);
     }
   }
 }

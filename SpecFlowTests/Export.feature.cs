@@ -18,21 +18,21 @@ namespace QuestMaster.EasyBankToYnab.DomainTests
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("TechTalk.SpecFlow", "1.8.1.0")]
     [System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    [TechTalk.SpecRun.FeatureAttribute("Export of new entries")]
+    [TechTalk.SpecRun.FeatureAttribute("Other Export matters")]
     [Microsoft.VisualStudio.TestTools.UnitTesting.TestClassAttribute()]
-    public partial class ExportOfNewEntriesFeature
+    public partial class OtherExportMattersFeature
     {
         
         private static TechTalk.SpecFlow.ITestRunner testRunner;
         
-#line 1 "ExportNewItems.feature"
+#line 1 "Export.feature"
 #line hidden
         
         [TechTalk.SpecRun.FeatureInitialize()]
         public virtual void FeatureSetup()
         {
             testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
-            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Export of new entries", "In order to update my list of transactions\r\nAs a user\r\nI want to export my entrie" +
+            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Other Export matters", "In order to update my list of transactions\r\nAs a user\r\nI want to export my entrie" +
                     "s to YNAB", ProgrammingLanguage.CSharp, ((string[])(null)));
             testRunner.OnFeatureStart(featureInfo);
         }
@@ -48,9 +48,9 @@ namespace QuestMaster.EasyBankToYnab.DomainTests
         public virtual void TestInitialize()
         {
             if (((TechTalk.SpecFlow.FeatureContext.Current != null) 
-                        && (TechTalk.SpecFlow.FeatureContext.Current.FeatureInfo.Title != "Export of new entries")))
+                        && (TechTalk.SpecFlow.FeatureContext.Current.FeatureInfo.Title != "Other Export matters")))
             {
-                QuestMaster.EasyBankToYnab.DomainTests.ExportOfNewEntriesFeature.FeatureSetupMsTest(null);
+                QuestMaster.EasyBankToYnab.DomainTests.OtherExportMattersFeature.FeatureSetupMsTest(null);
             }
         }
         
@@ -74,19 +74,19 @@ namespace QuestMaster.EasyBankToYnab.DomainTests
         [Microsoft.VisualStudio.TestTools.UnitTesting.ClassInitializeAttribute()]
         public static void FeatureSetupMsTest(Microsoft.VisualStudio.TestTools.UnitTesting.TestContext testContext)
         {
-            new ExportOfNewEntriesFeature().FeatureSetup();
+            new OtherExportMattersFeature().FeatureSetup();
         }
         
         [Microsoft.VisualStudio.TestTools.UnitTesting.ClassCleanupAttribute()]
         public static void FeatureTearDownMsTest()
         {
-            new ExportOfNewEntriesFeature().FeatureTearDown();
+            new OtherExportMattersFeature().FeatureTearDown();
         }
         
         [TechTalk.SpecRun.ScenarioAttribute("Export new entries only")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Export new entries only")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Export of new entries")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Other Export matters")]
         public virtual void ExportNewEntriesOnly()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Export new entries only", ((string[])(null)));
@@ -128,12 +128,58 @@ this.ScenarioSetup(scenarioInfo);
 #line 8
   testRunner.And("the following entries in the account with number \'20010203008\'", ((string)(null)), table1);
 #line 12
-  testRunner.When("I export all new entries");
+  testRunner.When("I export all new entries from the account with number \'20010203008\'");
 #line hidden
 #line 13
   testRunner.Then("the result should be", "Date,Category,Payee,Memo,Outflow,Inflow                                          " +
                     "        \r\n11.07.2011,Import Statements,,easykreditkarte MasterCard 000000 MC/000" +
                     "002237,757.70,0.00", ((TechTalk.SpecFlow.Table)(null)));
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [TechTalk.SpecRun.ScenarioAttribute("Export items from correct account only")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Export items from correct account only")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Other Export matters")]
+        public virtual void ExportItemsFromCorrectAccountOnly()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Export items from correct account only", ((string[])(null)));
+#line 19
+this.ScenarioSetup(scenarioInfo);
+#line 20
+  testRunner.Given("I have an account with number \'20010203008\'");
+#line hidden
+            TechTalk.SpecFlow.Table table2 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Booking Date",
+                        "Account",
+                        "Description",
+                        "Payee",
+                        "Value Date",
+                        "Amount In",
+                        "Amount Out",
+                        "Currency",
+                        "Is New"});
+            table2.AddRow(new string[] {
+                        "2011-07-12",
+                        "20010203008",
+                        "easykreditkarte MasterCard 000000 MC/000002237",
+                        "",
+                        "2011-07-11",
+                        "0.00",
+                        "757.70",
+                        "EUR",
+                        "True"});
+#line 21
+  testRunner.And("the following entries in the account with number \'20010203008\'", ((string)(null)), table2);
+#line 24
+  testRunner.And("I have an account with number \'20027024468\'");
+#line 25
+  testRunner.When("I export all new entries from the account with number \'20027024468\'");
+#line hidden
+#line 26
+  testRunner.Then("the result should be", "Date,Category,Payee,Memo,Outflow,Inflow                                          " +
+                    "        ", ((TechTalk.SpecFlow.Table)(null)));
 #line hidden
             this.ScenarioCleanup();
         }

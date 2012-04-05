@@ -168,13 +168,13 @@ namespace QuestMaster.EasyBankToYnab.UI
             var account = obj as Account;
             if (account != null)
             {
-                ExportStatementsToFile();
+                ExportStatementsToFile(account);
             }
         }
 
-        private void ExportStatementsToFile()
+        private void ExportStatementsToFile(Account account)
         {
-          this.easyBank.ExportEntries(true);
+          this.easyBank.ExportEntries(account.Number, true);
         }
 
         private void DoImport(object obj)

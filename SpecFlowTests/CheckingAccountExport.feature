@@ -20,7 +20,7 @@ Scenario: Export checking account entries
   | 2011-07-02   | 20010203008 | Abbuchung Einzugsermächtigung OG/000002227     | AMAZON EU SARL 19100 00040593000                        | 2011-07-01 |      0.00 | 16.31      | EUR      | True   |
   | 2011-07-02   | 20010203008 | TRN 20110701RX003135                           | I7452063 VB/000002226 Walter Rombauts 14000 00118804139 | 2011-07-01 |      0.00 | 250.00     | EUR      | True   |
   | 2011-07-02   | 20010203008 | TRN 20110701RX003134                           | I7452070 VB/000002225 Walter Rombauts 14000 00118804139 | 2011-07-01 |      0    | 250.00     | EUR      | True   |
-  When I export all entries
+  When I export all entries from the account with number '20010203008'
   Then the result should be
   """
   Date,Category,Payee,Memo,Outflow,Inflow                                                                                      

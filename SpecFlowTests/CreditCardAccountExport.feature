@@ -18,7 +18,7 @@ Scenario: Export credit card account entries
   | 2011-06-20   | 20000134083 | 05460651169061800530249           | OESTERR.BUNDESBAHNEN WIEN           | 2011-06-17 | 0.00      | 16         | EUR      | True   |
   | 2011-06-20   | 20000134083 | GBP 70,96 55504431167083109723160 | Manipulationsentgelt                | 2011-06-16 | 0.00      | 0.81       | EUR      | True   |
   | 2011-06-20   | 20000134083 | GBP 70,96 55504431167083109723160 | FORGE WORLD NOTTINGHAM              | 2011-06-16 | 0.00      | 80.57      | EUR      | True   |
-  When I export all new entries
+  When I export all new entries from the account with number '20000134083'
   Then the result should be
   """
   Date,Category,Payee,Memo,Outflow,Inflow                                                                       

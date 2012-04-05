@@ -4,9 +4,16 @@
         Title="MainWindow" Height="350" Width="525"
         Loaded="WindowLoaded"
         DataContextChanged="WindowDataContextChanged">
+  <Window.Resources>
+    <Style TargetType="Button">
+      <Setter Property="Margin" Value="5" />
+      <Setter Property="Padding" Value="3" />
+      <Setter Property="Width" Value="75" />
+    </Style>
+  </Window.Resources>
     <DockPanel>
 
-    <Menu DockPanel.Dock="Top">
+    <!--<Menu DockPanel.Dock="Top">
       <MenuItem Header="_File">
         <MenuItem.Items>
           <MenuItem Header="_Open ..." Command="{Binding Path=Open}" />
@@ -19,17 +26,26 @@
                     <MenuItem Header="E_xit" Command="{Binding Path=ExitCommand}" />
         </MenuItem.Items>
       </MenuItem>
-    </Menu>
+    </Menu>-->
+      
+      <StackPanel Orientation="Horizontal" DockPanel.Dock="Top">
+      <Button Content="_Open ..." Command="{Binding Path=Open}" />
+      <Button Content="_Save" Command="{Binding Path=SaveCommand}" />
+      <Button Content="Save _As ..." Command="{Binding Path=SaveAsCommand}" />
+      <Button Content="_Import ..." Command="{Binding Path=Import}" />
+      <Button Content="Import _Now" Command="{Binding Path=ImportNow}" />
+      <Button Content="Ex_port ..." Command="{Binding Path=Export}" />
+      <Button Content="Export No_w" Command="{Binding Path=ExportNow}" />
+      <Button Content="E_xit" Command="{Binding Path=ExitCommand}" />
+      <Button Command="{Binding Path=MarkAllAsOld}" CommandParameter="{Binding Path=Accounts/}" Width="100">Mark all as old</Button>
+      <Button Command="{Binding Path=ExportNow}" CommandParameter="{Binding Path=Accounts/}" Width="125">Export all new now</Button>
+    </StackPanel>
 
     <!--<DockPanel DockPanel.Dock="Top">
       <Label DockPanel.Dock="Left">Account: </Label>
       <ComboBox ItemsSource="{Binding Path=Accounts}" DisplayMemberPath="Number" IsSynchronizedWithCurrentItem="True"></ComboBox>
     </DockPanel>-->
         
-      <StackPanel Orientation="Horizontal" DockPanel.Dock="Bottom">
-            <Button Command="{Binding Path=MarkAllAsOld}" CommandParameter="{Binding Path=Accounts/}">Mark all as old</Button>
-      <Button Command="{Binding Path=ExportNow}" CommandParameter="{Binding Path=Accounts/}">Export all new now</Button>
-    </StackPanel>
 
     <TabControl ItemsSource="{Binding Path=Accounts}" IsSynchronizedWithCurrentItem="True" DockPanel.Dock="Bottom">
       <TabControl.ItemTemplate>

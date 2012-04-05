@@ -21,16 +21,53 @@
       </MenuItem>
     </Menu>
 
-    <DockPanel DockPanel.Dock="Top">
+    <!--<DockPanel DockPanel.Dock="Top">
       <Label DockPanel.Dock="Left">Account: </Label>
       <ComboBox ItemsSource="{Binding Path=Accounts}" DisplayMemberPath="Number" IsSynchronizedWithCurrentItem="True"></ComboBox>
-    </DockPanel>
+    </DockPanel>-->
         
       <StackPanel Orientation="Horizontal" DockPanel.Dock="Bottom">
             <Button Command="{Binding Path=MarkAllAsOld}" CommandParameter="{Binding Path=Accounts/}">Mark all as old</Button>
       <Button Command="{Binding Path=ExportNow}" CommandParameter="{Binding Path=Accounts/}">Export all new now</Button>
     </StackPanel>
-    <ListView ItemsSource="{Binding Path=Accounts/Entries}" IsSynchronizedWithCurrentItem="True">
+
+    <TabControl ItemsSource="{Binding Path=Accounts}" IsSynchronizedWithCurrentItem="True" DockPanel.Dock="Bottom">
+      <TabControl.ItemTemplate>
+        <DataTemplate>
+          <TextBlock>                            
+                <TextBlock Text="{Binding Number}"/>
+            </TextBlock>
+        </DataTemplate>
+      </TabControl.ItemTemplate>
+      <TabControl.ContentTemplate>
+        <DataTemplate>
+          <ListView ItemsSource="{Binding Path=Entries}">
+            <ListView.View>
+              <GridView>
+                <GridView.Columns>
+                  <GridViewColumn Header="Is New">
+                    <GridViewColumn.CellTemplate>
+                      <DataTemplate>
+                        <CheckBox IsChecked="{Binding Path=IsNew}" />
+                      </DataTemplate>
+                    </GridViewColumn.CellTemplate>
+                  </GridViewColumn>
+                  <GridViewColumn Header="Booking Date" DisplayMemberBinding="{Binding Path=BookingDate}" />
+                  <GridViewColumn Header="Value Date" DisplayMemberBinding="{Binding Path=ValueDate}" />
+                  <GridViewColumn Header="Description" DisplayMemberBinding="{Binding Path=Description}" />
+                  <GridViewColumn Header="Payee" DisplayMemberBinding="{Binding Path=Payee}" />
+                  <GridViewColumn Header="Amount In" DisplayMemberBinding="{Binding Path=AmountIn}" />
+                  <GridViewColumn Header="Amount Out" DisplayMemberBinding="{Binding Path=AmountOut}" />
+                  <GridViewColumn Header="Currency" DisplayMemberBinding="{Binding Path=Currency}" />
+                </GridView.Columns>
+              </GridView>
+            </ListView.View>
+          </ListView>
+        </DataTemplate>
+      </TabControl.ContentTemplate>
+    </TabControl>
+
+      <!--<ListView ItemsSource="{Binding Path=Accounts/Entries}" IsSynchronizedWithCurrentItem="True">
       <ListView.View>
         <GridView>
           <GridView.Columns>
@@ -51,6 +88,6 @@
           </GridView.Columns>
         </GridView>
       </ListView.View>
-    </ListView>
+    </ListView>-->
   </DockPanel>
 </Window>

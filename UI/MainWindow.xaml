@@ -34,8 +34,8 @@
       <Button Content="Save _As ..." Command="{Binding Path=SaveAsCommand}" />
       <Button Content="_Import ..." Command="{Binding Path=Import}" />
       <Button Content="Import _Now" Command="{Binding Path=ImportNow}" />
-      <Button Content="Ex_port ..." Command="{Binding Path=Export}" />
-      <Button Content="Export No_w" Command="{Binding Path=ExportNow}" />
+      <Button Content="Ex_port ..." Command="{Binding Path=Export}" CommandParameter="{Binding Path=Accounts/}" />
+      <Button Content="Export No_w" Command="{Binding Path=ExportNow}" CommandParameter="{Binding Path=Accounts/}" />
       <Button Content="E_xit" Command="{Binding Path=ExitCommand}" />
       <Button Command="{Binding Path=MarkAllAsOld}" CommandParameter="{Binding Path=Accounts/}" Width="100">Mark all as old</Button>
       <Button Command="{Binding Path=ExportNow}" CommandParameter="{Binding Path=Accounts/}" Width="125">Export all new now</Button>

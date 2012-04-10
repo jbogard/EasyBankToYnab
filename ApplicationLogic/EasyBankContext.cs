@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using QuestMaster.EasyBankToYnab.Gateways;
 
@@ -39,7 +40,7 @@ namespace QuestMaster.EasyBankToYnab.ApplicationLogic
       get { return this.SelectMatchingAccounts(accountNumber).SingleOrDefault(); }
     }
 
-    public IEnumerable<Account> Accounts
+    public ObservableCollection<Account> Accounts
     {
       get { return this.accounts; }
     }

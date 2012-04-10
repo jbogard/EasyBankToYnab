@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 
 namespace QuestMaster.EasyBankToYnab.ApplicationLogic
 {
@@ -29,7 +30,7 @@ namespace QuestMaster.EasyBankToYnab.ApplicationLogic
       get { return number; }
     }
 
-    public IEnumerable<Entry> Entries
+    public ObservableCollection<Entry> Entries
     {
       get { return this.entries; }
     }

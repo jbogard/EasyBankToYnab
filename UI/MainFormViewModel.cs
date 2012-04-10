@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Windows.Input;
 using QuestMaster.EasyBankToYnab.ApplicationLogic;
 using QuestMaster.EasyBankToYnab.Gateways;
@@ -58,11 +59,11 @@ namespace QuestMaster.EasyBankToYnab.UI
 
       public event EventHandler Exit;
 
-        public IEnumerable<Account> Accounts
+        public ObservableCollection<Account> Accounts
         {
             get
             {
-                return this.easyBank != null ? this.easyBank.Accounts: new Account[0];
+                return this.easyBank != null ? this.easyBank.Accounts : new ObservableCollection<Account>();
             }
         }
 
@@ -180,8 +181,6 @@ namespace QuestMaster.EasyBankToYnab.UI
         private void DoImport(object obj)
         {
             ImportStatementsFromFile();
-
-            OnPropertyChanged(() => this.Accounts);
         }
 
         private void ImportStatementsFromFile()
@@ -196,8 +195,6 @@ namespace QuestMaster.EasyBankToYnab.UI
             if (account != null)
             {
                 account.MarkStatementsAsOld();
-
-                OnPropertyChanged(() => this.Accounts);
             }
         }
 

@@ -1,9 +1,10 @@
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 
 namespace QuestMaster.EasyBankToYnab.ApplicationLogic
 {
-  public class AccountCollection : List<Account>
+  public class AccountCollection : ObservableCollection<Account>
   {
   }
 }

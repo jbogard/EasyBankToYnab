@@ -1,0 +1,8 @@
+# ignore everything in this folder
+*
+
+# do not ignore the .igtignore file
+!.gitignore
+
+# track the repositories.config file as well
+!repositories.config

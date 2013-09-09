@@ -9,6 +9,9 @@ namespace QuestMaster.EasyBankToYnab.Gateways.Xml
     [DataMember(Name = "number")]
     public string Number { get; set; }
 
+    [DataMember(Name = "description", IsRequired = false, EmitDefaultValue = false)]
+    public string Description { get; set; }
+
     [DataMember(Name = "entries")]
     public XmlEntryCollection Entries { get; set; }
   }

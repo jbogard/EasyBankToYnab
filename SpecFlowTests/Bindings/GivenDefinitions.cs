@@ -12,7 +12,7 @@ namespace QuestMaster.EasyBankToYnab.DomainTests.Bindings
     [Given(@"I have an account with number '([0-9]*)'")]
     public void GivenIHaveAnAccountWithNumber(string accountNumber)
     {
-      CurrentScenarioContext.EasyBankContext.AddAcount(accountNumber);
+      CurrentScenarioContext.EasyBankContext.AddAcount(accountNumber, "Sample Account");
     }
 
     [Given(@"the following entries in the account with number '([0-9]*)'")]

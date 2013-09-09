@@ -8,15 +8,17 @@ namespace QuestMaster.EasyBankToYnab.ApplicationLogic
   {
     private readonly EntryCollection entries;
     private readonly string number;
+    private readonly string description;
 
-    public Account(string number)
-      : this(number, new Entry[0])
+    public Account(string number, string description)
+      : this(number, description, new Entry[0])
     {
     }
 
-    public Account(string number, IEnumerable<Entry> entries)
+    public Account(string number, string description, IEnumerable<Entry> entries)
     {
       this.number = number;
+      this.description = description;
       this.entries = new EntryCollection();
 
       foreach (var entry in entries)
@@ -28,6 +30,16 @@ namespace QuestMaster.EasyBankToYnab.ApplicationLogic
     public string Number
     {
       get { return number; }
+    }
+
+    public string Description
+    {
+      get { return description; }
+    }
+
+    public string AccountDescription
+    {
+      get { return string.IsNullOrWhiteSpace(Description) ? this.Number : this.Description; }
     }
 
     public ObservableCollection<Entry> Entries

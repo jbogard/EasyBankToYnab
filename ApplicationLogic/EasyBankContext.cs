@@ -50,7 +50,7 @@ namespace QuestMaster.EasyBankToYnab.ApplicationLogic
       string accountNumber = entry.Account;
       if (!this.HasAccount(accountNumber))
       {
-        this.AddAcount(accountNumber);
+        this.AddAcount(accountNumber, string.Empty);
       }
 
       this[accountNumber].AddEntry(entry);
@@ -61,9 +61,9 @@ namespace QuestMaster.EasyBankToYnab.ApplicationLogic
       return SelectMatchingAccounts(accountNumber).Any();
     }
 
-    public void AddAcount(string accountNumber)
+    public void AddAcount(string accountNumber, string description)
     {
-      this.accounts.Add(new Account(accountNumber));
+      this.accounts.Add(new Account(accountNumber, description));
     }
 
     public void Save()
